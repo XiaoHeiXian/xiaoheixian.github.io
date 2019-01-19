@@ -34,6 +34,11 @@ body{
 	background: #f2f2f2;
 }
 
+.logo-text{
+	width: 120px;
+	margin-top: 35px;
+}
+
 
 /* 网站头部 */
 
@@ -50,7 +55,7 @@ body{
 	height: 100px;
 	margin-bottom: -100px;
 	line-height:100px;
-	background: #1e9fff;
+	background: #23262e;
 }
 .lay-blog .logo-img{
 	height:65px;
