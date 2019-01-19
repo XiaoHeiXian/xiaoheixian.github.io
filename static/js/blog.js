@@ -121,6 +121,24 @@ layui.define(['element', 'form','laypage','jquery','laytpl'],function(exports){
   $('#item-btn').on('click', function(){
     var elemCont = $('#LAY-msg-content')
     ,content = elemCont.val();
+
+    if(localStorage.getItem("user_id") == "" || localStorage.getItem("user_id") == null){
+
+      layer.open({
+        type: 1
+        ,offset: 'auto' //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+        ,id: 'layerDemo'+'auto' //防止重复弹出
+        ,content: '<div style="padding: 20px 100px;">'+ '请先登录' +'</div>'
+        ,btn: 'github登录'
+        ,btnAlign: 'c' //按钮居中
+        ,shade: 0 //不显示遮罩
+        ,yes: function(){
+          window.location.href='https://github.com/login/oauth/authorize?client_id=5315dcce3ae5dc901d87&redirect_uri=https://xiaoheixian.github.io/message';
+        }
+      });
+      return elemCont.focus();
+    }
+
     if(content.replace(/\s/g, '') == ""){
       layer.msg('请先输入留言');
       return elemCont.focus();

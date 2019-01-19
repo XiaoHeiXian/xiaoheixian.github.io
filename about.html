@@ -62,6 +62,9 @@
 						<h4>Bmob</h4>
 						<h4>Layui</h4>
 						<h4>构成</h4>
+						<h4>
+							<a href="timeline.html">时间线</a>
+						</h4>
 						<div class="count layui-clear">
 							<span class="pull-left" id="count">阅读
 								<em>100000+</em>
@@ -98,7 +101,8 @@
 		layui.use('jquery', function () {
 			var $ = layui.$;
 			$(function () {
-				getTotalPV();
+				//getTotalPV();
+				console.log(getParam(code));
 			});
 			function getTotalPV() {
 				$.ajax({
@@ -123,6 +127,21 @@
 					success: function (result) {
 					}
 				});
+			}
+			/** 
+			 * 获取指定的URL参数值 
+			 * URL:http://www.quwan.com/index?name=tyler 
+			 * 参数：paramName URL参数 
+			 * 调用方法:getParam("name") 
+			 * 返回值:tyler 
+			 */
+			function getParam(paramName) {
+				paramValue = "", isFound = !1;
+				if (this.location.search.indexOf("?") == 0 && this.location.search.indexOf("=") > 1) {
+					arrSource = unescape(this.location.search).substring(1, this.location.search.length).split("&"), i = 0;
+					while (i < arrSource.length && !isFound) arrSource[i].indexOf("=") > 0 && arrSource[i].split("=")[0].toLowerCase() == paramName.toLowerCase() && (paramValue = arrSource[i].split("=")[1], isFound = !0), i++
+				}
+				return paramValue == "" && (paramValue = null), paramValue
 			}
 		}
 		)

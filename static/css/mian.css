@@ -1,5 +1,20 @@
 /**
 
+ @Name：X | Blog
+ @Author：xiaoheixian
+ @Site：https://xiaoheixian.github.io/
+ @License：MIT
+
+*/
+
+/* ==============
+	X 定义的样式
+   ============== */
+
+
+
+/**
+
  @Name：layuiBlog
  @Author：xuzhiwen
  @Site：http://www.layui.com/template/xianyan/
@@ -7,6 +22,22 @@
  
  */
 
+.logo-text{
+	width: 120px;
+	margin-top: 35px;
+}
+
+.language{
+	margin-top: 7px;
+	float: right;
+	background-color: rgba(103,194,58,.1);
+    border-color: rgba(103,194,58,.2);
+    color: #67c23a;
+}
+
+#layui-layer1 {
+	font-size: 0.9rem;
+}
 
 /* ===========
 	工具样式
@@ -32,11 +63,6 @@ body{
 	font-size: 1.2rem;
 	line-height: 1.5;
 	background: #f2f2f2;
-}
-
-.logo-text{
-	width: 120px;
-	margin-top: 35px;
 }
 
 
@@ -140,7 +166,7 @@ body{
 	left:0px;
 	top:100px;
 	text-align:center;
-	background:#1e9fff;
+	background:#23262e;
 	display:none;
 	z-index: 2;
 }
