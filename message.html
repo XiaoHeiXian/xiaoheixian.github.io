@@ -129,7 +129,18 @@
 			var $ = layui.$;
 			$(function () {
 				//getTotalPV();
-				console.log(getParam("code"));
+				// if(getParam("code") != null){
+				$.ajax({
+					type: "POST",
+					url: "https://github.com/login/oauth/access_token",
+					data: { client_id: "5315dcce3ae5dc901d87", client_secret: "f0365766e4d3129f1c59101e9033555704956c27", code: "7945b352b0c3ded5057b" },
+					contentType:"application/json",
+					dataType: "json",
+					success: function (data) {
+						console.log(data);
+					}
+				});
+				// }
 			});
 			/** 
 			 * 获取指定的URL参数值 

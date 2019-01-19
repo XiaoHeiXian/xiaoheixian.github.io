@@ -101,8 +101,7 @@
 		layui.use('jquery', function () {
 			var $ = layui.$;
 			$(function () {
-				//getTotalPV();
-				console.log(getParam("code"));
+				getTotalPV();
 			});
 			function getTotalPV() {
 				$.ajax({
@@ -123,7 +122,6 @@
 					url: "http://cloud.bmob.cn/7d0718562ae91957/setTotalPV",
 					dataType: 'jsonp',
 					data: '',
-					jsonp: 'callback',
 					success: function (result) {
 					}
 				});
