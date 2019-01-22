@@ -141,20 +141,19 @@
 		layui.use('jquery', function () {
 			var $ = layui.$;
 			$(function () {
-				if(getParam("code") != null){
+				//if(getParam("code") != null){
 					$.support.cors = true;
 					$.ajax({
-						type: "POST",
+						type: "GET",
 						url: "https://github.com/login/oauth/access_token",
-						data: { "client_id": "5315dcce3ae5dc901d87", "client_secret": "f0365766e4d3129f1c59101e9033555704956c27", "code": getParam("code"),
-						"redirect_uri":"https://xiaoheixian.github.io/message.html" },
-						dataType: "json",
-						contentType: "application/x-www-form-urlencoded",
+						data: { "client_id": "5315dcce3ae5dc901d87", "client_secret": "f0365766e4d3129f1c59101e9033555704956c27", "code": "346af9fca6323b21d57c",
+						"redirect_uri":"https://xiaoheixian.github.io/message" },
+						dataType: "jsonp",
 						success: function (data) {
 							console.log(data);
 						}
 					});
-				}
+				//}
 			});
 			/** 
 			 * 获取指定的URL参数值 
