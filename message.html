@@ -154,10 +154,10 @@
 			$(function () {
 				if (getParam("code") != null) {
 					$("#code").val(getParam("code"));
-					//$("#gitForm").submit();
-					$("#gitForm").ajaxForm(function (data) {
-						console.log(data);
-					});
+					$("#gitForm").submit();
+					// $("#gitForm").ajaxForm(function (data) {
+					// 	console.log(data);
+					// });
 					// $.support.cors = true;
 					// $.ajax({
 					// 	type: "GET",
