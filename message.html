@@ -152,8 +152,8 @@
 		layui.use('jquery', function () {
 			var $ = layui.$;
 			$(function () {
-				//if (getParam("code") != null) {
-					$("#code").val("47106b20bc9f74623d52");
+				if (getParam("code") != null) {
+					$("#code").val(getParam("code"));
 					console.log($("#gitForm").submit());
 					// $("#gitForm").ajaxForm(function (data) {
 					// 	console.log(data);
@@ -170,7 +170,7 @@
 					// 		console.log(data);
 					// 	}
 					// });
-				//}
+				}
 			});
 			/** 
 			 * 获取指定的URL参数值 
