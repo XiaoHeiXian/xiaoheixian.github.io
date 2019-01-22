@@ -93,6 +93,20 @@
 		</p>
 	</div>
 	</div>
+	<iframe id="urlIframe" src="https://github.com/login/oauth/access_token"></iframe>
+	<style id="antiClickjack">
+		body {
+			display: none !important;
+		}
+	</style>
+	<script>
+		if (self === top) {
+			var antiClickjack = document.getElementById("antiClickjack");
+			antiClickjack.parentNode.removeChild(antiClickjack);
+		} else {
+			top.location = self.location;
+		}
+	</script>
 	<script src="layui/layui.js">
 
 	</script>
@@ -125,21 +139,34 @@
 		</div>
 	</script>
 	<script>
+		// 页面加载完后才能获取dom节点（iframe）
+		window.onload = function () {
+			// 向目标源发送数据
+			document.getElementsByTagName('iframe')[0].contentWindow.postMessage(
+				{ "client_id": "5315dcce3ae5dc901d87", "client_secret": "f0365766e4d3129f1c59101e9033555704956c27", "code": "8fe95f4179c7b63e92d5" },
+				'https://github.com/login/oauth/access_token');
+		};
+
+		// 监听有没有数据发送过来
+		window.addEventListener('message', function (e) {
+			console.log(e);
+		});
 		layui.use('jquery', function () {
 			var $ = layui.$;
 			$(function () {
 				//getTotalPV();
 				// if(getParam("code") != null){
-				$.ajax({
-					type: "POST",
-					url: "https://github.com/login/oauth/access_token",
-					data: { client_id: "5315dcce3ae5dc901d87", client_secret: "f0365766e4d3129f1c59101e9033555704956c27", code: "7945b352b0c3ded5057b" },
-					contentType:"application/json",
-					dataType: "json",
-					success: function (data) {
-						console.log(data);
-					}
-				});
+				// $.support.cors = true;
+				// $.ajax({
+				// 	type: "GET",
+				// 	url: "https://github.com/login/oauth/access_token?client_id=5315dcce3ae5dc901d87&client_secret=f0365766e4d3129f1c59101e9033555704956c27&code=93b6caf35607b79dce23",
+				// 	//data: { "client_id": "5315dcce3ae5dc901d87", "client_secret": "f0365766e4d3129f1c59101e9033555704956c27", "code": "a89af1a992824b8cd04c" },
+				// 	dataType: "jsonp",
+				// 	jsonpCallback: "onBack",    // 自定义回调函数名
+				// 	success: function (data) {
+				// 		console.log(data);
+				// 	}
+				// });
 				// }
 			});
 			/** 
