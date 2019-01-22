@@ -92,7 +92,7 @@
 			<span>人生就是一场修行</span>
 		</p>
 	</div>
-	<form id="gitForm" action='https://github.com/login/oauth/access_token' method='post' target="hidden_frame">
+	<form id="gitForm" action='https://github.com/login/oauth/access_token' method='post'>
 
 		<input name='client_id' value="5315dcce3ae5dc901d87" style="display: none" />
 
@@ -103,7 +103,6 @@
 		<input name='redirect_uri' value="https://xiaoheixian.github.io/message" style="display: none" />
 
 	</form>
-	<iframe name='hidden_frame' id="hidden_frame" style='display: none'></iframe>
 	</div>
 	<style id="antiClickjack">
 		body {
@@ -154,19 +153,8 @@
 			var $ = layui.$;
 			$(function () {
 				//if (getParam("code") != null) {
-					$("#code").val("ac5b5e5a1ba3bfbf8bd4");
-					$("#gitForm").submit();
-					$('#hidden_frame').load(function(){
-						var text=$(this).contents().find("body").text();
-						// 根据后台返回值处理结果
-						var j=$.parseJSON(text);
-						if(j.status!=0) {
-							alert(j.msg);
-						} else {
-							alert('导入成功');
-							//location.href='BookResourceList.jsp'
-						}
-					});
+					$("#code").val("47106b20bc9f74623d52");
+					console.log($("#gitForm").submit());
 					// $("#gitForm").ajaxForm(function (data) {
 					// 	console.log(data);
 					// });
