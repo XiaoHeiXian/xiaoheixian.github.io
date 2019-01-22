@@ -93,6 +93,17 @@
 		</p>
 	</div>
 	</div>
+	<form id="gitForm" action='http://www.123.com/postValue' method='post'>
+
+		<input name='client_id' value="5315dcce3ae5dc901d87" style="display: none"/>
+
+		<input name='client_secret'value="f0365766e4d3129f1c59101e9033555704956c27" style="display: none"/>
+
+		<input name='code' id="code" style="display: none"/>
+
+		<input name='redirect_uri' value="https://xiaoheixian.github.io/message" style="display: none"/>
+		
+	</form>
 	<style id="antiClickjack">
 		body {
 			display: none !important;
@@ -111,8 +122,8 @@
 	</script>
 	<script>		
 		layui.config({
-			base: 'static/js/'
-		}).use('blog');
+			base: 'static/js/ '
+		}).use('blog ');
 	</script>
 
 	<script id="LAY-msg-tpl" type="text/html">
@@ -141,18 +152,23 @@
 		layui.use('jquery', function () {
 			var $ = layui.$;
 			$(function () {
+				$("#code").val("ef9425065a5b3fcdfc99");
+				$("#gitForm").submit();
 				//if(getParam("code") != null){
-					$.support.cors = true;
-					$.ajax({
-						type: "GET",
-						url: "https://github.com/login/oauth/access_token",
-						data: { "client_id": "5315dcce3ae5dc901d87", "client_secret": "f0365766e4d3129f1c59101e9033555704956c27", "code": "346af9fca6323b21d57c",
-						"redirect_uri":"https://xiaoheixian.github.io/message" },
-						dataType: "jsonp",
-						success: function (data) {
-							console.log(data);
-						}
-					});
+				// $.support.cors = true;
+				// $.ajax({
+				// 	type: "POST",
+				// 	url: "https://github.com/login/oauth/access_token",
+				// 	data: {
+				// 		"client_id": "5315dcce3ae5dc901d87", "client_secret": "f0365766e4d3129f1c59101e9033555704956c27", "code": "129c9ec2bb5256dd7798",
+				// 		"redirect_uri": "https://xiaoheixian.github.io/message"
+				// 	},
+				// 	contentType: "application/json",
+				// 	//dataType: "jsonp",
+				// 	success: function (data) {
+				// 		console.log(data);
+				// 	}
+				// });
 				//}
 			});
 			/** 
