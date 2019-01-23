@@ -216,6 +216,7 @@ layui.define(['element', 'form', 'laypage', 'jquery', 'laytpl'], function (expor
       $.ajax({
         url: "http://cloud.bmob.cn/7d0718562ae91957/addMessage",
         dataType: 'jsonp',
+        jsonp: 'callback',
         data: JSON.stringify({
           "name":data.name,
           "avatar_url":data.avatar,
