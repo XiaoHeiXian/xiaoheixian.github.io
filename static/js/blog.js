@@ -175,6 +175,7 @@ layui.define(['element', 'form','laypage','jquery','laytpl'],function(exports){
     var elemCont = $('#LAY-msg-content')
     ,content = elemCont.val();
 
+    console.log(localStorage.getItem("name"));
     if(localStorage.getItem("name") == "" || localStorage.getItem("name") == null){
 
       layer.open({
