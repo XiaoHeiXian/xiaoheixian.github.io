@@ -13,6 +13,59 @@ layui.define(['element', 'form','laypage','jquery','laytpl'],function(exports){
   ,$ = layui.jquery
   ,laytpl = layui.laytpl;
   
+  //xiaoheixian
+  $(function () {
+    var code = getParam("code");
+    if (code != null) {
+      $.support.cors = true;
+      $.ajax({
+        type: "POST",
+        url: "https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token",
+        data: JSON.stringify({
+          "client_id": "5315dcce3ae5dc901d87",
+          "client_secret": "f0365766e4d3129f1c59101e9033555704956c27",
+          "code": code
+        }),
+        contentType: "application/json",
+        success: function (data) {
+          var strs = new Array(); //定义一数组 
+          strs = data.split("&"); //字符分割
+          var token = new Array(); //定义一数组
+          token = strs[0].split("="); //字符分割
+          var access_token = token[1];
+          window.location.href='https://xiaoheixian.github.io/message?t='+access_token;
+        }
+      });
+    }
+    var access_token = getParam("t");
+    if (access_token != null) {
+      $.ajax({
+        type: "GET",
+        url: "https://api.github.com/user?access_token="+access_token,
+        contentType: "application/json",
+        success: function (data) {
+          localStorage.setItem("name", data.name);
+          localStorage.setItem("avatar_url", data.avatar_url);
+        }
+      });
+    }
+  });
+  /** 
+   * xiaoheixian
+   * 获取指定的URL参数值 
+   * URL:http://www.quwan.com/index?name=tyler 
+   * 参数：paramName URL参数 
+   * 调用方法:getParam("name") 
+   * 返回值:tyler 
+   */
+  function getParam(paramName) {
+    paramValue = "", isFound = !1;
+    if (this.location.search.indexOf("?") == 0 && this.location.search.indexOf("=") > 1) {
+      arrSource = unescape(this.location.search).substring(1, this.location.search.length).split("&"), i = 0;
+      while (i < arrSource.length && !isFound) arrSource[i].indexOf("=") > 0 && arrSource[i].split("=")[0].toLowerCase() == paramName.toLowerCase() && (paramValue = arrSource[i].split("=")[1], isFound = !0), i++
+    }
+    return paramValue == "" && (paramValue = null), paramValue
+  }
 
   //statr 分页
   
@@ -147,11 +200,17 @@ layui.define(['element', 'form','laypage','jquery','laytpl'],function(exports){
     var view = $('#LAY-msg-tpl').html()
 
     //模拟数据
+    // ,data = {
+    //   username: '闲心'
+    //   ,avatar: '../res/static/images/info-img.png'
+    //   ,praise: 0
+    //   ,content: content
+    // };
     ,data = {
-      username: '闲心'
-      ,avatar: '../res/static/images/info-img.png'
-      ,praise: 0
-      ,content: content
+        username: localStorage.getItem("name")
+        ,avatar: localStorage.getItem("avatar_url")
+        ,praise: 0
+        ,content: content
     };
 
     //模板渲染
