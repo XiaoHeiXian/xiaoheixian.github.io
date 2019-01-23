@@ -92,17 +92,6 @@
 			<span>人生就是一场修行</span>
 		</p>
 	</div>
-	<form id="gitForm" action='https://github.com/login/oauth/access_token' method='post'>
-
-		<input name='client_id' value="5315dcce3ae5dc901d87" style="display: none" />
-
-		<input name='client_secret' value="f0365766e4d3129f1c59101e9033555704956c27" style="display: none" />
-
-		<input name='code' id="code" style="display: none" />
-
-		<input name='redirect_uri' value="https://xiaoheixian.github.io/message" style="display: none" />
-
-	</form>
 	</div>
 	<style id="antiClickjack">
 		body {
@@ -118,13 +107,6 @@
 		}
 	</script>
 	<script src="layui/layui.js">
-	</script>
-
-	<script src="static/js/jquery-3.3.1.js">
-
-	</script>
-	<script src="static/js/form.js">
-
 	</script>
 	<script>		
 		layui.config({
@@ -155,52 +137,41 @@
 		</div>
 	</script>
 	<script>
-		//layui.use('jquery', function () {
-		//var $ = layui.$;
-		$(function () {
-			if (getParam("code") != null) {
-				$("#code").val(getParam("code"));
-				//console.log($("#gitForm").submit());
-				// $('#gitForm').submit(
-				// 	function (data) {
-				// 		console.log("敲门submit");
-				// 		console.log(data);
-				// 	}
-				// );
-				// $("#gitForm").ajaxForm(function (data) {
-				// 	console.log(data);
-				// });
-				$.support.cors = true;
-				$.ajax({
-					type: "POST",
-					url: "https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token",
-					data: { "client_id": "5315dcce3ae5dc901d87", "client_secret": "f0365766e4d3129f1c59101e9033555704956c27", "code": "129c9ec2bb5256dd7798"
-					//,"redirect_uri": "https://xiaoheixian.github.io/message"
-					 },
-					contentType: "application/json",
-					//dataType: "jsonp",
-					success: function (data) {
-						console.log(data);
-					}
-				});
+		layui.use('jquery', function () {
+			var $ = layui.$;
+			$(function () {
+				if (getParam("code") != null) {
+					$.support.cors = true;
+					$.ajax({
+						type: "POST",
+						url: "https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token",
+						data: JSON.stringify({
+							"client_id": "5315dcce3ae5dc901d87",
+							"client_secret": "f0365766e4d3129f1c59101e9033555704956c27",
+							"code": getParam("code")
+						}),
+						contentType: "application/json",
+						success: function (data) {
+							console.log(data);
+						}
+					});
 				}
 			});
-		/** 
-		 * 获取指定的URL参数值 
-		 * URL:http://www.quwan.com/index?name=tyler 
-		 * 参数：paramName URL参数 
-		 * 调用方法:getParam("name") 
-		 * 返回值:tyler 
-		 */
-		function getParam(paramName) {
-			paramValue = "", isFound = !1;
-			if (this.location.search.indexOf("?") == 0 && this.location.search.indexOf("=") > 1) {
-				arrSource = unescape(this.location.search).substring(1, this.location.search.length).split("&"), i = 0;
-				while (i < arrSource.length && !isFound) arrSource[i].indexOf("=") > 0 && arrSource[i].split("=")[0].toLowerCase() == paramName.toLowerCase() && (paramValue = arrSource[i].split("=")[1], isFound = !0), i++
+			/** 
+			 * 获取指定的URL参数值 
+			 * URL:http://www.quwan.com/index?name=tyler 
+			 * 参数：paramName URL参数 
+			 * 调用方法:getParam("name") 
+			 * 返回值:tyler 
+			 */
+			function getParam(paramName) {
+				paramValue = "", isFound = !1;
+				if (this.location.search.indexOf("?") == 0 && this.location.search.indexOf("=") > 1) {
+					arrSource = unescape(this.location.search).substring(1, this.location.search.length).split("&"), i = 0;
+					while (i < arrSource.length && !isFound) arrSource[i].indexOf("=") > 0 && arrSource[i].split("=")[0].toLowerCase() == paramName.toLowerCase() && (paramValue = arrSource[i].split("=")[1], isFound = !0), i++
+				}
+				return paramValue == "" && (paramValue = null), paramValue
 			}
-			return paramValue == "" && (paramValue = null), paramValue
-		}
-		//}
-		//)
+		})
 	</script>
 </body>
