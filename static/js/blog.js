@@ -217,12 +217,12 @@ layui.define(['element', 'form', 'laypage', 'jquery', 'laytpl'], function (expor
         url: "http://cloud.bmob.cn/7d0718562ae91957/addMessage",
         dataType: 'jsonp',
         jsonp: 'callback',
-        data: JSON.stringify({
+        data: {
           "name":data.name,
           "avatar_url":data.avatar,
           "html_url":data.html_url,
           "message_content":data.content
-        }),
+        },
         success: function (result) {
           $('#LAY-msg-box').prepend(html);
           elemCont.val('');
