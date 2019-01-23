@@ -122,8 +122,32 @@
 		layui.use('jquery', function () {
 			var $ = layui.$;
 			$(function () {
-				var view = $('#LAY-msg-tpl').html()
-				//getMessageList(view);
+				$.ajax({
+					url: "http://cloud.bmob.cn/7d0718562ae91957/messagePageList",
+					dataType: 'jsonp',
+					data: '',
+					jsonp: 'callback',
+					success: function (data) {
+						var cont = "";
+						var result = data.results;
+						for (var i = 0; i < result.length; i++) {
+							cont += '<div class="info-box">';
+							cont += '<div class="info-item">';
+							cont += '<img class="info-img" src="'+result[i].avatar_url+'" alt="" style="width: 68px;">';
+							cont += '<div class="info-text">';
+							cont += '<p class="title">';
+							cont += '<span class="name">'+result[i].user_name+'</span>';
+							cont += '</p>';
+							cont += '<p class="info-intr" style="word-wrap: break-word;">';
+							cont += result[i].message_content;
+							cont += '</p>';
+							cont += '</div>';
+							cont += '</div>';
+							cont += '</div>';
+						}
+						$('#LAY-msg-box').html(cont);
+					}
+				});
 			});
 		})
 	</script>

@@ -211,39 +211,25 @@ layui.define(['element', 'form', 'laypage', 'jquery', 'laytpl'], function (expor
         , html_url: localStorage.getItem("html_url")
       };
 
-    $.ajax({
-      url: "http://cloud.bmob.cn/7d0718562ae91957/addMessage"
-        + "?name=" + data.username
-        + "?avatar_url=" + data.avatar
-        + "?html_url=" + data.html_url
-        + "?message_content=" + data.content,
-      dataType: 'jsonp',
-      success: function (result) {
-        //by xiaoheixian
-        $.ajax({
-          url: "http://cloud.bmob.cn/7d0718562ae91957/messagePageList",
-          dataType: 'jsonp',
-          data: '',
-          jsonp: 'callback',
-          success: function (result) {
-            //模板渲染
-            laytpl(view).render(data, function (html) {
-              for (var i = 0; i < result.length; i++) {
-                data = {
-                  username: result[i].user_name
-                  , avatar: result[i].avatar_url
-                  , content: result[i].message_content
-                }
-                $('#LAY-msg-box').prepend(html);
-              }
-              elemCont.val('');
-              layer.msg('留言成功', {
-                icon: 1
-              })
-            });
-          }
-        });
-      }
+    //模板渲染
+    laytpl(view).render(data, function (html) {
+      $.ajax({
+        url: "http://cloud.bmob.cn/7d0718562ae91957/addMessage"
+            +"?name="+data.username
+            +"&avatar_url="+data.avatar
+            +"&html_url="+data.html_url
+            +"&message_content="+data.content,
+        dataType: 'jsonp',
+        jsonp: 'callback',
+        success: function (result) {
+          $('#LAY-msg-box').prepend(html);
+          elemCont.val('');
+          layer.msg('留言成功', {
+            icon: 1
+          })
+        }
+      });
+
     });
 
   })
