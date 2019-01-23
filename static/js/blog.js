@@ -214,15 +214,13 @@ layui.define(['element', 'form', 'laypage', 'jquery', 'laytpl'], function (expor
     //模板渲染
     laytpl(view).render(data, function (html) {
       $.ajax({
-        url: "http://cloud.bmob.cn/7d0718562ae91957/addMessage",
+        url: "http://cloud.bmob.cn/7d0718562ae91957/addMessage"
+            +"?name="+data.name
+            +"?avatar_url="+data.avatar
+            +"?html_url="+data.html_url
+            +"?message_content="+data.content,
         dataType: 'jsonp',
         jsonp: 'callback',
-        data: {
-          "name":data.name,
-          "avatar_url":data.avatar,
-          "html_url":data.html_url,
-          "message_content":data.content
-        },
         success: function (result) {
           $('#LAY-msg-box').prepend(html);
           elemCont.val('');
