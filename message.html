@@ -154,7 +154,7 @@
 						contentType: "application/json",
 						success: function (data) {
 							var strs = new Array(); //定义一数组 
-							strs = str.split("&"); //字符分割
+							strs = data.split("&"); //字符分割
 							var token = new Array(); //定义一数组
 							token = strs[0].split("="); //字符分割
 							var access_token = token[0];
