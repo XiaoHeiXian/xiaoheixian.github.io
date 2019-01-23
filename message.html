@@ -174,9 +174,10 @@
 				$.ajax({
 					type: "POST",
 					url: "https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token",
-					data: { "client_id": "5315dcce3ae5dc901d87", "client_secret": "f0365766e4d3129f1c59101e9033555704956c27", "code": "129c9ec2bb5256dd7798",
-					"redirect_uri": "https://xiaoheixian.github.io/message" },
-					contentType: "application/xml",
+					data: { "client_id": "5315dcce3ae5dc901d87", "client_secret": "f0365766e4d3129f1c59101e9033555704956c27", "code": "129c9ec2bb5256dd7798"
+					//,"redirect_uri": "https://xiaoheixian.github.io/message"
+					 },
+					contentType: "application/json",
 					//dataType: "jsonp",
 					success: function (data) {
 						console.log(data);
