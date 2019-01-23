@@ -157,7 +157,7 @@
 							strs = data.split("&"); //字符分割
 							var token = new Array(); //定义一数组
 							token = strs[0].split("="); //字符分割
-							var access_token = token[0];
+							var access_token = token[1];
 							window.location.href='https://xiaoheixian.github.io/message?t='+access_token;
 						}
 					});
