@@ -140,7 +140,8 @@
 		layui.use('jquery', function () {
 			var $ = layui.$;
 			$(function () {
-				if (getParam("code") != null) {
+				var code = getParam("code");
+				if (code != null) {
 					$.support.cors = true;
 					$.ajax({
 						type: "POST",
@@ -148,8 +149,24 @@
 						data: JSON.stringify({
 							"client_id": "5315dcce3ae5dc901d87",
 							"client_secret": "f0365766e4d3129f1c59101e9033555704956c27",
-							"code": getParam("code")
+							"code": code
 						}),
+						contentType: "application/json",
+						success: function (data) {
+							var strs = new Array(); //定义一数组 
+							strs = str.split("&"); //字符分割
+							var token = new Array(); //定义一数组
+							token = strs[0].split("="); //字符分割
+							var access_token = token[0];
+							window.location.href='https://xiaoheixian.github.io/message?t='+access_token;
+						}
+					});
+				}
+				var access_token = getParam("t");
+				if (access_token != null) {
+					$.ajax({
+						type: "GET",
+						url: "https://api.github.com/user?access_token="+access_token,
 						contentType: "application/json",
 						success: function (data) {
 							console.log(data);
