@@ -141,10 +141,10 @@
 							cont += '<p class="info-intr" style="font-size: 12px;color: #999;">';
 							cont += result[i].createdAt;
 							cont += '</p>';
-							cont += '</div>';
 							cont += '<p style="word-wrap: break-word;margin-top: 15px;">';
 							cont += result[i].message_content;
 							cont += '</p>';
+							cont += '</div>';
 							cont += '</div>';
 							cont += '</div>';
 						}
@@ -169,12 +169,12 @@
 						 
 					</p>
 					<p class="info-intr" style="font-size: 12px;color: #999;">
-						{{ (new Date()).toLocaleString( ) }}
+						{{ (new Date()).toLocaleString() }}
+					</p>
+					<p style="word-wrap: break-word;margin-top: 15px;">
+					  {{ d.content }}
 					</p>
 			  </div>
-			  <p style="word-wrap: break-word;margin-top: 15px;">
-				{{ d.content }}
-			  </p>
 			</div>
 		</div>
 	</script>
