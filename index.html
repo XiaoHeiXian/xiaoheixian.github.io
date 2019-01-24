@@ -66,34 +66,7 @@
 	<div class="container-wrap">
 		<div class="container">
 			<div class="contar-wrap" id="items">
-				<h4 class="item-title">
-					<p>
-						<!-- <i class="layui-icon layui-icon-speaker"></i>公告： -->
-						<span>人生若只如初见</span>
-					</p>
-				</h4>
-				<div class="item">
-					<div class="item-box  layer-photos-demo3 layer-photos-demo">
-						<h3>
-							<a href="details.html">如果当时</a>
-						</h3>
-						<h5>发布于：
-							<span>刚刚</span>
-						</h5>
-						<p>
-							你和我 曾经有共同爱好
-							谁的耳边 总有绝句在萦绕
-							我们俩 用文言文对话真的很搞笑
-							还笑那曹操贪慕着小乔
-						</p>
-						<img src="static/images/item.png" alt="">
-					</div>
-					<!-- <div class="comment count">
-						<a href="details.html#comment">评论</a>
-						<a href="javascript:;" class="like">点赞</a>
-						<a href="javascript:;" class="like">点赞</a>
-					</div> -->
-				</div>
+				
 			</div>
 			<!-- <div class="item-btn">
 				<button class="layui-btn layui-btn-normal">下一页</button>
@@ -117,9 +90,49 @@
 		layui.config({
 			base: 'static/js/'
 		}).use('blog');
-		layui.use('jquery', function () {
-			var $ = layui.$;
-		})
+		var $ = layui.$;
+		blogList(1);
+		var limitcount = 5;
+		var curnum = 1;
+		function blogList(curnum) {
+			layui.use(['jquery', 'laypage'], function () {
+				var $ = layui.$;
+				var laypage = layui.laypage;
+				$(function () {
+					$.ajax({
+						url: "http://cloud.bmob.cn/7d0718562ae91957/getBlogPageList?current=" + (curnum - 1) * limitcount,
+						dataType: 'jsonp',
+						data: '',
+						jsonp: 'callback',
+						success: function (data) {
+							//<!-- <i class="layui-icon layui-icon-speaker"></i>公告： -->
+							var cont = '<h4 class="item-title"><p><span>人生若只如初见</span></p></h4>';
+							var result = data.results;
+							for (var i = 0; i < result.length; i++) {
+								cont += '<div class="item">';
+								cont += '<div class="item-box  layer-photos-demo3 layer-photos-demo">';
+								cont += '<h3>';
+								cont += '<a href="details.html" onclick="addObjectId(\''+result[i].objectId+'\')">'+result[i].title+'</a>';
+								cont += '</h3>';
+								cont += '<h5>发布于：';
+								cont += '<span>'+result[i].createdAt+'</span>';
+								cont += '</h5>';
+								cont += '<p>';
+								cont += result[i].home_content;
+								cont += '</p>';
+								cont += '</div>';
+								cont += '</div>';
+							}
+							$('#items').html(cont);
+
+						}
+					});
+				});
+			})
+		}
+		function addObjectId(objectId){
+			localStorage.setItem("objectId", objectId);
+		}
 	</script>
 </body>
 
