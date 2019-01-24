@@ -133,7 +133,7 @@
 						for (var i = 0; i < result.length; i++) {
 							cont += '<div class="info-box" style="padding: 20px 0 10px;border-bottom: 1px dotted #DFDFDF;">';
 							cont += '<div class="info-item">';
-							cont += '<img class="info-img" src="' + result[i].avatar_url + '" alt="" style="width: 40px;" onclick="javascript:location.href=\''+result[i].html_url+'\'">';
+							cont += '<img class="info-img" src="' + result[i].avatar_url + '" alt="" style="width: 40px;" onclick="javascript:location.href=\'' + result[i].html_url + '\'">';
 							cont += '<div class="info-text">';
 							cont += '<p class="title">';
 							cont += '<span class="name">' + result[i].user_name + '</span>';
@@ -169,7 +169,7 @@
 						 
 					</p>
 					<p class="info-intr" style="font-size: 12px;color: #999;">
-						{{ (new Date()).toLocaleString() }}
+						{{ getNowFormatDate() }}
 					</p>
 					<p style="word-wrap: break-word;margin-top: 15px;">
 					  {{ d.content }}
@@ -177,5 +177,24 @@
 			  </div>
 			</div>
 		</div>
+	</script>
+	<script>
+		function getNowFormatDate() {
+			var date = new Date();
+			var seperator1 = "-";
+			var seperator2 = ":";
+			var month = date.getMonth() + 1;
+			var strDate = date.getDate();
+			if (month >= 1 && month <= 9) {
+				month = "0" + month;
+			}
+			if (strDate >= 0 && strDate <= 9) {
+				strDate = "0" + strDate;
+			}
+			var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+				+ " " + date.getHours() + seperator2 + date.getMinutes()
+				+ seperator2 + date.getSeconds();
+			return currentdate;
+		}
 	</script>
 </body>
