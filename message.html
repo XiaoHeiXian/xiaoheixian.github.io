@@ -67,7 +67,7 @@
 				<div class="item-btn">
 					<button class="layui-btn layui-btn-normal" id="item-btn">提交</button>
 				</div>
-
+				<hr>
 				<div id="LAY-msg-box">
 					<div class="info-box">
 						<!-- <div class="info-item">
@@ -131,17 +131,20 @@
 						var cont = "";
 						var result = data.results;
 						for (var i = 0; i < result.length; i++) {
-							cont += '<div class="info-box">';
+							cont += '<div class="info-box" style="padding: 20px 0 10px;border-bottom: 1px dotted #DFDFDF;">';
 							cont += '<div class="info-item">';
-							cont += '<img class="info-img" src="' + result[i].avatar_url + '" alt="" style="width: 68px;">';
+							cont += '<img class="info-img" src="' + result[i].avatar_url + '" alt="" style="width: 40px;" onclick="javascript:location.href=\''+result[i].html_url+'\'">';
 							cont += '<div class="info-text">';
 							cont += '<p class="title">';
 							cont += '<span class="name">' + result[i].user_name + '</span>';
 							cont += '</p>';
-							cont += '<p class="info-intr" style="word-wrap: break-word;">';
-							cont += result[i].message_content;
+							cont += '<p class="info-intr" style="font-size: 12px;color: #999;">';
+							cont += result[i].createdAt;
 							cont += '</p>';
 							cont += '</div>';
+							cont += '<p style="word-wrap: break-word;margin-top: 15px;">';
+							cont += result[i].message_content;
+							cont += '</p>';
 							cont += '</div>';
 							cont += '</div>';
 						}
@@ -155,7 +158,7 @@
 	<script id="LAY-msg-tpl" type="text/html">
 		<div class="info-box">
 			<div class="info-item">
-			<img class="info-img" src="{{ d.avatar }}" alt="" style="width: 68px;">
+			<img class="info-img" src="{{ d.avatar }}" alt="" style="width: 40px;" onclick="javascript:location.href='{{d.html_url}}'">
 			  <div class="info-text">
 					<p class="title">
 					  <span class="name">{{ d.username }}</span>
@@ -165,10 +168,13 @@
 						 </span> -->
 						 
 					</p>
-					<p class="info-intr" style="word-wrap: break-word;">
-						{{ d.content }}
+					<p class="info-intr" style="font-size: 12px;color: #999;">
+						{{ new Data() }}
 					</p>
 			  </div>
+			  <p style="word-wrap: break-word;margin-top: 15px;">
+				{{ d.content }}
+			  </p>
 			</div>
 		</div>
 	</script>
