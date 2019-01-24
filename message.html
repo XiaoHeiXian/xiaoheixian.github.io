@@ -188,7 +188,7 @@
 			var day = date.getDate(); // 日
 			var hour = date.getHours(); // 时
 			var minutes = date.getMinutes(); // 分
-			var seconds = date.getSeconds() //秒
+			var seconds = date.getSeconds()-1; //秒
 			// 给一位数数据前面加 “0”
 			if (month >= 1 && month <= 9) {
 				month = "0" + month;
@@ -203,7 +203,7 @@
 				minutes = "0" + minutes;
 			}
 			if (seconds >= 0 && seconds <= 9) {
-				seconds = "0" + (seconds-1);
+				seconds = "0" + seconds;
 			}
 			var currentdate = year + sign1 + month + sign1 + day + " " + hour + sign2 + minutes + sign2 + seconds;
 			return currentdate;
