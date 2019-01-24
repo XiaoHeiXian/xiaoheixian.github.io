@@ -82,8 +82,10 @@
 							</div> -->
 					</div>
 				</div>
-
-				<!-- <div id="test1" class="paging"></div> -->
+				<!-- <div class="item-btn">
+					<button class="layui-btn layui-btn-normal">下一页</button>
+				</div> -->
+				<div id="test1" class="paging"></div>
 			</div>
 		</div>
 	</div>
@@ -119,40 +121,66 @@
 		layui.config({
 			base: 'static/js/'
 		}).use('blog');
-		layui.use('jquery', function () {
-			var $ = layui.$;
-			$(function () {
-				$.ajax({
-					url: "http://cloud.bmob.cn/7d0718562ae91957/messagePageList",
-					dataType: 'jsonp',
-					data: '',
-					jsonp: 'callback',
-					success: function (data) {
-						var cont = "";
-						var result = data.results;
-						for (var i = 0; i < result.length; i++) {
-							cont += '<div class="info-box" style="padding: 20px 0 10px;border-bottom: 1px dotted #DFDFDF;">';
-							cont += '<div class="info-item">';
-							cont += '<img class="info-img" src="' + result[i].avatar_url + '" alt="" style="width: 40px;" onclick="javascript:location.href=\'' + result[i].html_url + '\'">';
-							cont += '<div class="info-text">';
-							cont += '<p class="title">';
-							cont += '<span class="name">' + result[i].user_name + '</span>';
-							cont += '</p>';
-							cont += '<p class="info-intr" style="font-size: 12px;color: #999;">';
-							cont += result[i].createdAt;
-							cont += '</p>';
-							cont += '<p style="word-wrap: break-word;margin-top: 15px;">';
-							cont += result[i].message_content;
-							cont += '</p>';
-							cont += '</div>';
-							cont += '</div>';
-							cont += '</div>';
+		messageList(1);
+		var limitcount = 5;
+		var curnum = 1;
+		function messageList(curnum) {
+			layui.use(['jquery', 'laypage'], function () {
+				var $ = layui.$;
+				var laypage = layui.laypage;
+				$(function () {
+					$.ajax({
+						url: "http://cloud.bmob.cn/7d0718562ae91957/messagePageList?current="+(curnum-1)*limitcount,
+						dataType: 'jsonp',
+						data: '',
+						jsonp: 'callback',
+						success: function (data) {
+							var cont = "";
+							var result = data.results;
+							for (var i = 0; i < result.length; i++) {
+								cont += '<div class="info-box" style="padding: 20px 0 10px;border-bottom: 1px dotted #DFDFDF;">';
+								cont += '<div class="info-item">';
+								cont += '<img class="info-img" src="' + result[i].avatar_url + '" alt="" style="width: 40px;" onclick="javascript:location.href=\'' + result[i].html_url + '\'">';
+								cont += '<div class="info-text">';
+								cont += '<p class="title">';
+								cont += '<span class="name">' + result[i].user_name + '</span>';
+								cont += '</p>';
+								cont += '<p class="info-intr" style="font-size: 12px;color: #999;">';
+								cont += result[i].createdAt;
+								cont += '</p>';
+								cont += '<p style="word-wrap: break-word;margin-top: 15px;">';
+								cont += result[i].message_content;
+								cont += '</p>';
+								cont += '</div>';
+								cont += '</div>';
+								cont += '</div>';
+							}
+							$('#LAY-msg-box').html(cont);
+							//start 分页
+
+							laypage.render({
+								elem: 'test1' //注意，这里的 test1 是 ID，不用加 # 号
+								, count: data.count //数据总数，从服务端得到
+								, limit: limitcount
+								, curr: curnum
+								, groups: 2
+								, prev: "<"
+								, next: ">"
+								, theme: '#1e9fff'
+								, jump: function (obj, first) {
+									if (!first) {
+										curnum = obj.curr;
+										messageList(curnum);
+									}
+								}
+							});
+
+							// end 分頁
 						}
-						$('#LAY-msg-box').html(cont);
-					}
+					});
 				});
-			});
-		})
+			})
+		}
 	</script>
 
 	<script id="LAY-msg-tpl" type="text/html">
@@ -188,7 +216,7 @@
 			var day = date.getDate(); // 日
 			var hour = date.getHours(); // 时
 			var minutes = date.getMinutes(); // 分
-			var seconds = date.getSeconds()-1; //秒
+			var seconds = date.getSeconds() - 1; //秒
 			// 给一位数数据前面加 “0”
 			if (month >= 1 && month <= 9) {
 				month = "0" + month;
