@@ -156,7 +156,7 @@
 	</script>
 
 	<script id="LAY-msg-tpl" type="text/html">
-		<div class="info-box">
+		<div class="info-box" style="padding: 20px 0 10px;border-bottom: 1px dotted #DFDFDF;">
 			<div class="info-item">
 			<img class="info-img" src="{{ d.avatar }}" alt="" style="width: 40px;" onclick="javascript:location.href='{{d.html_url}}'">
 			  <div class="info-text">
@@ -169,7 +169,7 @@
 						 
 					</p>
 					<p class="info-intr" style="font-size: 12px;color: #999;">
-						{{ new Date() }}
+						{{ (new Date()).toLocaleString( ) }}
 					</p>
 			  </div>
 			  <p style="word-wrap: break-word;margin-top: 15px;">
