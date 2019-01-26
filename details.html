@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>X | Blog</title>
@@ -8,48 +9,55 @@
 	<link rel="stylesheet" href="static/css/mian.css">
 	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 </head>
+
 <body class="lay-blog">
-		<div class="header">
-			<div class="header-wrap">
-				<h1 class="logo pull-left">
-					<a href="index.html">
-						<img src="static/images/image-logo.png" alt="" class="image-logo" style="width: 75px;">
-						<img src="static/images/logo-text.png" alt="" class="logo-text" style="width: 90px; margin-top: 24px;">
-					</a>
-				</h1>
-				<div class="blog-nav pull-right">
-					<ul class="layui-nav pull-left">
-					  <li class="layui-nav-item layui-this"><a href="index.html">首页</a></li>
-					  <li class="layui-nav-item"><a href="message.html">留言</a></li>
-					  <li class="layui-nav-item"><a href="about.html">关于</a></li>
-					</ul>
-				</div>
-				<div class="mobile-nav pull-right" id="mobile-nav">
-					<a href="javascript:;">
-						<i class="layui-icon layui-icon-more"></i>
-					</a>
-				</div>
+	<div class="header">
+		<div class="header-wrap">
+			<h1 class="logo pull-left">
+				<a href="index.html">
+					<img src="static/images/image-logo.png" alt="" class="image-logo" style="width: 75px;">
+					<img src="static/images/logo-text.png" alt="" class="logo-text" style="width: 90px; margin-top: 24px;">
+				</a>
+			</h1>
+			<div class="blog-nav pull-right">
+				<ul class="layui-nav pull-left">
+					<li class="layui-nav-item layui-this">
+						<a href="index.html">首页</a>
+					</li>
+					<li class="layui-nav-item">
+						<a href="message.html">留言</a>
+					</li>
+					<li class="layui-nav-item">
+						<a href="about.html">关于</a>
+					</li>
+				</ul>
 			</div>
-			<ul class="pop-nav" id="pop-nav">
-				<li><a href="index.html">首页</a></li>
-				<li><a href="message.html">留言</a></li>
-				<li><a href="about.html">关于</a></li>
-			</ul>
+			<div class="mobile-nav pull-right" id="mobile-nav">
+				<a href="javascript:;">
+					<i class="layui-icon layui-icon-more"></i>
+				</a>
+			</div>
 		</div>
-		<div class="container-wrap">
-			<div class="container container-message container-details">
-					<div class="contar-wrap">
-						<div class="item">
-							<div class="item-box  layer-photos-demo1 layer-photos-demo" id="blog">
-								
-								<!-- <img src="static/images/item.png" alt="">
-								<div class="count layui-clear">
-									<span class="pull-left">阅读 <em>100000+</em></span>
-									<span class="pull-right like"><i class="layui-icon layui-icon-praise"></i><em>999</em></span>
-								</div> -->
-							</div>
-						</div>	
-						<!-- <a name="comment"> </a>
+		<ul class="pop-nav" id="pop-nav">
+			<li>
+				<a href="index.html">首页</a>
+			</li>
+			<li>
+				<a href="message.html">留言</a>
+			</li>
+			<li>
+				<a href="about.html">关于</a>
+			</li>
+		</ul>
+	</div>
+	<div class="container-wrap">
+		<div class="container container-message container-details">
+			<div class="contar-wrap">
+				<div class="item">
+					<div class="item-box  layer-photos-demo1 layer-photos-demo" id="blog">
+					</div>
+				</div>
+				<!-- <a name="comment"> </a>
 						<div class="comt layui-clear">
 							<a href="javascript:;" class="pull-left">评论</a>
 							<a href="comment.html" class="pull-right">写评论</a>
@@ -76,23 +84,27 @@
 								</div>
 							</div>			
 						</div> -->
-					</div>
 			</div>
 		</div>
-		<div class="footer">
-			<p>
-				<span>&copy; 2018</span>
-				<span><a href="http://www.layui.com" target="_blank">layui.com</a></span> 
-				<span>MIT license</span>
-			</p>
-			<p><span>人生就是一场修行</span></p>
-		</div>
+	</div>
+	<div class="footer">
+		<p>
+			<span>&copy; 2018</span>
+			<span>
+				<a href="http://www.layui.com" target="_blank">layui.com</a>
+			</span>
+			<span>MIT license</span>
+		</p>
+		<p>
+			<span>人生就是一场修行</span>
+		</p>
+	</div>
 	<script src="layui/layui.js">
 
 	</script>
 	<script>
 		layui.config({
-		  base: 'static/js/' 
+			base: 'static/js/'
 		}).use('blog');
 		layui.use('jquery', function () {
 			var $ = layui.$;
@@ -101,15 +113,15 @@
 			});
 			function getBlog() {
 				$.ajax({
-					url: "http://cloud.bmob.cn/7d0718562ae91957/getBlog?objectId="+localStorage.getItem("objectId"),
+					url: "http://cloud.bmob.cn/7d0718562ae91957/getBlog?objectId=" + localStorage.getItem("objectId"),
 					dataType: 'jsonp',
 					data: '',
 					jsonp: 'callback',
 					success: function (result) {
 						var cont = "";
-						cont += '<h3><a href="details.html">'+result.title+'</a></h3>';
-						cont += '<h5>发布于：<span>'+result.createdAt+'</span></h5>';
-						cont += '<p>'+result.content+'</p>';
+						cont += '<h3><a href="details.html">' + result.title + '</a></h3>';
+						cont += '<h5>发布于：<span>' + result.createdAt + '</span></h5>';
+						cont += '<p>' + result.content + '</p>';
 						$("#blog").html(cont);
 						//更新次数
 						setBlogTotalPV();
@@ -118,7 +130,7 @@
 			}
 			function setBlogTotalPV() {
 				$.ajax({
-					url: "http://cloud.bmob.cn/7d0718562ae91957/setBlogTotalPV?objectId="+localStorage.getItem("objectId"),
+					url: "http://cloud.bmob.cn/7d0718562ae91957/setBlogTotalPV?objectId=" + localStorage.getItem("objectId"),
 					dataType: 'jsonp',
 					data: '',
 					success: function (result) {
@@ -128,4 +140,5 @@
 		})
 	</script>
 </body>
+
 </html>
