@@ -211,6 +211,7 @@ layui.define(['element', 'form', 'laypage', 'jquery', 'laytpl'], function (expor
             +"&html_url="+data.html_url
             +"&message_content="+data.content,
         dataType: 'json',
+        contentType: 'application/json',
         success: function (result) {
           $('#LAY-msg-box').prepend(html);
           elemCont.val('');
