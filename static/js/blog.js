@@ -205,13 +205,12 @@ layui.define(['element', 'form', 'laypage', 'jquery', 'laytpl'], function (expor
     //模板渲染
     laytpl(view).render(data, function (html) {
       $.ajax({
-        url: "www.wannengde.cn:8080/blog/message/addMessage"
+        url: "http://www.wannengde.cn:8080/blog/message/addMessage"
             +"?name="+data.username
             +"&avatar_url="+data.avatar
             +"&html_url="+data.html_url
             +"&message_content="+data.content,
         dataType: 'json',
-        contentType: 'application/json',
         success: function (result) {
           $('#LAY-msg-box').prepend(html);
           elemCont.val('');
