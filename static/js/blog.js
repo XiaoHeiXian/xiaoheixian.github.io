@@ -205,7 +205,7 @@ layui.define(['element', 'form', 'laypage', 'jquery', 'laytpl'], function (expor
     //模板渲染
     laytpl(view).render(data, function (html) {
       $.ajax({
-        url: "http://www.wannengde.cn:8080/blog/message/addMessage"
+        url: "www.wannengde.cn:8080/blog/message/addMessage"
             +"?name="+data.username
             +"&avatar_url="+data.avatar
             +"&html_url="+data.html_url
