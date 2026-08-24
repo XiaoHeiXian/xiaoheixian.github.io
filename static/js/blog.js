@@ -1,240 +1,52 @@
 /**
-
- @Name：layui.blog 闲言轻博客模块
- @Author：徐志文
- @License：MIT
- @Site：http://www.layui.com/template/xianyan/
-    
+ * Shared navigation for the static blog.
+ * Authentication and message submission intentionally stay outside GitHub Pages.
  */
-layui.define(['element', 'form', 'laypage', 'jquery', 'laytpl'], function (exports) {
-  var element = layui.element
-    , form = layui.form
-    , laypage = layui.laypage
-    , $ = layui.jquery
-    , laytpl = layui.laytpl;
+layui.define(['jquery'], function (exports) {
+  var $ = layui.jquery;
 
-  //by xiaoheixian
-  $(function () {
-    var code = getParam("code");
-    if (code != null) {
-      $.support.cors = true;
-      $.ajax({
-        type: "POST",
-        url: "https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token",
-        data: JSON.stringify({
-          "client_id": "5315dcce3ae5dc901d87",
-          "client_secret": "f0365766e4d3129f1c59101e9033555704956c27",
-          "code": code
-        }),
-        contentType: "application/json",
-        success: function (data) {
-          var strs = new Array(); //定义一数组 
-          strs = data.split("&"); //字符分割
-          var token = new Array(); //定义一数组
-          token = strs[0].split("="); //字符分割
-          var access_token = token[1];
-          window.location.href = 'https://xiaoheixian.github.io/message?t=' + access_token;
-        }
-      });
-    }
-    var access_token = getParam("t");
-    if (access_token != null) {
-      $.ajax({
-        type: "GET",
-        url: "https://api.github.com/user?access_token=" + access_token,
-        contentType: "application/json",
-        success: function (data) {
-          localStorage.setItem("name", data.name);
-          localStorage.setItem("avatar_url", data.avatar_url);
-          localStorage.setItem("html_url", data.html_url);
-        }
-      });
-    }
-  });
-  /** 
-   * by xiaoheixian
-   * 获取指定的URL参数值 
-   * URL:http://www.quwan.com/index?name=tyler 
-   * 参数：paramName URL参数 
-   * 调用方法:getParam("name") 
-   * 返回值:tyler 
-   */
-  function getParam(paramName) {
-    paramValue = "", isFound = !1;
-    if (this.location.search.indexOf("?") == 0 && this.location.search.indexOf("=") > 1) {
-      arrSource = unescape(this.location.search).substring(1, this.location.search.length).split("&"), i = 0;
-      while (i < arrSource.length && !isFound) arrSource[i].indexOf("=") > 0 && arrSource[i].split("=")[0].toLowerCase() == paramName.toLowerCase() && (paramValue = arrSource[i].split("=")[1], isFound = !0), i++
-    }
-    return paramValue == "" && (paramValue = null), paramValue
+  function rootPath() {
+    return window.location.pathname.indexOf('/posts/') !== -1 ? '../' : '';
   }
 
+  function currentPage() {
+    var path = window.location.pathname.split('/').pop();
+    return path || 'index.html';
+  }
 
-
-
-  // start 导航显示隐藏
-
-  $("#mobile-nav").on('click', function () {
-    $("#pop-nav").toggle();
-  });
-
-  // end 导航显示隐藏
-
-
-
-
-  //start 评论的特效
-
-  (function ($) {
-    $.extend({
-      tipsBox: function (options) {
-        options = $.extend({
-          obj: null,  //jq对象，要在那个html标签上显示
-          str: "+1",  //字符串，要显示的内容;也可以传一段html，如: "<b style='font-family:Microsoft YaHei;'>+1</b>"
-          startSize: "12px",  //动画开始的文字大小
-          endSize: "30px",    //动画结束的文字大小
-          interval: 600,  //动画时间间隔
-          color: "red",    //文字颜色
-          callback: function () { }    //回调函数
-        }, options);
-
-        $("body").append("<span class='num'>" + options.str + "</span>");
-
-        var box = $(".num");
-        var left = options.obj.offset().left + options.obj.width() / 2;
-        var top = options.obj.offset().top - 10;
-        box.css({
-          "position": "absolute",
-          "left": left + "px",
-          "top": top + "px",
-          "z-index": 9999,
-          "font-size": options.startSize,
-          "line-height": options.endSize,
-          "color": options.color
-        });
-        box.animate({
-          "font-size": options.endSize,
-          "opacity": "0",
-          "top": top - parseInt(options.endSize) + "px"
-        }, options.interval, function () {
-          box.remove();
-          options.callback();
-        });
-      }
-    });
-  })($);
-
-  function niceIn(prop) {
-    prop.find('i').addClass('niceIn');
-    setTimeout(function () {
-      prop.find('i').removeClass('niceIn');
-    }, 1000);
+  function navigationItem(item, current, root) {
+    var active = item.href === current ? ' layui-this' : '';
+    return '<li class="layui-nav-item' + active + '"><a href="' + root + item.href + '">' + item.label + '</a></li>';
   }
 
   $(function () {
-    $(".like").on('click', function () {
+    var root = rootPath();
+    var current = currentPage();
+    var items = [
+      { href: 'index.html', label: '首页' },
+      { href: 'archives.html', label: '归档' },
+      { href: 'categories.html', label: '分类' },
+      // { href: 'message.html', label: '留言' },
+      { href: 'about.html', label: '关于' }
+    ];
+    var desktop = [];
+    var mobile = [];
 
-      if (!($(this).hasClass("layblog-this"))) {
-        this.text = '已赞';
-        $(this).addClass('layblog-this');
-        $.tipsBox({
-          obj: $(this),
-          str: "+1",
-          callback: function () {
-          }
-        });
-        niceIn($(this));
-        layer.msg('点赞成功', {
-          icon: 6
-          , time: 1000
-        })
-      }
+    $.each(items, function (_, item) {
+      desktop.push(navigationItem(item, current, root));
+      mobile.push('<li><a href="' + root + item.href + '">' + item.label + '</a></li>');
+    });
+
+    desktop.push('<li class="layui-nav-item"><a class="site-search-button" href="' + root + 'search.html" aria-label="搜索文章" title="搜索文章"><i class="layui-icon layui-icon-search"></i></a></li>');
+    mobile.push('<li><a href="' + root + 'search.html">搜索</a></li>');
+
+    $('.blog-nav .layui-nav').first().html(desktop.join(''));
+    $('#pop-nav').html(mobile.join(''));
+    $('#mobile-nav').attr('aria-label', '展开导航').off('click.blogNav').on('click.blogNav', function (event) {
+      event.preventDefault();
+      $('#pop-nav').toggle();
     });
   });
 
-  //end 评论的特效
-
-
-  // start点赞图标变身
-  $('#LAY-msg-box').on('click', '.info-img', function () {
-    $(this).addClass('layblog-this');
-  })
-
-
-  // end点赞图标变身
-
-  //end 提交
-  $('#item-btn').on('click', function () {
-    var elemCont = $('#LAY-msg-content')
-      , content = elemCont.val();
-
-    //by xiaoheixian
-    if (localStorage.getItem("name") == "" || localStorage.getItem("name") == null) {
-
-      layer.open({
-        type: 1
-        , offset: 'auto' //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
-        , id: 'layerDemo' + 'auto' //防止重复弹出
-        , content: '<div style="padding: 20px 100px;">' + '请先登录' + '</div>'
-        , btn: 'github登录'
-        , btnAlign: 'c' //按钮居中
-        , shade: 0 //不显示遮罩
-        , yes: function () {
-          //by xiaoheixian
-          window.location.href = 'https://github.com/login/oauth/authorize?client_id=5315dcce3ae5dc901d87&redirect_uri=https://xiaoheixian.github.io/message';
-        }
-      });
-      return elemCont.focus();
-    }
-
-    if (content.replace(/\s/g, '') == "") {
-      layer.msg('请先输入留言');
-      return elemCont.focus();
-    }
-
-    var view = $('#LAY-msg-tpl').html()
-
-      //模拟数据 by xiaoheixian
-      , data = {
-        username: localStorage.getItem("name")
-        , avatar: localStorage.getItem("avatar_url")
-        , praise: 0
-        , content: content
-        , html_url: localStorage.getItem("html_url")
-      };
-
-    //模板渲染
-    laytpl(view).render(data, function (html) {
-      $.ajax({
-        url: "http://www.wannengde.cn:8080/blog/message/addMessage"
-            +"?name="+data.username
-            +"&avatar_url="+data.avatar
-            +"&html_url="+data.html_url
-            +"&message_content="+data.content,
-        dataType: 'json',
-        success: function (result) {
-          $('#LAY-msg-box').prepend(html);
-          elemCont.val('');
-          layer.msg('留言成功', {
-            icon: 1
-          })
-        }
-      });
-
-    });
-
-  })
-
-  // start  图片遮罩
-  var layerphotos = document.getElementsByClassName('layer-photos-demo');
-  for (var i = 1; i <= layerphotos.length; i++) {
-    layer.photos({
-      photos: ".layer-photos-demo" + i + ""
-      , anim: 0
-    });
-  }
-  // end 图片遮罩
-
-
-  //输出test接口
   exports('blog', {});
-});  
+});

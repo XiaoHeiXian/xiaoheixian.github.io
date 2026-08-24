@@ -1,139 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="zh-CN">
 <head>
-	<meta charset="UTF-8">
-	<title>X | Blog</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="layui/css/layui.css">
-	<link rel="stylesheet" href="static/css/mian.css">
-	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="关于Xian的笔记。">
+  <title>关于 | Xian的笔记</title>
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="static/css/mian.css">
+  <link rel="stylesheet" href="static/css/blog-v2.css">
 </head>
-
-<body class="lay-blog">
-	<div class="header">
-		<div class="header-wrap">
-			<h1 class="logo pull-left">
-				<a href="index.html">
-					<img src="static/images/image-logo.png" alt="" class="image-logo" style="width: 75px;">
-					<img src="static/images/logo-text.png" alt="" class="logo-text" style="width: 90px; margin-top: 24px;">
-				</a>
-			</h1>
-			<div class="blog-nav pull-right">
-				<ul class="layui-nav pull-left">
-					<li class="layui-nav-item">
-						<a href="index.html">首页</a>
-					</li>
-					<li class="layui-nav-item">
-						<a href="project.html">项目</a>
-					</li>
-					<li class="layui-nav-item">
-						<a href="message.html">留言</a>
-					</li>
-					<li class="layui-nav-item  layui-this">
-						<a href="about.html">关于</a>
-					</li>
-				</ul>
-			</div>
-			<div class="mobile-nav pull-right" id="mobile-nav">
-				<a href="javascript:;">
-					<i class="layui-icon layui-icon-more"></i>
-				</a>
-			</div>
-		</div>
-		<ul class="pop-nav" id="pop-nav">
-			<li>
-				<a href="index.html">首页</a>
-			</li>
-			<li>
-				<a href="project.html">项目</a>
-			</li>
-			<li>
-				<a href="message.html">留言</a>
-			</li>
-			<li>
-				<a href="about.html">关于</a>
-			</li>
-		</ul>
-	</div>
-	<div class="container-wrap">
-		<div class="container container-message container-details container-about">
-			<div class="contar-wrap">
-				<div class="item">
-					<div class="item-box">
-						<h3>关于</h3>
-						<h4>本博客由</h4>
-						<h4>GitHub Pages</h4>
-						<h4>GitHub API</h4>
-						<h4>Bmob</h4>
-						<h4>Layui</h4>
-						<h4>构成</h4>
-						<h4>
-							<a href="timeline.html">一日一记</a>
-						</h4>
-						<div class="count layui-clear">
-							<span class="pull-left" id="count">路过
-								<em>100000+</em>
-							</span>
-							<!-- <span class="pull-right like">
-								<i class="layui-icon layui-icon-praise"></i>
-								<em>999</em>
-							</span> -->
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="footer">
-		<p>
-			<span>&copy; 2018</span>
-			<span>
-				<a href="http://www.layui.com" target="_blank">layui.com</a>
-			</span>
-			<span>MIT license</span>
-		</p>
-		<p>
-			<span>人生就是一场修行</span>
-		</p>
-	</div>
-	<script src="layui/layui.js">
-
-	</script>
-	<script>
-		layui.config({
-			base: 'static/js/'
-		}).use('blog');
-		layui.use('jquery', function () {
-			var $ = layui.$;
-			$(function () {
-				getTotalPV();
-			});
-			function getTotalPV() {
-				$.ajax({
-					url: "http://cloud.bmob.cn/7d0718562ae91957/getTotalPV",
-					dataType: 'jsonp',
-					data: '',
-					jsonp: 'callback',
-					success: function (result) {
-						//result.results[0].totalPV
-						$('#count').html("阅读 <em>" + result.results[0].totalPV + "</em>");
-						//更新次数
-						setTotalPV();
-					}
-				});
-			}
-			function setTotalPV() {
-				$.ajax({
-					url: "http://cloud.bmob.cn/7d0718562ae91957/setTotalPV",
-					dataType: 'jsonp',
-					data: '',
-					success: function (result) {
-					}
-				});
-			}
-		})
-	</script>
+<body class="lay-blog blog-v2">
+  <div class="header">
+    <div class="header-wrap">
+      <h1 class="logo pull-left"><a href="index.html"><img src="static/images/logo2.png" alt="Xian"><span>Xian的笔记</span></a></h1>
+      <div class="blog-nav pull-right"><ul class="layui-nav pull-left"></ul></div>
+      <div class="mobile-nav pull-right" id="mobile-nav"><a href="javascript:;"><i class="layui-icon layui-icon-more"></i></a></div>
+    </div>
+    <ul class="pop-nav" id="pop-nav"></ul>
+  </div>
+  <div class="container-wrap">
+    <main class="site-main article-shell">
+      <article class="article-content">
+        <h1>关于这个博客</h1>
+        <p>这里用来存放技术笔记、项目复盘、求职记录和一些兴趣资料。内容按分类、归档和搜索进入，不需要记住文章放在哪个文件夹。</p>
+        <h2>它怎么发布</h2>
+        <p>每篇文章都是仓库中的一个 Markdown 文件。补一条文章索引后，通过 Git 推送即可由 GitHub Pages 自动发布。</p>
+        <p>详细步骤见 <a href="发布文章流程.md">发布文章流程</a>。</p>
+        <h2>公开内容边界</h2>
+        <p>只发布可以公开的资料，不放客户数据、内部系统地址、账号密码、密钥和个人敏感信息。后续如果接入 AI 对话，密钥和服务端逻辑也会放在独立后端，而不是这个静态博客里。</p>
+      </article>
+    </main>
+  </div>
+  <footer class="footer"><p><span>&copy; 2026</span><span>Xian的笔记</span><span><a href="index.html">首页</a></span></p></footer>
+  <script src="layui/layui.js"></script>
+  <script>layui.config({ base: 'static/js/' }).use('blog');</script>
 </body>
-
 </html>

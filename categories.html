@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Xian的技术笔记、项目复盘与生活记录。">
-  <title>Xian的笔记</title>
+  <meta name="description" content="按主题浏览Xian的文章。">
+  <title>分类 | Xian的笔记</title>
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="static/css/mian.css">
   <link rel="stylesheet" href="static/css/blog-v2.css">
@@ -21,11 +21,15 @@
   <div class="container-wrap">
     <main class="site-main">
       <header class="page-heading">
-        <p class="eyebrow">WRITING &amp; NOTES</p>
-        <h1>最近更新</h1>
-        <p>把技术、项目和生活里值得回看的东西，整理成随时能翻到的文章。</p>
+        <p class="eyebrow">TOPICS</p>
+        <h1>分类</h1>
+        <p>从一个主题进入，只看你此刻想读的内容。</p>
       </header>
-      <section class="post-list" id="home-post-list" aria-live="polite"></section>
+      <nav class="category-filter-list" id="category-filters" aria-label="文章分类"></nav>
+      <section aria-live="polite">
+        <h2 class="section-title" id="category-heading">全部文章</h2>
+        <div class="post-list" id="category-post-list"></div>
+      </section>
     </main>
   </div>
   <footer class="footer"><p><span>&copy; 2026</span><span>Xian的笔记</span><span><a href="about.html">关于本站</a></span></p></footer>

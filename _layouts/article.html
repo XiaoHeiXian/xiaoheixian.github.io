@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ page.description | default: page.title | escape }}">
+  <title>{{ page.title | escape }} | Xian的笔记</title>
+  <link rel="stylesheet" href="../layui/css/layui.css">
+  <link rel="stylesheet" href="../static/css/mian.css">
+  <link rel="stylesheet" href="../static/css/blog-v2.css">
+</head>
+<body class="lay-blog blog-v2">
+  <div class="header">
+    <div class="header-wrap">
+      <h1 class="logo pull-left"><a href="../index.html"><img src="../static/images/logo2.png" alt="Xian"><span>Xian的笔记</span></a></h1>
+      <div class="blog-nav pull-right"><ul class="layui-nav pull-left"></ul></div>
+      <div class="mobile-nav pull-right" id="mobile-nav"><a href="javascript:;"><i class="layui-icon layui-icon-more"></i></a></div>
+    </div>
+    <ul class="pop-nav" id="pop-nav"></ul>
+  </div>
+  <div class="container-wrap">
+    <main class="site-main article-shell">
+      <article class="article-content">
+        <p class="article-meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y.%m.%d" }}</time>{% if page.category %}<span>{{ page.category }}</span>{% endif %}{% for tag in page.tags %}<span>{{ tag }}</span>{% endfor %}</p>
+        <h1>{{ page.title }}</h1>
+        {{ content }}
+      </article>
+    </main>
+  </div>
+  <footer class="footer"><p><span>&copy; 2026</span><span>Xian的笔记</span><span><a href="../about.html">关于本站</a></span></p></footer>
+  <script src="../layui/layui.js"></script>
+  <script>layui.config({ base: '../static/js/' }).use('blog');</script>
+</body>
+</html>
