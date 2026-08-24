@@ -1,10 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    id: 'java-thread',
+    title: '线程池的核心参数及其含义',
+    url: 'posts/2026-08-25-thread.html',
+    publishedAt: '2026-08-25',
+    category: 'Java',
+    tags: ['Java', 'thread', '并发'],
+    summary: '线程池的核心参数一共有 7 个，分别是 `corePoolSize`（核心线程数）、`maximumPoolSize`（最大线程数）、`keepAliveTime`（空闲存活时间）、`TimeUnit`（时间单位）、`BlockingQueue`（阻塞队列）、`ThreadFactory`（线程工厂）、`RejectedExecutionHandler`（拒绝策略）。'
+  },
+  {
     id: 'java-jvm',
     title: 'JVM内存模型与各个区域的作用',
     url: 'posts/2026-08-25-jvm.html',
     publishedAt: '2026-08-25',
-    category: 'JVM',
+    category: 'Java',
     tags: ['Java', 'jvm', '内存模型'],
     summary: 'JVM 内存分为 线程私有（程序计数器、虚拟机栈、本地方法栈）和 线程共享（堆、方法区）两大部分。在项目中，堆 是 GC 主要关注区，栈 决定线程数量，方法区 存类元信息。'
   },
