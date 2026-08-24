@@ -16,7 +16,6 @@
       { href: 'index.html', label: '首页' },
       { href: 'archives.html', label: '归档' },
       { href: 'categories.html', label: '分类' },
-      { href: 'message.html', label: '留言' },
       { href: 'about.html', label: '关于' }
     ];
     var desktop = document.querySelector('.blog-nav .layui-nav');
