@@ -322,6 +322,11 @@ body.blog-v2 {
   padding-left: 2px;
 }
 
+.article-content ul > li { list-style-type: disc; }
+.article-content ol > li { list-style-type: decimal; }
+.article-content ul ul > li { list-style-type: circle; }
+.article-content ol ol > li { list-style-type: lower-alpha; }
+
 .article-content li::marker { color: var(--accent); font-weight: 700; }
 
 .article-content table {

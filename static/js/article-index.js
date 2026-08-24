@@ -1,5 +1,14 @@
 window.BLOG_ARTICLES = [
   {
+    id: 'java-jvm',
+    title: 'JVM内存模型与各个区域的作用',
+    url: 'posts/2026-08-25-jvm.html',
+    publishedAt: '2026-08-25',
+    category: 'JVM',
+    tags: ['Java', 'jvm', '内存模型'],
+    summary: 'JVM 内存分为 线程私有（程序计数器、虚拟机栈、本地方法栈）和 线程共享（堆、方法区）两大部分。在项目中，堆 是 GC 主要关注区，栈 决定线程数量，方法区 存类元信息。'
+  },
+  {
     id: 'java-final',
     title: 'Java 中 final 关键字的作用',
     url: 'posts/2026-08-25-final.html',
