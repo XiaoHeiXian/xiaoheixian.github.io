@@ -283,7 +283,22 @@ body.blog-v2 {
 }
 
 .article-content h1 { margin: 0 0 28px; color: var(--ink); font-size: 30px; line-height: 1.35; }
-.article-content h2 { margin: 34px 0 14px; color: var(--ink); font-size: 21px; }
+
+.article-content h2 {
+  margin: 40px 0 16px;
+  color: var(--ink);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.article-content h3 {
+  margin: 28px 0 12px;
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+}
 
 .article-content p, .article-content li {
   color: #334641;
@@ -291,12 +306,29 @@ body.blog-v2 {
   line-height: 1.95;
 }
 
-.article-content ul, .article-content ol { padding-left: 24px; }
+.article-content p { margin: 0 0 18px; }
+
+.article-content ul, .article-content ol {
+  margin: 0 0 22px;
+  padding-left: 24px;
+}
+
+.article-content ul { list-style: disc; }
+.article-content ol { list-style: decimal; }
+
+.article-content li {
+  display: list-item;
+  margin: 6px 0;
+  padding-left: 2px;
+}
+
+.article-content li::marker { color: var(--accent); font-weight: 700; }
 
 .article-content table {
   display: block;
   overflow-x: auto;
   width: 100%;
+  margin: 16px 0 24px;
   border-collapse: collapse;
   font-size: 14px;
 }
@@ -307,9 +339,11 @@ body.blog-v2 {
   vertical-align: top;
   border: 1px solid var(--line);
   line-height: 1.65;
+  word-break: break-word;
 }
 
 .article-content th { color: var(--ink); background: #eef5f0; font-weight: 700; }
+.article-content tbody tr:nth-child(even) td { background: #fbfdfb; }
 .article-content img { max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 4px; }
 
 .article-content code {
@@ -323,13 +357,26 @@ body.blog-v2 {
 
 .article-content pre {
   overflow-x: auto;
+  margin: 14px 0 22px;
   padding: 16px;
   color: #d8e7df;
   background: #17312c;
   border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.7;
 }
 
 .article-content pre code { padding: 0; color: inherit; background: transparent; }
+
+.article-content blockquote {
+  margin: 0 0 20px;
+  padding: 8px 14px;
+  color: var(--muted);
+  background: #f2f7f4;
+  border-left: 3px solid var(--accent);
+}
+
+.article-content blockquote p:last-child { margin-bottom: 0; }
 
 .blog-v2 .footer {
   box-sizing: border-box;
@@ -358,4 +405,7 @@ body.blog-v2 {
   .archive-category { grid-column: 2; }
   .article-content { padding: 28px 22px 32px; }
   .article-content h1 { font-size: 26px; }
+  .article-content h2 { margin-top: 34px; font-size: 21px; }
+  .article-content h3 { font-size: 18px; }
+  .article-content th, .article-content td { min-width: 96px; padding: 9px 10px; }
 }
