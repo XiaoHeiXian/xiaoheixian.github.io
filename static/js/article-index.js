@@ -1,5 +1,14 @@
 window.BLOG_ARTICLES = [
   {
+    id: 'mysql-topsql',
+    title: '慢查询优化',
+    url: 'posts/2026-08-26-mysql-topsql.html',
+    publishedAt: '2026-08-26',
+    category: 'mysql',
+    tags: ['慢查询', 'EXPLAIN'],
+    summary: '慢查询优化遵循 “先定位 → 再分析 → 后调优” 三步走。开启慢日志抓 TOP SQL，用 EXPLAIN 看执行计划，通过索引优化、SQL 改写、分表归档逐级解决。核心目标：让所有核心查询都走索引。'
+  },
+  {
     id: 'jar',
     title: 'jar包冲突',
     url: 'posts/2026-08-26-jar.html',
