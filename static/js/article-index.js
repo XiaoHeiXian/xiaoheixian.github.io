@@ -1,11 +1,29 @@
 window.BLOG_ARTICLES = [
   {
+    id: 'mysql-index',
+    title: '索引优化',
+    url: 'posts/2026-08-26-mysql-index.html',
+    publishedAt: '2026-08-26',
+    category: 'mysql',
+    tags: ['最左原则', '索引优化'],
+    summary: '索引优化本质是 “让查询尽量少读、尽量顺序读”。我将索引设计归纳为四层：选列：最左前缀 + 高基数优先 + 等值在前；防失效：禁止函数运算、隐式转换、左模糊；控成本：单表不超 5 索引，杜绝冗余；架构降维：千万级走冷热分离或分库分表。最终目标：核心查询全部做到覆盖索引。'
+  },
+  {
+    id: 'springboot',
+    title: 'Spring Boot 自动配置原理',
+    url: 'posts/2026-08-26-springboot.html',
+    publishedAt: '2026-08-26',
+    category: 'Java',
+    tags: ['spring boot', '自动配置原理'],
+    summary: 'Spring Boot 自动配置分为三个阶段。加载，拿到全部候选自动配置类。过滤，通过条件注解筛掉不匹配当前环境的配置。注册，把生效的 Bean 注册到 Spring 容器。如果我们自定义了这个 Bean，框架干脆就不创建默认的 Bean 了。所以它可以做到开箱即用，同时支持灵活定制。'
+  },
+  {
     id: 'java-thread',
     title: '线程池的核心参数及其含义',
     url: 'posts/2026-08-25-thread.html',
     publishedAt: '2026-08-25',
     category: 'Java',
-    tags: ['Java', 'thread', '并发'],
+    tags: ['thread', '并发'],
     summary: '线程池的核心参数一共有 7 个，分别是 `corePoolSize`（核心线程数）、`maximumPoolSize`（最大线程数）、`keepAliveTime`（空闲存活时间）、`TimeUnit`（时间单位）、`BlockingQueue`（阻塞队列）、`ThreadFactory`（线程工厂）、`RejectedExecutionHandler`（拒绝策略）。'
   },
   {
@@ -14,7 +32,7 @@ window.BLOG_ARTICLES = [
     url: 'posts/2026-08-25-jvm.html',
     publishedAt: '2026-08-25',
     category: 'Java',
-    tags: ['Java', 'jvm', '内存模型'],
+    tags: ['jvm', '内存模型'],
     summary: 'JVM 内存分为 线程私有（程序计数器、虚拟机栈、本地方法栈）和 线程共享（堆、方法区）两大部分。在项目中，堆 是 GC 主要关注区，栈 决定线程数量，方法区 存类元信息。'
   },
   {
@@ -23,7 +41,7 @@ window.BLOG_ARTICLES = [
     url: 'posts/2026-08-25-final.html',
     publishedAt: '2026-08-25',
     category: 'Java',
-    tags: ['Java', 'final'],
+    tags: ['final'],
     summary: '修饰类不可继承、方法不可重写、变量引用不可变。'
   },
   // {
