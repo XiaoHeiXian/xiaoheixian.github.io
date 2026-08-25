@@ -2,12 +2,12 @@
 layout: article
 title: "Spring Boot 自动装配原理"
 description: "Spring Boot 自动配置分为三个阶段。加载，拿到全部候选自动配置类。过滤，通过条件注解筛掉不匹配当前环境的配置。注册，把生效的 Bean 注册到 Spring 容器。如果我们自定义了这个 Bean，框架就不创建默认的 Bean 了。所以它可以做到开箱即用，同时支持灵活定制。"
-date: 2026-08-25
+date: 2026-08-26
 category: "Java"
 tags:
   - "Spring Boot"
   - "自动装配原理"
-permalink: /posts/2026-08-25-springboot.html
+permalink: /posts/2026-08-26-springboot.html
 ---
 
 # Spring Boot 自动装配原理
