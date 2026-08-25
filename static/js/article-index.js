@@ -1,5 +1,14 @@
 window.BLOG_ARTICLES = [
   {
+    id: 'springcloud',
+    title: 'Spring Cloud 常用组件',
+    url: 'posts/2026-08-26-springcloud.html',
+    publishedAt: '2026-08-26',
+    category: 'Java',
+    tags: ['spring Cloud', 'Nacos', 'Gateway', 'OpenFeign', 'Sentinel'],
+    summary: 'Spring Cloud 是一套微服务治理的生态工具集。配置和注册中心用 Nacos，网关用 Gateway，服务调用用 OpenFeign，负载均衡用 Spring Cloud LoadBalancer，限流降级用 Sentinel，链路追踪用 Zipkin。 项目中最常用的就是 Nacos + Gateway + Sentinel + OpenFeign 这套技术组合。'
+  },
+  {
     id: 'mysql-topsql',
     title: '慢查询优化',
     url: 'posts/2026-08-26-mysql-topsql.html',
