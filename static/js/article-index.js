@@ -1,5 +1,14 @@
 window.BLOG_ARTICLES = [
   {
+    id: 'jar',
+    title: 'jar包冲突',
+    url: 'posts/2026-08-26-jar.html',
+    publishedAt: '2026-08-26',
+    category: 'maven',
+    tags: ['jar', 'maven'],
+    summary: 'Jar 包冲突本质是 依赖传递导致的类路径污染。核心解决思路分两步：Maven Dependency Tree 定位冲突 → exclusions 排除 + 父 POM 锁版，遇到无法排除的硬编码 SPI 加载时用 Shade 插件重命名隔离。NoSuchMethodError / NoClassDefFoundError 大概率是 Jar 包冲突导致'
+  },
+  {
     id: 'mysql-index',
     title: '索引优化',
     url: 'posts/2026-08-26-mysql-index.html',
