@@ -406,6 +406,75 @@ body.blog-v2 {
 
 .publish-form { display: grid; gap: 20px; }
 
+.publish-mode {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 22px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.publish-mode button,
+.publish-picker button {
+  min-height: 38px;
+  padding: 0 14px;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+}
+
+.publish-mode button.is-active {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.publish-picker {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: end;
+  margin: 0 0 22px;
+  padding: 18px;
+  background: #f7faf8;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+
+.publish-picker label {
+  display: grid;
+  gap: 8px;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.publish-picker select {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 38px;
+  padding: 7px 10px;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font: inherit;
+}
+
+.publish-editing {
+  margin: 0;
+  padding: 10px 12px;
+  color: var(--accent);
+  background: #eef5f0;
+  border-left: 3px solid var(--accent);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
 .publish-form label {
   display: grid;
   gap: 8px;
@@ -453,6 +522,8 @@ body.blog-v2 {
 .publish-actions button:hover, .publish-primary:hover { border-color: var(--accent); }
 .publish-primary:hover { background: #135d4d; }
 .publish-actions button:disabled, .publish-primary:disabled { cursor: wait; opacity: 0.65; }
+.publish-danger { color: #b33d2e !important; border-color: #d9a39a !important; }
+.publish-danger:hover { color: #fff !important; background: #b33d2e !important; border-color: #b33d2e !important; }
 .publish-quiet { margin-left: auto; color: var(--muted) !important; }
 
 .publish-notice {
@@ -488,5 +559,6 @@ body.blog-v2 {
   .publish-shell { width: min(100% - 32px, 780px); }
   .publish-panel { padding: 22px; }
   .publish-grid, .publish-grid-meta { grid-template-columns: 1fr; }
+  .publish-picker { grid-template-columns: 1fr; }
   .publish-quiet { margin-left: 0; }
 }

@@ -31,7 +31,20 @@
       </section>
 
       <section class="publish-panel" id="publish-editor" hidden>
+        <div class="publish-mode" role="group" aria-label="文章操作模式">
+          <button id="publish-mode-create" class="is-active" type="button">新建文章</button>
+          <button id="publish-mode-edit" type="button">修改或删除</button>
+        </div>
+
+        <section class="publish-picker" id="publish-picker" hidden>
+          <label>已发布文章
+            <select id="publish-article-select" aria-label="选择要修改的文章"></select>
+          </label>
+          <button id="publish-load-article" type="button">载入文章</button>
+        </section>
+
         <form id="publish-article-form" class="publish-form">
+          <p class="publish-editing" id="publish-editing" hidden></p>
           <div class="publish-grid">
             <label>标题<input name="title" maxlength="80" required></label>
             <label>英文短标题<input name="slug" pattern="[a-z0-9]+(-[a-z0-9]+)*" placeholder="mysql-online-index" required></label>
@@ -45,7 +58,8 @@
           <label>正文<textarea name="content" rows="22" placeholder="从正文开始写，不需要 Front Matter。" required></textarea></label>
           <div class="publish-actions">
             <button id="save-draft" type="button">保存草稿</button>
-            <button class="publish-primary" type="submit" data-label="发布文章">发布文章</button>
+            <button class="publish-primary" id="publish-submit" type="submit" data-label="发布文章">发布文章</button>
+            <button id="publish-delete" type="button" class="publish-danger" hidden>删除文章</button>
             <button id="publish-logout" type="button" class="publish-quiet">退出</button>
           </div>
         </form>
@@ -53,6 +67,7 @@
     </main>
   </div>
   <footer class="footer"><p><span>&copy; 2026</span><span>Xian的笔记</span></p></footer>
+  <script src="static/js/article-index.js"></script>
   <script src="static/js/publish-config.js"></script>
   <script src="static/js/publish.js"></script>
 </body>

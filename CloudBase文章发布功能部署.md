@@ -85,9 +85,16 @@ https://xiaoheixian.github.io/publish.html
 
 发布一篇测试文章，检查 GitHub 是否出现一个 `docs: publish ...` commit，以及文章是否进入首页、归档、分类和搜索。
 
+发布页也提供“修改或删除”模式。首次选择文章时，函数会返回 Markdown 和当前文件版本；保存或删除时会再次校验版本，若这期间 GitHub 上已有新提交，会提示重新载入，避免覆盖他人的改动。
+
+本次升级后需要重新部署函数：
+
+    cd E:\xs\jh\job\pay\interview-labs\xiaoheixian.github.io\cloudbase\blog-publisher
+    tcb fn deploy blog-publisher-api -e <你的环境ID>
+
 ## 安全与回退
 
 - 发布页没有加入导航且带 `noindex`，但它不是安全边界；安全边界是 HTTPS、函数 CORS 白名单、发布密码和短期令牌。
 - `PUBLISH_PASSWORD`、`PUBLISH_TOKEN_SECRET`、`GITHUB_TOKEN` 泄露或怀疑泄露时，立即在 CloudBase 更新前两项并在 GitHub 撤销 Token。
-- 内容写错时，直接在 GitHub 对发布 commit 执行 Revert；Markdown 和索引在同一个 commit 中，会一起恢复。
+- 内容写错时，直接在 GitHub 对对应的 `docs: publish ...`、`docs: update ...` 或 `docs: delete ...` commit 执行 Revert；Markdown 和索引在同一个 commit 中，会一起恢复。
 - 不使用 CloudBase MySQL，避免免费环境过期后出现文章数据迁移问题。
