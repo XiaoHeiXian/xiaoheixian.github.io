@@ -1,5 +1,4 @@
 const crypto = require('crypto');
-const http = require('http');
 
 const GITHUB_API = 'https://api.github.com';
 const MAX_BODY_LENGTH = 180 * 1024;
@@ -227,7 +226,7 @@ async function publish(article) {
   return { commit: nextCommit.sha, url: `https://${owner.toLowerCase()}.github.io/posts/${article.date}-${article.slug}.html` };
 }
 
-async function handleEvent(event) {
+exports.main = async (event) => {
   const method = (event.httpMethod || 'GET').toUpperCase();
   const path = requestPath(event);
   if (method === 'OPTIONS') {
@@ -260,46 +259,4 @@ async function handleEvent(event) {
     console.error(error);
     return json(error.statusCode || 400, { message: error.message || '发布失败。' }, event);
   }
-}
-
-function readRequestBody(request) {
-  return new Promise((resolve, reject) => {
-    const chunks = [];
-    let size = 0;
-    request.on('data', (chunk) => {
-      size += chunk.length;
-      if (size > MAX_BODY_LENGTH) {
-        request.destroy();
-        reject(new Error('文章正文超过 180KB 限制。'));
-        return;
-      }
-      chunks.push(chunk);
-    });
-    request.on('end', () => resolve(Buffer.concat(chunks).toString('utf8')));
-    request.on('error', reject);
-  });
-}
-
-async function serve(request, response) {
-  try {
-    const body = await readRequestBody(request);
-    const result = await handleEvent({
-      httpMethod: request.method,
-      path: request.url,
-      headers: request.headers,
-      body
-    });
-    response.writeHead(result.statusCode, result.headers);
-    response.end(result.body || '');
-  } catch (error) {
-    response.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
-    response.end(JSON.stringify({ message: error.message || '请求失败。' }));
-  }
-}
-
-if (require.main === module) {
-  const port = Number(process.env.PORT || 9000);
-  http.createServer(serve).listen(port, '0.0.0.0', () => console.log(`blog-publisher listening on ${port}`));
-}
-
-exports.main = handleEvent;
+};
