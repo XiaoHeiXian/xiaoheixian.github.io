@@ -2,7 +2,16 @@ const crypto = require('crypto');
 
 const GITHUB_API = 'https://api.github.com';
 const MAX_BODY_LENGTH = 180 * 1024;
+const MAX_ASSET_SIZE = 4 * 1024 * 1024;
+const MAX_UPLOAD_BODY_LENGTH = Math.ceil(MAX_ASSET_SIZE * 4 / 3) + 16 * 1024;
 const TOKEN_TTL_MS = 20 * 60 * 1000;
+const ASSET_DIRECTORY = 'posts/assets/';
+const ASSET_TYPES = {
+  'image/png': { extension: '.png', signature: (buffer) => buffer.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a])) },
+  'image/jpeg': { extension: '.jpg', signature: (buffer) => buffer[0] === 0xff && buffer[1] === 0xd8 && buffer[2] === 0xff },
+  'image/webp': { extension: '.webp', signature: (buffer) => buffer.subarray(0, 4).toString('ascii') === 'RIFF' && buffer.subarray(8, 12).toString('ascii') === 'WEBP' },
+  'application/pdf': { extension: '.pdf', signature: (buffer) => buffer.subarray(0, 5).toString('ascii') === '%PDF-' }
+};
 
 function json(statusCode, payload, event) {
   const origin = getAllowedOrigin(event);
@@ -38,10 +47,10 @@ function requestPath(event) {
   return rawPath.split('?')[0] || '/';
 }
 
-function parseBody(event) {
+function parseBody(event, maximumLength = MAX_BODY_LENGTH) {
   let raw = event.body || '{}';
   if (event.isBase64Encoded) raw = Buffer.from(raw, 'base64').toString('utf8');
-  if (Buffer.byteLength(raw, 'utf8') > MAX_BODY_LENGTH) throw new Error('文章正文超过 180KB 限制。');
+  if (Buffer.byteLength(raw, 'utf8') > maximumLength) throw new Error('请求内容超过允许的大小。');
   try {
     return JSON.parse(raw);
   } catch (_) {
@@ -389,11 +398,11 @@ async function readBlobText(state, file) {
   return Buffer.from(blob.content, 'base64').toString('utf8');
 }
 
-async function createBlob(state, content) {
+async function createBlob(state, content, encoding = 'utf-8') {
   const blob = await github('/repos/' + state.owner + '/' + state.repo + '/git/blobs', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ content, encoding: 'utf-8' })
+    body: JSON.stringify({ content, encoding })
   });
   return blob.sha;
 }
@@ -419,6 +428,72 @@ async function commitTree(state, tree, message) {
 
 function pageUrl(state, target) {
   return 'https://' + state.owner.toLowerCase() + '.github.io/' + target.url;
+}
+
+function assetUrl(state, path) {
+  return 'https://' + state.owner.toLowerCase() + '.github.io/' + path.split('/').map(encodeURIComponent).join('/');
+}
+
+function assetFileName(path) {
+  return path.slice(ASSET_DIRECTORY.length);
+}
+
+function validateAssetPath(value) {
+  const path = safeText(value, '文件路径', 240, true);
+  const name = path.startsWith(ASSET_DIRECTORY) ? path.slice(ASSET_DIRECTORY.length) : '';
+  if (!name || name.includes('/') || name.includes('\\') || name === '.' || name === '..') {
+    throw new Error('文件路径无效。');
+  }
+  return path;
+}
+
+function sanitizeAssetFileName(value, extension) {
+  const original = safeText(value, '文件名', 160, true).normalize('NFKC');
+  const withoutExtension = original.replace(/^.*[\\/]/, '').replace(/\.[^.]*$/, '');
+  const cleaned = withoutExtension
+    .replace(/[\u0000-\u001f<>:"|?*]/g, '-')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, 96);
+  if (!cleaned || cleaned === '.' || cleaned === '..') throw new Error('文件名无效。');
+  return cleaned + extension;
+}
+
+function validateAssetUpload(payload) {
+  const mimeType = safeText(payload.mimeType, '文件类型', 80, true).toLowerCase();
+  const type = ASSET_TYPES[mimeType];
+  if (!type) throw new Error('仅支持 PNG、JPG、WebP 图片和 PDF 文件。');
+  const contentBase64 = safeText(payload.contentBase64, '文件内容', MAX_UPLOAD_BODY_LENGTH, true);
+  if (!/^[A-Za-z0-9+/]+={0,2}$/.test(contentBase64) || contentBase64.length % 4 !== 0) {
+    throw new Error('文件编码无效。');
+  }
+  const content = Buffer.from(contentBase64, 'base64');
+  if (!content.length || content.length > MAX_ASSET_SIZE) throw new Error('单个文件不能超过 4MB。');
+  if (!type.signature(content)) throw new Error('文件内容与声明的类型不匹配。');
+  const date = new Date().toISOString().slice(0, 10);
+  const suffix = crypto.randomBytes(6).toString('hex');
+  const fileName = sanitizeAssetFileName(payload.fileName, type.extension);
+  return {
+    path: ASSET_DIRECTORY + date + '-' + suffix + '-' + fileName,
+    fileName,
+    contentBase64
+  };
+}
+
+function listAssetEntries(state, keyword) {
+  const normalizedKeyword = safeText(keyword || '', '搜索关键词', 60, false).toLocaleLowerCase();
+  return state.tree.tree
+    .filter((item) => item.type === 'blob' && item.path.startsWith(ASSET_DIRECTORY) && !assetFileName(item.path).includes('/'))
+    .filter((item) => !normalizedKeyword || assetFileName(item.path).toLocaleLowerCase().includes(normalizedKeyword))
+    .sort((left, right) => right.path.localeCompare(left.path))
+    .slice(0, 200)
+    .map((item) => ({
+      path: item.path,
+      name: assetFileName(item.path),
+      size: item.size || 0,
+      version: item.sha,
+      url: assetUrl(state, item.path)
+    }));
 }
 
 function assertVersion(actual, expected, label) {
@@ -523,6 +598,43 @@ async function deleteArticle(payload) {
   return { commit };
 }
 
+async function listAssets(payload) {
+  const state = await loadRepository();
+  return { assets: listAssetEntries(state, payload.keyword) };
+}
+
+async function uploadAsset(payload) {
+  const asset = validateAssetUpload(payload);
+  const state = await loadRepository();
+  if (findTreeFile(state, asset.path)) throw createConflict('同名文件已存在，请重新选择文件。');
+  const blobSha = await createBlob(state, asset.contentBase64, 'base64');
+  const commit = await commitTree(state, [
+    { path: asset.path, mode: '100644', type: 'blob', sha: blobSha }
+  ], 'docs: upload asset ' + asset.fileName);
+  return {
+    commit,
+    asset: {
+      path: asset.path,
+      name: assetFileName(asset.path),
+      size: Buffer.from(asset.contentBase64, 'base64').length,
+      version: blobSha,
+      url: assetUrl(state, asset.path)
+    }
+  };
+}
+
+async function deleteAsset(payload) {
+  const path = validateAssetPath(payload.path);
+  const state = await loadRepository();
+  const file = findTreeFile(state, path);
+  if (!file || file.type !== 'blob') throw createConflict('文件已不存在，请重新搜索。');
+  assertVersion(file.sha, payload.version, '文件');
+  const commit = await commitTree(state, [
+    { path, mode: '100644', type: 'blob', sha: null }
+  ], 'docs: delete asset ' + assetFileName(path));
+  return { commit };
+}
+
 exports.main = async (event) => {
   const method = (event.httpMethod || 'GET').toUpperCase();
   const path = requestPath(event);
@@ -561,6 +673,18 @@ exports.main = async (event) => {
     if (method === 'POST' && path.endsWith('/articles')) {
       if (!verifyToken(event)) return json(401, { message: '登录已过期，请重新验证。' }, event);
       return json(201, await publish(validateArticle(parseBody(event))), event);
+    }
+    if (method === 'POST' && path.endsWith('/assets/upload')) {
+      if (!verifyToken(event)) return json(401, { message: '登录已过期，请重新验证。' }, event);
+      return json(201, await uploadAsset(parseBody(event, MAX_UPLOAD_BODY_LENGTH)), event);
+    }
+    if (method === 'POST' && path.endsWith('/assets/delete')) {
+      if (!verifyToken(event)) return json(401, { message: '登录已过期，请重新验证。' }, event);
+      return json(200, await deleteAsset(parseBody(event)), event);
+    }
+    if (method === 'POST' && path.endsWith('/assets')) {
+      if (!verifyToken(event)) return json(401, { message: '登录已过期，请重新验证。' }, event);
+      return json(200, await listAssets(parseBody(event)), event);
     }
     return json(404, { message: '接口不存在。' }, event);
   } catch (error) {

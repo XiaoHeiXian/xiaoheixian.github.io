@@ -2,7 +2,7 @@
 
 ## 方案与边界
 
-博客仍由 GitHub Pages 承载，文章仍是仓库里的 Markdown。CloudBase 只运行一个普通云函数，并通过 HTTP 访问服务暴露接口：验证发布密码后，使用保存在函数环境变量中的 GitHub Fine-grained Token，将文章 Markdown 和 `static/js/article-index.js` 原子提交到 `master`。
+博客仍由 GitHub Pages 承载，文章和素材仍在仓库里。CloudBase 只运行一个普通云函数，并通过 HTTP 访问服务暴露接口：验证发布密码后，使用保存在函数环境变量中的 GitHub Fine-grained Token，将文章 Markdown、`static/js/article-index.js` 或 `posts/assets/` 内的素材提交到 `master`。
 
 不使用 CloudBase MySQL：分类、归档、搜索继续读取静态索引；CloudBase 免费环境到期后，只会失去网页发布入口，已发布文章和博客访问不会受影响。
 
@@ -59,6 +59,8 @@ HTTP 访问服务可被普通 `fetch` 调用。[CloudBase HTTP 访问服务文�
 
 建议在 CloudBase 控制台给该函数配置按 IP 的限频，例如每分钟 10 次。发布函数不访问 CloudBase 数据库，因此不需要 `CLOUDBASE_APIKEY`。
 
+将函数的执行超时设为 **30 秒**。发布文章和上传文件都会顺序调用 GitHub 的读取、创建 Blob、创建 Tree、创建 Commit、更新分支等接口，默认 3 秒容易被网关提前终止。
+
 ## 4. 连接发布页面
 
 编辑 `static/js/publish-config.js`，仅填入公开的函数地址：
@@ -86,6 +88,8 @@ https://xiaoheixian.github.io/publish.html
 发布一篇测试文章，检查 GitHub 是否出现一个 `docs: publish ...` commit，以及文章是否进入首页、归档、分类和搜索。
 
 发布页也提供“修改或删除”模式。首次选择文章时，函数会返回 Markdown 和当前文件版本；保存或删除时会再次校验版本，若这期间 GitHub 上已有新提交，会提示重新载入，避免覆盖他人的改动。
+
+发布页的“素材”区支持上传、搜索和删除 PNG、JPG、WebP、PDF 文件，单个文件上限为 4MB。素材写入 `posts/assets/`，返回的链接是 GitHub Pages 公开地址，不依赖 CloudBase 存储；CloudBase 免费环境到期后，已经上传的素材和文章链接仍然可用。
 
 本次升级后需要重新部署函数：
 

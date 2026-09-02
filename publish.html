@@ -56,6 +56,26 @@
             <label>发布日期<input name="date" type="date" required></label>
           </div>
           <label>正文<textarea name="content" rows="22" placeholder="从正文开始写，不需要 Front Matter。" required></textarea></label>
+          <section class="asset-library" aria-labelledby="asset-library-title">
+            <div class="asset-library-heading">
+              <h2 id="asset-library-title">素材</h2>
+              <p>上传后可搜索文件名并复制公开链接，正文不会自动修改。</p>
+            </div>
+            <div class="asset-upload-controls">
+              <label class="asset-file-picker">选择文件
+                <input id="asset-files" type="file" accept=".png,.jpg,.jpeg,.webp,.pdf,image/png,image/jpeg,image/webp,application/pdf" multiple>
+              </label>
+              <button id="asset-upload" type="button">上传所选文件</button>
+            </div>
+            <div class="asset-search-controls">
+              <label>搜索已上传文件
+                <input id="asset-keyword" type="search" maxlength="60" placeholder="输入文件名关键词">
+              </label>
+              <button id="asset-search" type="button">搜索文件</button>
+            </div>
+            <p class="asset-notice" id="asset-notice" role="status"></p>
+            <ul class="asset-list" id="asset-list" aria-live="polite"></ul>
+          </section>
           <div class="publish-actions">
             <button id="save-draft" type="button">保存草稿</button>
             <button class="publish-primary" id="publish-submit" type="submit" data-label="发布文章">发布文章</button>

@@ -508,6 +508,66 @@ body.blog-v2 {
 .publish-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .publish-grid-meta { grid-template-columns: 1fr 1fr 160px; }
 
+.asset-library {
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.asset-library-heading { display: grid; gap: 5px; margin-bottom: 16px; }
+.asset-library h2 { margin: 0; color: var(--ink); font-size: 18px; line-height: 1.35; }
+.asset-library-heading p, .asset-notice { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+
+.asset-upload-controls,
+.asset-search-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 12px;
+}
+
+.asset-search-controls { margin-top: 14px; }
+.asset-file-picker { min-width: 0; }
+.asset-file-picker input { padding: 8px; }
+
+.asset-upload-controls button,
+.asset-search-controls button,
+.asset-list button {
+  min-height: 38px;
+  padding: 0 13px;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.asset-upload-controls button { color: #fff; background: var(--accent); border-color: var(--accent); }
+.asset-upload-controls button:hover { background: #135d4d; }
+.asset-search-controls button:hover, .asset-list button:hover { border-color: var(--accent); }
+.asset-upload-controls button:disabled, .asset-search-controls button:disabled, .asset-list button:disabled { cursor: wait; opacity: 0.65; }
+
+.asset-notice { min-height: 20px; margin-top: 12px; }
+.asset-notice.is-error { color: #b33d2e; }
+.asset-notice.is-success { color: var(--accent); }
+
+.asset-list { display: grid; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.asset-list:empty { display: none; }
+.asset-list li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto auto;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line);
+}
+.asset-list a { min-width: 0; color: var(--ink); overflow: hidden; text-decoration: none; text-overflow: ellipsis; white-space: nowrap; }
+.asset-list a:hover { color: var(--accent); text-decoration: underline; }
+.asset-list small { color: var(--muted); font-size: 12px; }
+.asset-list .asset-delete { color: #b33d2e; border-color: #d9a39a; }
+.asset-list .asset-delete:hover { color: #fff; background: #b33d2e; border-color: #b33d2e; }
+
 .publish-actions { display: flex; flex-wrap: wrap; gap: 10px; }
 
 .publish-actions button,
@@ -565,5 +625,8 @@ body.blog-v2 {
   .publish-panel { padding: 22px; }
   .publish-grid, .publish-grid-meta { grid-template-columns: 1fr; }
   .publish-picker { grid-template-columns: 1fr; }
+  .asset-upload-controls, .asset-search-controls { grid-template-columns: 1fr; }
+  .asset-list li { grid-template-columns: minmax(0, 1fr) auto auto; }
+  .asset-list small { grid-column: 1 / -1; grid-row: 2; }
   .publish-quiet { margin-left: 0; }
 }
