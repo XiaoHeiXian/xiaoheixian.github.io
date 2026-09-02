@@ -1,5 +1,16 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-02-redis",
+    "title": "redis",
+    "url": "posts/2026-09-02-redis.html",
+    "publishedAt": "2026-09-02",
+    "category": "redis",
+    "tags": [
+      "redis"
+    ],
+    "summary": "redis"
+  },
+  {
     "id": "2026-09-02-test2",
     "title": "测试2",
     "url": "posts/2026-09-02-test2.html",
