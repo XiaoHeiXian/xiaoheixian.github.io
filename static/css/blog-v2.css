@@ -445,6 +445,11 @@ body.blog-v2 {
   border-radius: 4px;
 }
 
+.publish-picker[hidden],
+.publish-editing[hidden] {
+  display: none;
+}
+
 .publish-picker label {
   display: grid;
   gap: 8px;
