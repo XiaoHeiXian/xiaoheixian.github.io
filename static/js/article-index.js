@@ -10,17 +10,7 @@ window.BLOG_ARTICLES = [
     ],
     "summary": "测试2"
   },
-  {
-    "id": "2026-09-02-test",
-    "title": "测试",
-    "url": "posts/2026-09-02-test.html",
-    "publishedAt": "2026-09-02",
-    "category": "测试",
-    "tags": [
-      "测试"
-    ],
-    "summary": "测试"
-  },
+  
   {
     id: 'springcloud',
     title: 'Spring Cloud 常用组件',
