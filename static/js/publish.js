@@ -231,8 +231,9 @@
 
   document.getElementById('publish-login-form').addEventListener('submit', function (event) {
     event.preventDefault();
-    var button = event.currentTarget.querySelector('button[type="submit"]');
-    var password = event.currentTarget.elements.password.value;
+    var loginForm = event.currentTarget;
+    var button = loginForm.querySelector('button[type="submit"]');
+    var password = loginForm.elements.password.value;
     setSubmitting(button, true);
     setNotice('');
     request('/auth/login', {
@@ -241,7 +242,7 @@
       body: JSON.stringify({ password: password })
     }).then(function (result) {
       window.sessionStorage.setItem(sessionKey, result.token);
-      event.currentTarget.reset();
+      loginForm.reset();
       showEditor();
       setMode('create');
       loadDraft();
