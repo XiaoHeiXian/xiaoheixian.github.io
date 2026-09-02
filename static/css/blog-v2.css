@@ -395,6 +395,78 @@ body.blog-v2 {
 
 .blog-v2 .footer a { color: var(--accent); }
 
+.publish-shell { width: min(100% - 48px, 780px); }
+
+.publish-panel {
+  padding: 30px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.publish-form { display: grid; gap: 20px; }
+
+.publish-form label {
+  display: grid;
+  gap: 8px;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.publish-form input,
+.publish-form textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 11px 12px;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font: inherit;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.publish-form textarea { resize: vertical; }
+.publish-form input:focus, .publish-form textarea:focus { border-color: var(--accent); outline: 3px solid rgba(24, 116, 95, 0.14); }
+
+.publish-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.publish-grid-meta { grid-template-columns: 1fr 1fr 160px; }
+
+.publish-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.publish-actions button,
+.publish-primary {
+  min-height: 42px;
+  padding: 0 16px;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+}
+
+.publish-primary { color: #fff; background: var(--accent); border-color: var(--accent); }
+.publish-actions button:hover, .publish-primary:hover { border-color: var(--accent); }
+.publish-primary:hover { background: #135d4d; }
+.publish-actions button:disabled, .publish-primary:disabled { cursor: wait; opacity: 0.65; }
+.publish-quiet { margin-left: auto; color: var(--muted) !important; }
+
+.publish-notice {
+  min-height: 22px;
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+.publish-notice.is-success { color: var(--accent); }
+.publish-notice.is-error { color: #b33d2e; }
+
 @media only screen and (max-width: 750px) {
   .blog-v2 .header-wrap { padding: 0 20px; }
   .blog-v2 .container-wrap { padding: 108px 0 64px; }
@@ -413,4 +485,8 @@ body.blog-v2 {
   .article-content h2 { margin-top: 34px; font-size: 21px; }
   .article-content h3 { font-size: 18px; }
   .article-content th, .article-content td { min-width: 96px; padding: 9px 10px; }
+  .publish-shell { width: min(100% - 32px, 780px); }
+  .publish-panel { padding: 22px; }
+  .publish-grid, .publish-grid-meta { grid-template-columns: 1fr; }
+  .publish-quiet { margin-left: 0; }
 }

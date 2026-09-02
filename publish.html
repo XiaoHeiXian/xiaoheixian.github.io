@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>发布文章 | Xian的笔记</title>
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="static/css/mian.css">
+  <link rel="stylesheet" href="static/css/blog-v2.css">
+</head>
+<body class="lay-blog blog-v2">
+  <div class="header">
+    <div class="header-wrap">
+      <h1 class="logo pull-left"><a href="index.html"><img src="static/images/logo2.png" alt="Xian"><span>Xian的笔记</span></a></h1>
+    </div>
+  </div>
+  <div class="container-wrap">
+    <main class="site-main publish-shell">
+      <header class="page-heading">
+        <p class="eyebrow">PRIVATE WRITER</p>
+        <h1>发布文章</h1>
+      </header>
+      <p class="publish-notice" id="publish-notice" role="status"></p>
+
+      <section class="publish-panel" id="publish-login">
+        <form id="publish-login-form" class="publish-form">
+          <label>发布密码<input name="password" type="password" autocomplete="current-password" required></label>
+          <button class="publish-primary" type="submit" data-label="进入编辑器">进入编辑器</button>
+        </form>
+      </section>
+
+      <section class="publish-panel" id="publish-editor" hidden>
+        <form id="publish-article-form" class="publish-form">
+          <div class="publish-grid">
+            <label>标题<input name="title" maxlength="80" required></label>
+            <label>英文短标题<input name="slug" pattern="[a-z0-9]+(-[a-z0-9]+)*" placeholder="mysql-online-index" required></label>
+          </div>
+          <label>摘要<textarea name="description" rows="3" maxlength="180" required></textarea></label>
+          <div class="publish-grid publish-grid-meta">
+            <label>分类<input name="category" maxlength="30" placeholder="Java 后端" required></label>
+            <label>标签<input name="tags" maxlength="180" placeholder="MySQL, 索引, 运维" required></label>
+            <label>发布日期<input name="date" type="date" required></label>
+          </div>
+          <label>正文<textarea name="content" rows="22" placeholder="从正文开始写，不需要 Front Matter。" required></textarea></label>
+          <div class="publish-actions">
+            <button id="save-draft" type="button">保存草稿</button>
+            <button class="publish-primary" type="submit" data-label="发布文章">发布文章</button>
+            <button id="publish-logout" type="button" class="publish-quiet">退出</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+  <footer class="footer"><p><span>&copy; 2026</span><span>Xian的笔记</span></p></footer>
+  <script src="static/js/publish-config.js"></script>
+  <script src="static/js/publish.js"></script>
+</body>
+</html>
