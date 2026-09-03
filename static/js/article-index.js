@@ -1,4 +1,17 @@
 window.BLOG_ARTICLES = [
+  {
+    "id": "2026-09-03-hashmap-underlying",
+    "title": "Java中HashMap的底层实现原理和扩容机制是什么？",
+    "url": "posts/2026-09-03-hashmap-underlying.html",
+    "publishedAt": "2026-09-03",
+    "category": "Java",
+    "tags": [
+      "HashMap",
+      "集合框架",
+      "扩容"
+    ],
+    "summary": "基于数组+链表/红黑树实现，通过key的hash值定位桶索引，达到负载因子0.75时触发2倍扩容并重新计算hash分配位置。"
+  },
   
   
   {
