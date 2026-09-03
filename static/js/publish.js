@@ -21,6 +21,12 @@
   var editingHint = document.getElementById('publish-editing');
   var submitButton = document.getElementById('publish-submit');
   var deleteButton = document.getElementById('publish-delete');
+  var markdownPreview = document.getElementById('markdown-preview');
+  var openPreviewButton = document.getElementById('open-markdown-preview');
+  var closePreviewButton = document.getElementById('close-markdown-preview');
+  var previewMeta = document.getElementById('markdown-preview-meta');
+  var previewTitle = document.getElementById('markdown-preview-article-title');
+  var previewContent = document.getElementById('markdown-preview-content');
   var assetFilesInput = document.getElementById('asset-files');
   var assetUploadButton = document.getElementById('asset-upload');
   var assetKeywordInput = document.getElementById('asset-keyword');
@@ -183,6 +189,180 @@
     if (!button.dataset.label) button.dataset.label = button.textContent;
     button.disabled = submitting;
     button.textContent = submitting ? '正在提交…' : button.dataset.label;
+  }
+
+  function escapeHtml(value) {
+    return String(value || '').replace(/[&<>'"]/g, function (character) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[character];
+    });
+  }
+
+  function safePreviewUrl(value) {
+    var url = String(value || '').trim();
+    return /^(?:https?:\/\/|\/|(?:\.\.\/)?assets\/)/i.test(url) ? url : '';
+  }
+
+  function renderInlineMarkdown(value) {
+    var tokens = [];
+    function token(html) {
+      var placeholder = '@@MARKDOWN_TOKEN_' + tokens.length + '@@';
+      tokens.push(html);
+      return placeholder;
+    }
+    var text = escapeHtml(value);
+    text = text.replace(/`([^`]+)`/g, function (_, code) { return token('<code>' + code + '</code>'); });
+    text = text.replace(/!\[([^\]]*)\]\(([^\s)]+)\)/g, function (_, alt, url) {
+      var safeUrl = safePreviewUrl(url);
+      return safeUrl ? token('<img src="' + safeUrl + '" alt="' + alt + '">') : alt;
+    });
+    text = text.replace(/\[([^\]]+)\]\(([^\s)]+)\)/g, function (_, label, url) {
+      var safeUrl = safePreviewUrl(url);
+      return safeUrl ? token('<a href="' + safeUrl + '" target="_blank" rel="noopener">' + label + '</a>') : label;
+    });
+    text = text.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    text = text.replace(/~~([^~]+)~~/g, '<del>$1</del>');
+    text = text.replace(/(^|[^*])\*([^*]+)\*/g, '$1<em>$2</em>');
+    tokens.forEach(function (html, index) {
+      text = text.replace('@@MARKDOWN_TOKEN_' + index + '@@', html);
+    });
+    return text;
+  }
+
+  function splitTableRow(line) {
+    var source = String(line || '').trim();
+    if (source.charAt(0) === '|') source = source.slice(1);
+    if (source.charAt(source.length - 1) === '|') source = source.slice(0, -1);
+    var cells = [];
+    var current = '';
+    var inCode = false;
+    for (var index = 0; index < source.length; index += 1) {
+      var character = source.charAt(index);
+      if (character === '`') inCode = !inCode;
+      if (character === '|' && !inCode && source.charAt(index - 1) !== '\\') {
+        cells.push(current.trim());
+        current = '';
+      } else {
+        current += character;
+      }
+    }
+    cells.push(current.trim());
+    return cells;
+  }
+
+  function isTableDivider(line) {
+    var cells = splitTableRow(line);
+    return cells.length > 0 && cells.every(function (cell) { return /^:?-{3,}:?$/.test(cell); });
+  }
+
+  function isListLine(line) {
+    return /^\s*(?:[-+*]|\d+\.)\s+/.test(line);
+  }
+
+  function isBlockStart(lines, index) {
+    var line = String(lines[index] || '');
+    return /^\s*```/.test(line) || /^\s{0,3}#{1,6}\s+/.test(line) || /^\s*>/.test(line)
+      || /^\s*(?:[-+*]|\d+\.)\s+/.test(line) || /^\s*(?:-{3,}|\*{3,}|_{3,})\s*$/.test(line)
+      || (index + 1 < lines.length && line.includes('|') && isTableDivider(lines[index + 1]));
+  }
+
+  function renderMarkdown(markdown) {
+    var lines = String(markdown || '').replace(/\r\n?/g, '\n').split('\n');
+    var html = [];
+    var cursor = 0;
+    while (cursor < lines.length) {
+      var line = lines[cursor];
+      if (!line.trim()) {
+        cursor += 1;
+        continue;
+      }
+      var fence = /^\s*```([^\s]*)/.exec(line);
+      if (fence) {
+        var code = [];
+        cursor += 1;
+        while (cursor < lines.length && !/^\s*```/.test(lines[cursor])) {
+          code.push(lines[cursor]);
+          cursor += 1;
+        }
+        if (cursor < lines.length) cursor += 1;
+        html.push('<pre><code' + (fence[1] ? ' class="language-' + escapeHtml(fence[1]) + '"' : '') + '>' + escapeHtml(code.join('\n')) + '</code></pre>');
+        continue;
+      }
+      var heading = /^\s{0,3}(#{1,6})\s+(.+?)\s*#*\s*$/.exec(line);
+      if (heading) {
+        var level = heading[1].length;
+        html.push('<h' + level + '>' + renderInlineMarkdown(heading[2]) + '</h' + level + '>');
+        cursor += 1;
+        continue;
+      }
+      if (/^\s*(?:-{3,}|\*{3,}|_{3,})\s*$/.test(line)) {
+        html.push('<hr>');
+        cursor += 1;
+        continue;
+      }
+      if (line.includes('|') && cursor + 1 < lines.length && isTableDivider(lines[cursor + 1])) {
+        var headers = splitTableRow(line);
+        var rows = [];
+        cursor += 2;
+        while (cursor < lines.length && lines[cursor].trim() && lines[cursor].includes('|')) {
+          rows.push(splitTableRow(lines[cursor]));
+          cursor += 1;
+        }
+        html.push('<table><thead><tr>' + headers.map(function (cell) { return '<th>' + renderInlineMarkdown(cell) + '</th>'; }).join('') + '</tr></thead><tbody>'
+          + rows.map(function (cells) { return '<tr>' + headers.map(function (_, index) { return '<td>' + renderInlineMarkdown(cells[index] || '') + '</td>'; }).join('') + '</tr>'; }).join('')
+          + '</tbody></table>');
+        continue;
+      }
+      if (/^\s*>/.test(line)) {
+        var quote = [];
+        while (cursor < lines.length && /^\s*>/.test(lines[cursor])) {
+          quote.push(lines[cursor].replace(/^\s*>\s?/, ''));
+          cursor += 1;
+        }
+        html.push('<blockquote><p>' + renderInlineMarkdown(quote.join(' ')) + '</p></blockquote>');
+        continue;
+      }
+      if (isListLine(line)) {
+        var ordered = /^\s*\d+\.\s+/.test(line);
+        var items = [];
+        var listExpression = ordered ? /^\s*\d+\.\s+(.+)$/ : /^\s*[-+*]\s+(.+)$/;
+        while (cursor < lines.length) {
+          var item = listExpression.exec(lines[cursor]);
+          if (!item) break;
+          items.push('<li>' + renderInlineMarkdown(item[1]) + '</li>');
+          cursor += 1;
+        }
+        html.push((ordered ? '<ol>' : '<ul>') + items.join('') + (ordered ? '</ol>' : '</ul>'));
+        continue;
+      }
+      var paragraph = [line.trim()];
+      cursor += 1;
+      while (cursor < lines.length && lines[cursor].trim() && !isBlockStart(lines, cursor)) {
+        paragraph.push(lines[cursor].trim());
+        cursor += 1;
+      }
+      html.push('<p>' + renderInlineMarkdown(paragraph.join(' ')) + '</p>');
+    }
+    return html.join('');
+  }
+
+  function refreshMarkdownPreview() {
+    var form = articleForm.elements;
+    var meta = [form.date.value, form.category.value].concat(form.tags.value.split(/[,，]/).map(function (tag) { return tag.trim(); }).filter(Boolean));
+    previewMeta.textContent = meta.filter(Boolean).join(' · ');
+    previewTitle.textContent = form.title.value.trim() || '未填写标题';
+    previewContent.innerHTML = renderMarkdown(form.content.value);
+  }
+
+  function openMarkdownPreview() {
+    refreshMarkdownPreview();
+    markdownPreview.hidden = false;
+    openPreviewButton.textContent = '刷新预览';
+    markdownPreview.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function closeMarkdownPreview() {
+    markdownPreview.hidden = true;
+    openPreviewButton.textContent = '预览正文';
   }
 
   function setAssetNotice(message, type) {
@@ -448,6 +628,16 @@
   createModeButton.addEventListener('click', function () { setMode('create'); });
   editModeButton.addEventListener('click', function () { setMode('edit'); });
   loadArticleButton.addEventListener('click', loadSelectedArticle);
+  openPreviewButton.addEventListener('click', openMarkdownPreview);
+  closePreviewButton.addEventListener('click', closeMarkdownPreview);
+  ['title', 'category', 'tags', 'date', 'content'].forEach(function (name) {
+    articleForm.elements[name].addEventListener('input', function () {
+      if (!markdownPreview.hidden) refreshMarkdownPreview();
+    });
+    articleForm.elements[name].addEventListener('change', function () {
+      if (!markdownPreview.hidden) refreshMarkdownPreview();
+    });
+  });
   assetSearchButton.addEventListener('click', searchAssets);
   assetUploadButton.addEventListener('click', uploadSelectedAssets);
   assetKeywordInput.addEventListener('keydown', function (event) {

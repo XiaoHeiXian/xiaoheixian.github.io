@@ -56,6 +56,17 @@
             <label>发布日期<input name="date" type="date" required></label>
           </div>
           <label>正文<textarea name="content" rows="22" placeholder="从正文开始写，不需要 Front Matter。" required></textarea></label>
+          <section class="markdown-preview" id="markdown-preview" hidden aria-labelledby="markdown-preview-title">
+            <div class="markdown-preview-heading">
+              <h2 id="markdown-preview-title">文章预览</h2>
+              <button id="close-markdown-preview" type="button">返回编辑</button>
+            </div>
+            <article class="article-content" id="markdown-preview-article">
+              <p class="article-meta" id="markdown-preview-meta"></p>
+              <h1 id="markdown-preview-article-title">未填写标题</h1>
+              <div id="markdown-preview-content"></div>
+            </article>
+          </section>
           <section class="asset-library" aria-labelledby="asset-library-title">
             <div class="asset-library-heading">
               <h2 id="asset-library-title">素材</h2>
@@ -78,6 +89,7 @@
           </section>
           <div class="publish-actions">
             <button id="save-draft" type="button">保存草稿</button>
+            <button id="open-markdown-preview" type="button">预览正文</button>
             <button class="publish-primary" id="publish-submit" type="submit" data-label="发布文章">发布文章</button>
             <button id="publish-delete" type="button" class="publish-danger" hidden>删除文章</button>
             <button id="publish-logout" type="button" class="publish-quiet">退出</button>
