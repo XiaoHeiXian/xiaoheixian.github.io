@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-03-springboot-autoconfig",
+    "title": "Spring Boot的自动配置原理",
+    "url": "posts/2026-09-03-springboot-autoconfig.html",
+    "publishedAt": "2026-09-03",
+    "category": "Spring",
+    "tags": [
+      "Spring Boot",
+      "自动配置",
+      "源码"
+    ],
+    "summary": "启动类`@EnableAutoConfiguration`从`META-INF/spring.factories`加载配置类，结合`@Conditional`条件注解按需创建Bean。"
+  },
+  {
     "id": "2026-09-03-hashmap-underlying",
     "title": "Java中HashMap的底层实现原理和扩容机制是什么？",
     "url": "posts/2026-09-03-hashmap-underlying.html",
