@@ -1,5 +1,16 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-23-microservices-architecture",
+    "title": "微服务架构",
+    "url": "posts/2026-09-23-microservices-architecture.html",
+    "publishedAt": "2026-09-23",
+    "category": "软件架构",
+    "tags": [
+      "微服务"
+    ],
+    "summary": "- \"SOA：面向服务架构，通过可复用服务实现互操作\"   - \"SOA特点：松耦合、服务复用、标准化接口、自治性、可组合性\"   - \"微服务：SOA演进，功能模块拆分为高度自治的小型服务\"   - \"微服务核心：独立部署、独立数据库、轻量级通信(HTTP API)\"   - \"微服务组成：注册发现、网关、服务、缓存、负载均衡、配置中心、权限控制\""
+  },
+  {
     "id": "2026-09-23-cluster-architecture",
     "title": "集群架构",
     "url": "posts/2026-09-23-cluster-architecture.html",
