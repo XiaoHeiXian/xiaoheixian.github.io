@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-24-nacos-config-center",
+    "title": "Nacos 配置中心",
+    "url": "posts/2026-09-24-nacos-config-center.html",
+    "publishedAt": "2026-09-24",
+    "category": "微服务架构",
+    "tags": [
+      "SpringCloud",
+      "微服务",
+      "Nacos"
+    ],
+    "summary": "- \"定义：集中托管、动态更新、安全管控各类应用配置\"   - \"核心功能：集中管理、动态更新、版本控制与审计、权限治理\"   - \"应用场景：微服务架构、灰度发布、多环境协同\"   - \"原理：长轮询机制，客户端拉取+服务端推送(UDP/HTTP)\"   - \"服务端架构：持久化存储(MySQL/Derby)，Config Service模块，Raft"
+  },
+  {
     "id": "2026-09-24-nacos-registry",
     "title": "Nacos 注册中心",
     "url": "posts/2026-09-24-nacos-registry.html",
