@@ -1,5 +1,17 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-24-spring-cloud-alibaba-setup",
+    "title": "Spring Cloud 环境搭建",
+    "url": "posts/2026-09-24-spring-cloud-alibaba-setup.html",
+    "publishedAt": "2026-09-24",
+    "category": "微服务架构",
+    "tags": [
+      "微服务",
+      "Spring Cloud"
+    ],
+    "summary": "- \"版本适配：Spring Boot/Cloud/Alibaba 三者版本必须严格匹配\"   - \"推荐稳定组合：Boot 3.2.4 + Cloud 2023.0.1 + Alibaba 2023.0.1.0\"   - \"版本选择：优先选择稳定版（Stable Release），避免 RC 版\"   - \"历史项目维护：升级需同步更新三大组件，避免版"
+  },
+  {
     "id": "2026-09-24-spring-cloud-alibaba",
     "title": "SpringCloud Alibaba",
     "url": "posts/2026-09-24-spring-cloud-alibaba.html",
