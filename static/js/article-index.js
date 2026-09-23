@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-24-nacos-registry-config-center",
+    "title": "Nacos 注册与配置中心",
+    "url": "posts/2026-09-24-nacos-registry-config-center.html",
+    "publishedAt": "2026-09-24",
+    "category": "微服务架构",
+    "tags": [
+      "SpringCloud",
+      "微服务",
+      "Nacos"
+    ],
+    "summary": "- \"定义：面向云原生应用的动态服务发现、配置管理与治理平台\"   - \"核心功能：服务发现与健康监测（TCP/PING/HTTP/MySQL）\"   - \"核心功能：动态配置管理（实时推送，无需重启）\"   - \"核心功能：动态 DNS 与流量治理、服务元数据管理\"   - \"架构优势：高可用（双集群流量迁移）、多协议、弹性扩展\"   - \"部署：支持"
+  },
+  {
     "id": "2026-09-24-spring-cloud-alibaba-setup",
     "title": "Spring Cloud 环境搭建",
     "url": "posts/2026-09-24-spring-cloud-alibaba-setup.html",
