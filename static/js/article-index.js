@@ -1,5 +1,16 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-23-sharding",
+    "title": "分库分表",
+    "url": "posts/2026-09-23-sharding.html",
+    "publishedAt": "2026-09-23",
+    "category": "数据架构",
+    "tags": [
+      "分库分表"
+    ],
+    "summary": "- \"目标：解决单机数据库五大瓶颈（存储、I/O、网络、CPU、连接）\"   - \"垂直拆分-分库：按业务模块划分（如用户库、商品库、订单库）\"   - \"垂直拆分-分表：冷热字段分离，大字段（BLOB/TEXT）独立建表\"   - \"水平拆分：同业务数据分散到多实例，通过哈希或ID等属性路由\"   - \"分表参考阈值：500万内优化SQL，超500万考"
+  },
+  {
     "id": "2026-09-23-mysql-master-slave",
     "title": "主从读写",
     "url": "posts/2026-09-23-mysql-master-slave.html",
