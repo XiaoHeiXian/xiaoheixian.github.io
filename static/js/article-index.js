@@ -1,5 +1,16 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-23-high-speed-cache",
+    "title": "高速缓存",
+    "url": "posts/2026-09-23-high-speed-cache.html",
+    "publishedAt": "2026-09-23",
+    "category": "数据架构",
+    "tags": [
+      "高速缓存"
+    ],
+    "summary": "- \"高并发方案：缓存、限流、降级\"   - \"缓存原理：先查缓存，未命中查库并回写\"   - \"方案1：反向代理缓存（Nginx/Varnish/Squid）\"   - \"方案2：分布式缓存（Redis/Memcached/Hazelcast）\"   - \"方案3：本地缓存（Caffeine/Guava/Ehcache）\"   - \"多级缓存架构：客户"
+  },
+  {
     "id": "2026-09-23-sharding",
     "title": "分库分表",
     "url": "posts/2026-09-23-sharding.html",
