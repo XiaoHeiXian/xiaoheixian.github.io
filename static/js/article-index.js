@@ -1,5 +1,16 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-23-single-database-architecture",
+    "title": "单数据库",
+    "url": "posts/2026-09-23-single-database-architecture.html",
+    "publishedAt": "2026-09-23",
+    "category": "数据架构",
+    "tags": [
+      "单数据库"
+    ],
+    "summary": "- \"定义：一个应用只使用一个数据库服务器\"   - \"连接：Tomcat 直接通过 JDBC 连接单库\"   - \"痛点：读写扎堆，IO/CPU 性能很快达到上限\"   - \"瓶颈1：连接池耗尽（解法：合理配置连接池参数）\"   - \"瓶颈2：SQL 效率低（解法：优化索引，避免函数致索引失效）\"   - \"瓶颈3：并发冲突（解法：乐观/悲观锁，控制事"
+  },
+  {
     "id": "2026-09-23-microservices-architecture",
     "title": "微服务架构",
     "url": "posts/2026-09-23-microservices-architecture.html",
