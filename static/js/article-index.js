@@ -1,5 +1,16 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-23-middle-platform-architecture",
+    "title": "中台架构",
+    "url": "posts/2026-09-23-middle-platform-architecture.html",
+    "publishedAt": "2026-09-23",
+    "category": "软件架构",
+    "tags": [
+      "中台"
+    ],
+    "summary": "中台通过抽象和解耦，将后台通用模块抽离为自治服务供前台复用，分为业务、数据、技术、研发、组织、智能中台等类型，旨在避免重复建设，实现前台快速响应需求与后台稳定的平衡。"
+  },
+  {
     "id": "2026-09-23-monolithic-architecture",
     "title": "单体架构",
     "url": "posts/2026-09-23-monolithic-architecture.html",
