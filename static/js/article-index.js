@@ -1,5 +1,16 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-23-mysql-master-slave",
+    "title": "主从读写",
+    "url": "posts/2026-09-23-mysql-master-slave.html",
+    "publishedAt": "2026-09-23",
+    "category": "数据架构",
+    "tags": [
+      "主从读写"
+    ],
+    "summary": "- \"主从复制：允许从库复制主库数据，提升读性能和可用性\"   - \"复制三步：主库写Binlog -> 从库IOthread读并写Relay Log -> 从库SQLthread重放\"   - \"读写分离：读请求发从库，写请求发主库\"   - \"模式1：一主多从（主库写，从库读，但主库宕机无法写入）\"   - \"模式2：双主多从（互为主从，解决单点故障"
+  },
+  {
     "id": "2026-09-23-single-database-architecture",
     "title": "单数据库",
     "url": "posts/2026-09-23-single-database-architecture.html",
