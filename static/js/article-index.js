@@ -1,5 +1,16 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-23-cluster-architecture",
+    "title": "集群架构",
+    "url": "posts/2026-09-23-cluster-architecture.html",
+    "publishedAt": "2026-09-23",
+    "category": "软件架构",
+    "tags": [
+      "集群"
+    ],
+    "summary": "- \"背景：单机扛不住高并发（如商品190万，订单180万QPS），分布式拆分后单节点仍可能撑不住\"   - \"定义：同一业务部署到多台服务器上，组成整体\"   - \"核心：节点运行相同程序，提供相同功能，由负载均衡器统一分发\"   - \"特点1：可扩展性（动态加机器，水平扩展）\"   - \"特点2：高可用性（故障节点被其他节点接管）\"   - \"负载均"
+  },
+  {
     "id": "2026-09-23-distributed-architecture",
     "title": "分布式架构",
     "url": "posts/2026-09-23-distributed-architecture.html",
