@@ -1,5 +1,17 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-24-spring-cloud-alibaba",
+    "title": "SpringCloud Alibaba",
+    "url": "posts/2026-09-24-spring-cloud-alibaba.html",
+    "publishedAt": "2026-09-24",
+    "category": "微服务架构",
+    "tags": [
+      "SpringCloud",
+      "微服务"
+    ],
+    "summary": "- \"背景：阿里开源，2018年加入Spring Cloud官方生态\"   - \"核心组件：Nacos(注册/配置)、Gateway(网关)、OpenFeign(调用)\"   - \"核心组件：Sentinel(限流/熔断)、Seata(分布式事务)、RocketMQ(消息)\"   - \"核心组件：Dubbo(RPC)、OSS(存储)\"   - \"特点：整"
+  },
+  {
     "id": "2026-09-23-database-diversification",
     "title": "数据库多样化",
     "url": "posts/2026-09-23-database-diversification.html",
