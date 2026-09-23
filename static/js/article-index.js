@@ -1,5 +1,16 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-23-monolithic-architecture",
+    "title": "单体架构",
+    "url": "posts/2026-09-23-monolithic-architecture.html",
+    "publishedAt": "2026-09-23",
+    "category": "软件架构",
+    "tags": [
+      "单体"
+    ],
+    "summary": "单体架构凭借“单服务器、部署易”的优势快速落地。然而，随着业务演进，它逐渐成为团队的噩梦：无法应对高负载、代码重复开发、牵一发而动全身的公共 API 变更导致交付效率急剧下降。"
+  },
+  {
     "id": "2026-09-03-springboot-autoconfig",
     "title": "Spring Boot的自动配置原理",
     "url": "posts/2026-09-03-springboot-autoconfig.html",
