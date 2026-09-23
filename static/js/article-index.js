@@ -1,5 +1,16 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-23-distributed-architecture",
+    "title": "分布式架构",
+    "url": "posts/2026-09-23-distributed-architecture.html",
+    "publishedAt": "2026-09-23",
+    "category": "软件架构",
+    "tags": [
+      "分布式"
+    ],
+    "summary": "单机QPS达瓶颈(如百万级) -> 拆分服务/水平扩展 -> 分布式。核心定义：多节点网络协作，资源分散共享。两大特点：独立部署(网络通信)、独立运行(高可用/易扩容)。两大通信方式：1. RPC(同步,像调本地方法,隐藏网络细节,场景:需获取结果)；2. 消息传递MQ(异步,发布订阅,场景:解耦/削峰/无需立即获取结果)。同步注册(等3秒) vs 异步写M"
+  },
+  {
     "id": "2026-09-23-middle-platform-architecture",
     "title": "中台架构",
     "url": "posts/2026-09-23-middle-platform-architecture.html",
