@@ -1,5 +1,16 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-23-database-diversification",
+    "title": "数据库多样化",
+    "url": "posts/2026-09-23-database-diversification.html",
+    "publishedAt": "2026-09-23",
+    "category": "数据架构",
+    "tags": [
+      "数据库多样化"
+    ],
+    "summary": "- \"核心架构：MySQL(存储) + Redis(缓存) + Elasticsearch(检索) + Druid(分析)\"   - \"关系型(RDBMS)：表格/外键/事务，代表：MySQL/PostgreSQL/Oracle\"   - \"非关系型(NoSQL)：灵活模式，高扩展，代表：Redis/MongoDB/Cassandra/Neo4j\""
+  },
+  {
     "id": "2026-09-23-high-speed-cache",
     "title": "高速缓存",
     "url": "posts/2026-09-23-high-speed-cache.html",
