@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-24-nacos-registry",
+    "title": "Nacos 注册中心",
+    "url": "posts/2026-09-24-nacos-registry.html",
+    "publishedAt": "2026-09-24",
+    "category": "微服务架构",
+    "tags": [
+      "SpringCloud",
+      "微服务",
+      "Nacos"
+    ],
+    "summary": "- \"定位：微服务架构中高效可靠的注册中心解决方案\"   - \"服务注册：客户端发送请求(服务名/IP/端口/元数据)，服务端写入注册表并同步集群\"   - \"服务发现：客户端订阅，服务端返回健康实例，动态推送变更(长轮询/UDP)\"   - \"健康检查：客户端心跳(5秒间隔，15秒超时，30秒剔除) + 服务端主动探测\"   - \"使用实战：引入dis"
+  },
+  {
     "id": "2026-09-24-nacos-registry-config-center",
     "title": "Nacos 注册与配置中心",
     "url": "posts/2026-09-24-nacos-registry-config-center.html",
