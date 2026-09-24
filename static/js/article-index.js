@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-24-gateway-integrate-knife4j",
+    "title": "Gateway 整合 Knife4j",
+    "url": "posts/2026-09-24-gateway-integrate-knife4j.html",
+    "publishedAt": "2026-09-24",
+    "category": "微服务架构",
+    "tags": [
+      "SpringCloud",
+      "微服务",
+      "网关",
+      "Knife4j"
+    ],
+    "summary": "- \"核心目的：解决微服务架构中接口文档分散的问题\"   - \"统一聚合：只需访问网关的文档地址，即可查看所有服务的接口\"   - \"版本要求：Knife4j从v4.0开始提供专门针对Gateway的聚合组件\"   - \"整合步骤：加入依赖(knife4j-gateway-spring-boot-starter)\"   - \"配置前先删除微服务私有的Kn"
+  },
+  {
     "id": "2026-09-24-gateway-authorization",
     "title": "Gateway 权限控制",
     "url": "posts/2026-09-24-gateway-authorization.html",
