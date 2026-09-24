@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-24-gateway-authorization",
+    "title": "Gateway 权限控制",
+    "url": "posts/2026-09-24-gateway-authorization.html",
+    "publishedAt": "2026-09-24",
+    "category": "微服务架构",
+    "tags": [
+      "SpringCloud",
+      "微服务",
+      "网关",
+      "权限控制"
+    ],
+    "summary": "- \"微服务修正：删除API前缀，禁用微服务拦截器，修正返回值拦截器\"   - \"请求流程：客户端 -> Gateway(RtGlobalFilter -> AuthGlobalFilter) -> 微服务 -> Gateway(RtGlobalFilter) -> 客户端\"   - \"全局过滤器 RtGlobalFilter：记录请求开始/结束时间、U"
+  },
+  {
     "id": "2026-09-24-spring-cloud-gateway-routing",
     "title": "Gateway 路由",
     "url": "posts/2026-09-24-spring-cloud-gateway-routing.html",
