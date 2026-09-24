@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-24-spring-cloud-gateway-routing",
+    "title": "Gateway 路由",
+    "url": "posts/2026-09-24-spring-cloud-gateway-routing.html",
+    "publishedAt": "2026-09-24",
+    "category": "微服务架构",
+    "tags": [
+      "SpringCloud",
+      "微服务",
+      "网关"
+    ],
+    "summary": "- \"路由四要素：id(唯一标识)、uri(目标地址)、predicates(断言)、filters(过滤器)\"   - \"内置断言工厂：Path、Method、Header、Cookie、Query、时间、Host\"   - \"断言规则：多个断言之间是 AND 关系，需全部满足\"   - \"Path断言作用：请求路由、服务隔离、对外屏蔽内部结构\""
+  },
+  {
     "id": "2026-09-24-spring-cloud-gateway",
     "title": "Gateway 网关",
     "url": "posts/2026-09-24-spring-cloud-gateway.html",
