@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-24-spring-cloud-gateway",
+    "title": "Gateway 网关",
+    "url": "posts/2026-09-24-spring-cloud-gateway.html",
+    "publishedAt": "2026-09-24",
+    "category": "微服务架构",
+    "tags": [
+      "SpringCloud",
+      "微服务",
+      "网关"
+    ],
+    "summary": "- \"定位：微服务架构的“守门神”，所有请求的统一入口\"   - \"功能1：请求路由（根据URL/请求头转发，解耦客户端与微服务）\"   - \"功能2：权限控制（统一鉴权，拦截未授权请求）\"   - \"功能3：流量控制（限流，保护后端服务免受压垮）\"   - \"技术选型：Spring Cloud Gateway（响应式编程，性能优于Zuul）\"   -"
+  },
+  {
     "id": "2026-09-24-nacos-config-center",
     "title": "Nacos 配置中心",
     "url": "posts/2026-09-24-nacos-config-center.html",
