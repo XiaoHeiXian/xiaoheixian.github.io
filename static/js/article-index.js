@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-26-openfeign-remote-call",
+    "title": "OpenFeign 远程调用的实现",
+    "url": "posts/2026-09-26-openfeign-remote-call.html",
+    "publishedAt": "2026-09-26",
+    "category": "微服务架构",
+    "tags": [
+      "SpringCloud",
+      "微服务",
+      "OpenFeign"
+    ],
+    "summary": "- \"调用基本流程：提供者注册 -> 暴露接口 -> 消费者订阅 -> Feign 自动调用\"   - \"整体方案：模型集中管理 + 调用客户端集中管理\"   - \"模型集中管理：消除冗余、统一口径、全局复用\"   - \"客户端集中管理：统一接口定义、统一配置、统一拦截与熔断\"   - \"实战依赖：引入 openfeign 和 loadbalancer"
+  },
+  {
     "id": "2026-09-26-openfeign-vs-grpc",
     "title": "OpenFeign 与 gRPC",
     "url": "posts/2026-09-26-openfeign-vs-grpc.html",
