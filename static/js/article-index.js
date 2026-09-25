@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-26-openfeign-loadbalancer",
+    "title": "OpenFeign 负载均衡",
+    "url": "posts/2026-09-26-openfeign-loadbalancer.html",
+    "publishedAt": "2026-09-26",
+    "category": "微服务架构",
+    "tags": [
+      "SpringCloud",
+      "微服务",
+      "OpenFeign",
+      "负载均衡"
+    ],
+    "summary": "- \"定义：将负载（工作任务、访问请求）分摊到多个操作单元执行\"   - \"服务端负载均衡：发生在服务提供者一方（如 Nginx）\"   - \"客户端负载均衡：发生在服务请求方（如 OpenFeign）\"   - \"OpenFeign 依赖 Spring Cloud LoadBalancer 完成负载均衡\"   - \"策略1：轮询 (RoundRobin"
+  },
+  {
     "id": "2026-09-26-openfeign-remote-call",
     "title": "OpenFeign 远程调用的实现",
     "url": "posts/2026-09-26-openfeign-remote-call.html",
