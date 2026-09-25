@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-26-sentinel-circuit-breaker",
+    "title": "Sentinel 熔断降级",
+    "url": "posts/2026-09-26-sentinel-circuit-breaker.html",
+    "publishedAt": "2026-09-26",
+    "category": "微服务架构",
+    "tags": [
+      "SpringCloud",
+      "微服务",
+      "Sentinel",
+      "熔断"
+    ],
+    "summary": "- \"定义：防止服务雪崩的核心容错机制，自动切断调用链路，执行兜底降级逻辑\"   - \"熔断类比：电路短路保险丝熔断，保护整机\"   - \"触发条件1：慢调用比例，请求耗时超过最大RT比例达标\"   - \"触发条件2：异常比例，接口报错比例达标\"   - \"触发条件3：异常数，短时间异常请求数量达标\"   - \"熔断后表现：不执行业务代码、返回兜底提示、"
+  },
+  {
     "id": "2026-09-25-jmeter-guide",
     "title": "JMeter 使用说明",
     "url": "posts/2026-09-25-jmeter-guide.html",
