@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-26-openfeign-vs-grpc",
+    "title": "OpenFeign 与 gRPC",
+    "url": "posts/2026-09-26-openfeign-vs-grpc.html",
+    "publishedAt": "2026-09-26",
+    "category": "微服务架构",
+    "tags": [
+      "SpringCloud",
+      "微服务",
+      "远程调用"
+    ],
+    "summary": "- \"OpenFeign：声明式 HTTP 客户端，简化 RESTful 调用\"   - \"OpenFeign优点：代码简洁、开发效率高、深度集成 Spring Cloud\"   - \"OpenFeign缺点：仅支持 HTTP/REST，性能低于二进制协议\"   - \"gRPC：Google 开源的高性能 RPC 框架，基于 HTTP/2 和 Proto"
+  },
+  {
     "id": "2026-09-24-gateway-integrate-knife4j",
     "title": "Gateway 整合 Knife4j",
     "url": "posts/2026-09-24-gateway-integrate-knife4j.html",
