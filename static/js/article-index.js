@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-26-sentinel-flow-control",
+    "title": "Sentinel 流量控制与熔断降级",
+    "url": "posts/2026-09-26-sentinel-flow-control.html",
+    "publishedAt": "2026-09-26",
+    "category": "微服务架构",
+    "tags": [
+      "SpringCloud",
+      "微服务",
+      "Sentinel"
+    ],
+    "summary": "- \"什么是服务雪崩：下游故障导致上游资源耗尽，逐级瘫痪\"   - \"根本原因：链式依赖、资源未释放、级联扩散\"   - \"解决方案：超时处理、线程隔离、熔断降级、流量控制\"   - \"Sentinel定义：阿里开源的轻量级流量控制、熔断降级、容错防护组件\"   - \"核心能力：流量控制、熔断降级、系统自适应保护、热点限流、统一兜底降级\"   - \"环境"
+  },
+  {
     "id": "2026-09-26-openfeign-interceptor",
     "title": "OpenFeign 拦截器",
     "url": "posts/2026-09-26-openfeign-interceptor.html",
