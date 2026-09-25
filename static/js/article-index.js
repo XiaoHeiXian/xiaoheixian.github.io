@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-26-openfeign-interceptor",
+    "title": "OpenFeign 拦截器",
+    "url": "posts/2026-09-26-openfeign-interceptor.html",
+    "publishedAt": "2026-09-26",
+    "category": "微服务架构",
+    "tags": [
+      "SpringCloud",
+      "微服务",
+      "OpenFeign"
+    ],
+    "summary": "- \"背景问题：Spring MVC请求头仅保存在ThreadLocal，Feign调用默认不复制上游请求头\"   - \"解决方案：使用OpenFeign拦截器透传请求头，实现全链路透传\"   - \"核心场景：统一鉴权(Token)、链路追踪(traceId)、解决跨服务Header丢失、统一预处理限流\"   - \"核心接口：RequestInterce"
+  },
+  {
     "id": "2026-09-26-openfeign-loadbalancer",
     "title": "OpenFeign 负载均衡",
     "url": "posts/2026-09-26-openfeign-loadbalancer.html",
