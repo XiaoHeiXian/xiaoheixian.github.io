@@ -41,7 +41,7 @@ window.BLOG_ARTICLES = [
   },
   {
     "id": "2026-09-26-sentinel-flow-control",
-    "title": "Sentinel 流量控制与熔断降级",
+    "title": "Sentinel",
     "url": "posts/2026-09-26-sentinel-flow-control.html",
     "publishedAt": "2026-09-26",
     "category": "微服务架构",
