@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-25-jmeter-guide",
+    "title": "JMeter 使用说明",
+    "url": "posts/2026-09-25-jmeter-guide.html",
+    "publishedAt": "2026-09-25",
+    "category": "微服务架构",
+    "tags": [
+      "JMeter",
+      "测试",
+      "Sentinel"
+    ],
+    "summary": "- \"JMeter简介：开源压力测试工具，图形化操作，验证Sentinel流控规则\"   - \"安装启动：官网下载zip，解压免安装，运行jmeter.bat/sh\"   - \"步骤1：创建测试计划（线程组）\"   - \"步骤2：添加HTTP请求（配置接口信息）\"   - \"步骤3：携带鉴权头（HTTP信息头管理器）\"   - \"步骤4：添加断言（响应断"
+  },
+  {
     "id": "2026-09-26-sentinel-flow-control2",
     "title": "Sentinel 流量控制",
     "url": "posts/2026-09-26-sentinel-flow-control2.html",
