@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-26-sentinel-flow-control2",
+    "title": "Sentinel 流量控制",
+    "url": "posts/2026-09-26-sentinel-flow-control2.html",
+    "publishedAt": "2026-09-26",
+    "category": "微服务架构",
+    "tags": [
+      "SpringCloud",
+      "微服务",
+      "Sentinel"
+    ],
+    "summary": "- \"定义：对请求流量进行拦截、限速、排队、拒绝，避免打垮服务\"   - \"流控规则：资源名 + 阈值类型(QPS/并发线程) + 流控模式(直接/关联/链路) + 流控效果(快速失败/Warm Up/排队等待)\"   - \"阈值类型1：QPS，限制每秒请求数，防突发高并发\"   - \"阈值类型2：并发线程数，限制同时处理的工作线程数\"   - \"流控模"
+  },
+  {
     "id": "2026-09-26-sentinel-flow-control",
     "title": "Sentinel 流量控制与熔断降级",
     "url": "posts/2026-09-26-sentinel-flow-control.html",
