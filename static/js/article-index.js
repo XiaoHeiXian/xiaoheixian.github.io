@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-26-sentinel-hot-param-flow",
+    "title": "Sentinel 热点参数限流",
+    "url": "posts/2026-09-26-sentinel-hot-param-flow.html",
+    "publishedAt": "2026-09-26",
+    "category": "微服务架构",
+    "tags": [
+      "SpringCloud",
+      "微服务",
+      "Sentinel",
+      "热点参数限流"
+    ],
+    "summary": "- \"定义：流量控制的一种特例，流控控制资源，热点参数限流控制参数\"   - \"热点：高频访问的参数值（爆款商品ID、热门直播间ID、高频用户ID等）\"   - \"作用：对单个参数值单独限流，只拦截高频访问的热点参数，不影响其他普通参数\"   - \"区别：全局限流（整接口总QPS，参数共享阈值） vs 热点参数限流（每个参数独立统计）\"   - \"底层原"
+  },
+  {
     "id": "2026-09-26-sentinel-circuit-breaker",
     "title": "Sentinel 熔断降级",
     "url": "posts/2026-09-26-sentinel-circuit-breaker.html",
