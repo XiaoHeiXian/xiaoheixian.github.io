@@ -27,7 +27,7 @@ window.BLOG_ARTICLES = [
   },
   {
     "id": "2026-09-26-openfeign-sentinel-fallback",
-    "title": "OpenFeign 远程调用熔断降级",
+    "title": "sentinel 之 Feign 远程调用熔断降级",
     "url": "posts/2026-09-26-openfeign-sentinel-fallback.html",
     "publishedAt": "2026-09-26",
     "category": "微服务架构",

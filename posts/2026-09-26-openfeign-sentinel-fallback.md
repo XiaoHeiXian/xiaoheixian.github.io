@@ -1,6 +1,6 @@
 ---
 layout: article
-title: "OpenFeign 远程调用熔断降级"
+title: "sentinel 之 Feign 远程调用熔断降级"
 description: "- \"雪崩问题：下游服务超时/宕机导致上游线程阻塞，资源耗尽引发连锁故障\"   - \"Sentinel方案：检测下游故障达阈值后，切断调用，执行兜底，释放线程\"   - \"开启降级：配置 feign.sentinel.enabled: true\"   - \"兜底方法1：fallback，接口粒度独立兜底，适用多业务模块不同返回\"   - \"兜底方法2：F"
 date: 2026-09-26
 category: "微服务架构"
