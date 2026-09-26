@@ -1,5 +1,20 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-26-openfeign-sentinel-fallback",
+    "title": "OpenFeign 远程调用熔断降级",
+    "url": "posts/2026-09-26-openfeign-sentinel-fallback.html",
+    "publishedAt": "2026-09-26",
+    "category": "微服务架构",
+    "tags": [
+      "SpringCloud",
+      "微服务",
+      "OpenFeign",
+      "Sentinel",
+      "熔断"
+    ],
+    "summary": "- \"雪崩问题：下游服务超时/宕机导致上游线程阻塞，资源耗尽引发连锁故障\"   - \"Sentinel方案：检测下游故障达阈值后，切断调用，执行兜底，释放线程\"   - \"开启降级：配置 feign.sentinel.enabled: true\"   - \"兜底方法1：fallback，接口粒度独立兜底，适用多业务模块不同返回\"   - \"兜底方法2：F"
+  },
+  {
     "id": "2026-09-26-sentinel-fallback",
     "title": "Sentinel 兜底返回",
     "url": "posts/2026-09-26-sentinel-fallback.html",
