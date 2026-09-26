@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-26-sentinel-fallback",
+    "title": "Sentinel 兜底返回",
+    "url": "posts/2026-09-26-sentinel-fallback.html",
+    "publishedAt": "2026-09-26",
+    "category": "微服务架构",
+    "tags": [
+      "SpringCloud",
+      "微服务",
+      "Sentinel",
+      "兜底"
+    ],
+    "summary": "- \"定义：限流、熔断、异常触发后，系统不再抛出报错，而是执行预设兜底方法\"   - \"作用：返回正常业务提示或默认数据，保证服务不报错、不崩溃、用户体验友好\"   - \"异常抛出时机：AOP切面或Web过滤器在进入Controller前拦截并抛出BlockException\"   - \"两大核心方法：blockHandler(拦截Sentinel规则)"
+  },
+  {
     "id": "2026-09-26-sentinel-hot-param-flow",
     "title": "Sentinel 热点参数限流",
     "url": "posts/2026-09-26-sentinel-hot-param-flow.html",
