@@ -27,9 +27,13 @@ OSS（Object Storage Service）是阿里云提供的海量、安全、低成本�
 2、核心术语
 
 （1）Endpoint（接入点）：你访问 OSS 服务的域名，类似于数据库的地址。不同地域的 Endpoint 不同，例如 oss-cn-hangzhou.aliyuncs.com。
+
 （2）Bucket（存储空间）：存储文件的容器，相当于顶级文件夹（如 D 盘）。名称全局唯一，创建时需要指定地域和访问权限。
+
 （3）Object（对象）：存储在 OSS 中的单个文件。它由数据（文件内容）、元数据（文件属性）和 Key（唯一标识）组成。
+
 （4）Object Key：对象的唯一标识符，通常是你在代码中指定的文件路径和名称，如 images/2026/logo.png。
+
 （5）AccessKey（AK）：你的访问凭证，由 AccessKey ID 和 AccessKey Secret 组成，相当于用户名和密码。安全建议：生产环境绝不使用主账号 AK，应使用 RAM 子账号并授予最小权限。
 
 ## OSS 实现
