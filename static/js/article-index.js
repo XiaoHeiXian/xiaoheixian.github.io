@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-27-aliyun-oss",
+    "title": "OSS 对象存储",
+    "url": "posts/2026-09-27-aliyun-oss.html",
+    "publishedAt": "2026-09-27",
+    "category": "微服务架构",
+    "tags": [
+      "SpringCloud",
+      "微服务",
+      "OSS"
+    ],
+    "summary": "- \"定义：阿里云提供的海量、安全、低成本的云存储服务\"   - \"核心对比：本地磁盘/NAS(有限/文件路径/单机故障) vs OSS(无限/HTTP URL/多副本高可用)\"   - \"核心术语1：Endpoint(访问域名)、Bucket(存储空间/顶级文件夹)\"   - \"核心术语2：Object(单个文件)、Object Key(唯一标识符)、"
+  },
+  {
     "id": "2026-09-26-openfeign-sentinel-fallback",
     "title": "OpenFeign 远程调用熔断降级",
     "url": "posts/2026-09-26-openfeign-sentinel-fallback.html",
