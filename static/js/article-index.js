@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-27-spu-static-page-oss",
+    "title": "SPU 静态页面存储与前后端联调",
+    "url": "posts/2026-09-27-spu-static-page-oss.html",
+    "publishedAt": "2026-09-27",
+    "category": "微服务架构",
+    "tags": [
+      "SpringCloud",
+      "微服务",
+      "OSS"
+    ],
+    "summary": "- \"前后端联调：配置Gateway跨域，配置网关路由，放行API白名单\"   - \"原系统问题：文件生成本地服务器磁盘，集群部署多实例时文件分散，无法共享\"   - \"解决方案：模板渲染至内存字符串，直接转字节流上传OSS，不落地本地磁盘\"   - \"原系统修正：表加html_url字段，实体加属性，分页查询加字段，Service加更新方法\"   -"
+  },
+  {
     "id": "2026-09-27-aliyun-oss",
     "title": "OSS 对象存储",
     "url": "posts/2026-09-27-aliyun-oss.html",
