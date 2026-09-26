@@ -1,5 +1,17 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-27-mongodb-shopping-cart",
+    "title": "MongoDB 实现购物车",
+    "url": "posts/2026-09-27-mongodb-shopping-cart.html",
+    "publishedAt": "2026-09-27",
+    "category": "云商城",
+    "tags": [
+      "MongoDB",
+      "购物车"
+    ],
+    "summary": "- \"推荐选型：购物车数据结构多变，推荐使用非关系型数据库 MongoDB\"   - \"关系型数据库：先定结构，再存数据，遵守相同字段，不可随意新增\"   - \"非关系型数据库：自由变结构，不用提前定义/改表，支持嵌套结构\"   - \"选型原因：结构多变适配业务迭代、读多写多并发高、Redis吃内存不适合\"   - \"核心概念：文档(Document)、"
+  },
+  {
     "id": "2026-09-27-spu-static-page-oss",
     "title": "SPU 静态页面存储与前后端联调",
     "url": "posts/2026-09-27-spu-static-page-oss.html",
