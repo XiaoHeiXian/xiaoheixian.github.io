@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-28-linux-disk-swap",
+    "title": "Linux 磁盘扩容和创建虚拟内存",
+    "url": "posts/2026-09-28-linux-disk-swap.html",
+    "publishedAt": "2026-09-28",
+    "category": "Linux",
+    "tags": [
+      "Linux",
+      "运维",
+      "磁盘"
+    ],
+    "summary": "- \"创建虚拟内存：查看内存(free -h) -> 创建文件(dd) -> 设置权限(chmod) -> 格式化(mkswap) -> 启用(swapon) -> 开机自启(fstab)\"   - \"磁盘扩容：虚拟机设置扩展硬盘 -> fdisk 创建分区 -> partprobe 刷新 -> mkfs 格式化 -> mount 挂载 -> fstab"
+  },
+  {
     "id": "2026-09-28-seata-distributed-transaction",
     "title": "分布式事务实现（Seata）",
     "url": "posts/2026-09-28-seata-distributed-transaction.html",
