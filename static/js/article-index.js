@@ -1,5 +1,17 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-28-spring-local-transaction",
+    "title": "本地事务与 Spring 事务",
+    "url": "posts/2026-09-28-spring-local-transaction.html",
+    "publishedAt": "2026-09-28",
+    "category": "云商城",
+    "tags": [
+      "云商城",
+      "本地事务"
+    ],
+    "summary": "- \"本地事务：操作单一数据库，默认一条SQL独占一个事务且自动提交\"   - \"Spring事务分类：编程式事务(代码侵入高) vs 声明式事务(AOP无侵入)\"   - \"声明式事务核心：@Transactional注解\"   - \"核心参数1：isolation(隔离级别)、propagation(传播行为)\"   - \"核心参数2：timeout"
+  },
+  {
     "id": "2026-09-28-transaction-management",
     "title": "事务管理",
     "url": "posts/2026-09-28-transaction-management.html",
