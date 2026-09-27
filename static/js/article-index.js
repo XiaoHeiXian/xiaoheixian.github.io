@@ -1,5 +1,17 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-28-distributed-transaction",
+    "title": "分布式事务",
+    "url": "posts/2026-09-28-distributed-transaction.html",
+    "publishedAt": "2026-09-28",
+    "category": "云商城",
+    "tags": [
+      "云商城",
+      "分布式事务"
+    ],
+    "summary": "- \"问题引入（场景三）：库存扣减跨库成功，订单本地事务回滚，数据不一致\"   - \"三类场景：跨库事务、分库分表事务、跨应用(微服务)事务\"   - \"CAP理论：一致性(C)、可用性(A)、分区容错性(P)，最多满足两点\"   - \"BASE理论：基本可用(BA)、软状态(S)、最终一致性(E)\"   - \"刚柔事务：刚性(ACID) vs 柔性(B"
+  },
+  {
     "id": "2026-09-28-spring-local-transaction",
     "title": "本地事务与 Spring 事务",
     "url": "posts/2026-09-28-spring-local-transaction.html",
