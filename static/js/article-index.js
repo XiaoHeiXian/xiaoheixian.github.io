@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-27-order-database-design",
+    "title": "订单数据库设计",
+    "url": "posts/2026-09-27-order-database-design.html",
+    "publishedAt": "2026-09-27",
+    "category": "云商城",
+    "tags": [
+      "微服务",
+      "订单",
+      "数据库设计"
+    ],
+    "summary": "- \"核心实体：用户、商品、订单、订单明细\"   - \"关系拆解：用户与商品多对多 -> 拆解为 用户(1)对订单(N)，订单(1)对订单明细(N)\"   - \"订单属性：订单编号、时间、用户、金额、支付方式、状态、类型等\"   - \"订单明细属性：编号、订单id、SKU_ID、名称、图片、价格、数量、金额\"   - \"关系转换：在多的一方(订单、明细)"
+  },
+  {
     "id": "2026-09-27-mongodb-shopping-cart-service",
     "title": "MongoDB 实现购物车（项目搭建与服务实现）",
     "url": "posts/2026-09-27-mongodb-shopping-cart-service.html",
