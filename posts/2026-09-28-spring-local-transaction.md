@@ -43,19 +43,29 @@ Spring 提供了注解@Transactional，注解在类或方法上，加入事务�
 1）事务测试
 
 （1）在 OrderSeriveImpl 类添加注解@Transactional
+
 （2）在 SkuInfoSeriveImpl 类添加注解@Transactional
+
 （3）测试场景一
+
 从订单服务控制台的 SQL 语句执行情况可以看出：
+
 JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@258f97f8] will be managed by Spring
-==> Preparing: INSERT INTO order_items ( id, order_id, price, quantity, sku_id, sku_name, image, amount ) VALUES
+
+==>  Preparing: INSERT INTO order_items ( id, order_id, price, quantity, sku_id, sku_name, image, amount ) VALUES
 ==> Parameters: 2075729201308856322(Long), 2075729201019449345(String), 100.0(Double), 1(Integer), 1(Long), 商品1(String)
 ==> Parameters: 2075729201631817730(Long), 2075729201019449345(String), 100.0(Double), 1(Integer), 2(Long), 商品2(String)
+
 Creating a new SqlSession
 Registering transaction synchronization for SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1106a4f]
+
 JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@258f97f8] will be managed by Spring
-==> Preparing: INSERT INTO order_info ( order_id, create_time, user_id, total_amount, status, order_type, recipient
+
+==>  Preparing: INSERT INTO order_info ( order_id, create_time, user_id, total_amount, status, order_type, recipient
 ==> Parameters: 2075729201019449345(String), 2026-07-11T07:49:41.535242(LocalDateTime), 116(Long), 200.0(Double),
+
 Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1106a9cc]
+
 Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1106a4f]
 Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1106a9cc]
 
@@ -63,10 +73,13 @@ Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaul
 
 （4）测试场景二
 从商品服务控制台的 SQL 语句执行情况可以看出：
+
 JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@35603e1e] will be managed by Spring
-==> Preparing: UPDATE sku_info SET spu_id=?, price=?, sku_name=?, sku_attribute=?, num=?, brand_id=?, brand_name=?
+
+==>  Preparing: UPDATE sku_info SET spu_id=?, price=?, sku_name=?, sku_attribute=?, num=?, brand_id=?, brand_name=?
 ==> Parameters: 1(Long), 5999.0(Double), 小米10 至尊纪念版 双模5G 骁龙865 120HZ高刷新率 120倍长焦镜头 120W快充 8GB+128G
 ==> Parameters: 1(Long), 7999.0(Double), 小米10 至尊纪念版 双模5G 骁龙865 120HZ高刷新率 120倍长焦镜头 120W快充 128GB+256
+
 Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7cf84379]
 Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7cf84379]
 
@@ -86,7 +99,7 @@ Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaul
 
     throw new RuntimeException();
 
-事务正常回滚
+事务正常回滚。
 
 如果将方法的异常抛出如下：
 
