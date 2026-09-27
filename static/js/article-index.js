@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-28-seata-distributed-transaction",
+    "title": "分布式事务实现（Seata）",
+    "url": "posts/2026-09-28-seata-distributed-transaction.html",
+    "publishedAt": "2026-09-28",
+    "category": "云商城",
+    "tags": [
+      "微服务",
+      "分布式事务",
+      "Seata"
+    ],
+    "summary": "- \"Seata定义：阿里开源的高性能分布式事务解决方案，2019年开源\"   - \"四大模式：AT(自动事务,零侵入,主流)、TCC(手动补偿)、SAGA(长事务)、XA(性能差)\"   - \"三大角色：TC(协调者,Server端)、TM(管理者,Client端,发起全局事务)、RM(资源管理者,Client端,分支事务)\"   - \"AT模式机制："
+  },
+  {
     "id": "2026-09-28-distributed-transaction",
     "title": "分布式事务",
     "url": "posts/2026-09-28-distributed-transaction.html",
