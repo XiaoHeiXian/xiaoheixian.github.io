@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-28-ai-rag-langchain",
+    "title": "AI+RAG 与 LangChain",
+    "url": "posts/2026-09-28-ai-rag-langchain.html",
+    "publishedAt": "2026-09-28",
+    "category": "AI",
+    "tags": [
+      "AI",
+      "RAG",
+      "LangChain"
+    ],
+    "summary": "- \"搜索现状：ES 擅长关键词匹配、过滤聚合、高并发，但不懂意图\"   - \"ES 痛点：缺乏语义理解、无法多轮对话、不能对比推荐\"   - \"引入 AI+RAG：不是替代 ES，而是补齐‘理解用户、辅助决策’的短板\"   - \"新增能力1：AI Agent 智能导购（意图理解、多轮对话、对比决策）\"   - \"新增能力2：语义搜索与以图搜图（向量匹配"
+  },
+  {
     "id": "2026-09-28-linux-disk-swap",
     "title": "Linux 磁盘扩容和创建虚拟内存",
     "url": "posts/2026-09-28-linux-disk-swap.html",
