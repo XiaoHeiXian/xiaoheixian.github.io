@@ -1,5 +1,17 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-28-transaction-management",
+    "title": "事务管理",
+    "url": "posts/2026-09-28-transaction-management.html",
+    "publishedAt": "2026-09-28",
+    "category": "云商城",
+    "tags": [
+      "云商城",
+      "事务管理"
+    ],
+    "summary": "- \"问题引入：订单入库异常导致数据不一致（有明细无主单）\"   - \"问题引入：跨服务库存扣减异常导致订单与库存不一致\"   - \"解决方案：本地数据库事务 + 分布式事务框架(Seata) + 操作日志\"   - \"事务定义：不可分割的数据库操作序列，要么全成功，要么全失败\"   - \"ACID特性：原子性、一致性、隔离性、持久性\"   - \"并发问"
+  },
+  {
     "id": "2026-09-27-order-design-implementation",
     "title": "订单的设计与实现",
     "url": "posts/2026-09-27-order-design-implementation.html",
