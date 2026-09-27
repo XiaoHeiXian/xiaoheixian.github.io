@@ -1,5 +1,17 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-27-order-design-implementation",
+    "title": "订单的设计与实现",
+    "url": "posts/2026-09-27-order-design-implementation.html",
+    "publishedAt": "2026-09-27",
+    "category": "云商城",
+    "tags": [
+      "云商城",
+      "订单"
+    ],
+    "summary": "- \"项目搭建：创建 mall-order-service，配置 Nacos 和数据库\"   - \"代码生成：调整主键策略(ASSIGN_ID)，配置自动填充和逻辑删除\"   - \"生成订单需求：生成订单和明细、扣减库存、删除购物车\"   - \"库存扣减：SkuInfoService 添加 decreaseStock，遍历校验库存并批量更新\"   - \""
+  },
+  {
     "id": "2026-09-27-order-database-design",
     "title": "订单数据库设计",
     "url": "posts/2026-09-27-order-database-design.html",
