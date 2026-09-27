@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-27-mongodb-shopping-cart-service",
+    "title": "MongoDB 实现购物车（项目搭建与服务实现）",
+    "url": "posts/2026-09-27-mongodb-shopping-cart-service.html",
+    "publishedAt": "2026-09-27",
+    "category": "云商城",
+    "tags": [
+      "SpringCloud",
+      "微服务",
+      "mongodb"
+    ],
+    "summary": "- \"项目创建：mall-cart-service，父工程 mall-services\"   - \"依赖引入：spring-boot-starter-data-mongodb\"   - \"配置核心：application.yml 集成 Nacos，application-dev.yml 导入 mongodb.yml\"   - \"MongoDB 配置：ur"
+  },
+  {
     "id": "2026-09-27-mongodb-shopping-cart",
     "title": "MongoDB 实现购物车",
     "url": "posts/2026-09-27-mongodb-shopping-cart.html",
