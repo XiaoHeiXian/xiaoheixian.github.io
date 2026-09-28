@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-28-ai-llm-basics",
+    "title": "AI大模型核心认知",
+    "url": "posts/2026-09-28-ai-llm-basics.html",
+    "publishedAt": "2026-09-28",
+    "category": "AI",
+    "tags": [
+      "AI",
+      "LLM",
+      "MaaS"
+    ],
+    "summary": "- \"搜索到模型：搜索是找东西(关键词匹配)，大模型是造东西(语义理解并生成答案)\"   - \"四大特征：参数规模庞大、训练数据海量、算力需求极高、涌现能力\"   - \"分类维度：按模态(纯文本/多模态/视觉)、按功能(生成式/推理型/具身智能)\"   - \"底层原理：概率式文本生成，Transformer架构，全局注意力机制\"   - \"核心边界：模拟"
+  },
+  {
     "id": "2026-09-28-ai-rag-langchain",
     "title": "AI+RAG 与 LangChain",
     "url": "posts/2026-09-28-ai-rag-langchain.html",
