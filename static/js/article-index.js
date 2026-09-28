@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-28-project-env-setup",
+    "title": "项目开发环境标准化搭建",
+    "url": "posts/2026-09-28-project-env-setup.html",
+    "publishedAt": "2026-09-28",
+    "category": "AI",
+    "tags": [
+      "AI",
+      "开发环境",
+      "Conda",
+      "VSCode"
+    ],
+    "summary": "- \"Conda核心功能：包管理、环境管理、跨平台支持\"   - \"Conda与pip区别：多语言包 vs 仅Python包，隔离性强 vs 弱\"   - \"安装选型：Anaconda(完整版,约3GB) vs Miniconda(轻量版,约100MB)\"   - \"Windows安装：Next -> I Agree -> All Users/Just"
+  },
+  {
     "id": "2026-09-28-ai-llm-basics",
     "title": "AI大模型核心认知",
     "url": "posts/2026-09-28-ai-llm-basics.html",
