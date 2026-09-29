@@ -1,5 +1,17 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-29-jupyter-notebook",
+    "title": "Jupyter Notebook 交互式编程环境",
+    "url": "posts/2026-09-29-jupyter-notebook.html",
+    "publishedAt": "2026-09-29",
+    "category": "AI",
+    "tags": [
+      "开发环境",
+      "Jupyter"
+    ],
+    "summary": "- \"Jupyter定义：基于Web的交互式编程环境，用于数据科学、机器学习\"   - \"核心特点：交互式编程（实时执行展示结果）、富文档混合（Markdown/LaTeX/HTML）\"   - \"安装方式：Anaconda预装、VSCode创建.ipynb、手动conda install\"   - \"核心快捷键：Y(代码)、M(Markdown)、DD"
+  },
+  {
     "id": "2026-09-28-project-env-setup",
     "title": "项目开发环境标准化搭建",
     "url": "posts/2026-09-28-project-env-setup.html",
