@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-30-rocketmq",
+    "title": "RocketMQ",
+    "url": "posts/2026-09-30-rocketmq.html",
+    "publishedAt": "2026-09-30",
+    "category": "云商城",
+    "tags": [
+      "微服务",
+      "消息队列",
+      "RocketMQ"
+    ],
+    "summary": "- \"核心架构：Producer(生产者)、Broker(暂存/传输)、NameServer(注册中心)、Consumer(消费者)\"   - \"Broker主从：Master处理写入，Slave异步/同步复制，提供灾备冗余\"   - \"NameServer：无状态，维护Broker地址、Topic路由、消费者订阅关系\"   - \"Topic与Queue"
+  },
+  {
     "id": "2026-09-30-message-queue",
     "title": "消息队列",
     "url": "posts/2026-09-30-message-queue.html",
