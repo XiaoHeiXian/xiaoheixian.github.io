@@ -15,6 +15,8 @@ permalink: /posts/2026-09-23-cluster-architecture.html
 
 集群架构的目的是与负载均衡器进行配合，分摊运行压力集群中的节点通常被设计成具有相同的硬件和软件配置，通过网络连接在一起。集群通过负载均衡器将请求分发到不同的服务器，实现高可用性和负载均衡。
 
+![架构示意图](https://xiaoheixian.github.io/posts/assets/287_65.png)
+
 **架构示意图说明：**
 - 客户端发起 http 请求，经过负载均衡。
 - 负载均衡将请求分发到不同的 Tomcat 节点：
