@@ -1,5 +1,21 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-01-rocketmq-message-deduplication-reason",
+    "title": "RocketMQ 消息去重的原因",
+    "url": "posts/2026-10-01-rocketmq-message-deduplication-reason.html",
+    "publishedAt": "2026-10-01",
+    "category": "云商城",
+    "tags": [
+      "微服务",
+      "消息队列",
+      "RocketMQ",
+      "Redis",
+      "消息去重",
+      "幂等"
+    ],
+    "summary": "- \"定义：在业务层面实现消息的幂等消费。\"   - \"根源：生产者重试、消费者 Offset 提交失败、重平衡等导致消息重复。\"   - \"危害：资金损失、数据错乱、资源浪费、客户投诉。\"   - \"方案：结合业务唯一 ID 与 Redis 锁或数据库唯一索引。\""
+  },
+  {
     "id": "2026-10-01-rocketmq-core-tech",
     "title": "RocketMQ 核心技术",
     "url": "posts/2026-10-01-rocketmq-core-tech.html",
