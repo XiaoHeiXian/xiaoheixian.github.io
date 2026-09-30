@@ -47,7 +47,7 @@ Seata 将为用户提供了 AT、TCC、SAGA 和 XA 事务模式：
 - TC(Transaction Coordinator)-事务协调器：Server 端，要单独部署，维护全局事务的运行状态，负责协调并驱动全局事务的提交和回滚。
 - TM(Transaction Manager)-事务管理器：Client 端，控制全局事务边界，负责开启一个全局事务，并最终发起全局提交和全局回滚的决议。
 - RM(Resource Manager)-资源管理器：Client 端，由业务系统集成，控制分支事务，负责分支注册、状态汇报，并接收事务协调器的指令，驱动分支（本地）事务的提交和回滚。
-
+![架构图](https://xiaoheixian.github.io/posts/assets/20260930204543_264_65.png)
 架构图说明：
 Server 端包含 Seata-Server(TC 驱动器)，内部有 global_table(全局事务表)、branch_table(分支事务表)、lock_table(全局锁表)。
 Client 端包含 TM(发起者)和 RM(干活的)。TM 向 TC 发起全局事务，TC 协调驱动各 RM。RM 控制本地事务（如 order-server 操作 table_order，stack-server 操作 table_stack），并在本地记录 undo_log。
