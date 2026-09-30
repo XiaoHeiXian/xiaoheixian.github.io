@@ -15,6 +15,8 @@ permalink: /posts/2026-09-26-openfeign-interceptor.html
 
 我们可以使用透传请求头和 OpenFeign 拦截器来解决此类问题。通过 Feign 全局拦截器在请求发起前手动从上下文提取 Header、塞入新请求模板，实现全链路透传。
 
+![执行流程图](https://xiaoheixian.github.io/posts/assets/277_65.png)
+
 **请求流程图说明：**
 - 客户端发送 HTTP 请求（含请求头）至网关/服务A。
 - 服务A发起 Feign 调用，Feign 客户端触发请求拦截器。
