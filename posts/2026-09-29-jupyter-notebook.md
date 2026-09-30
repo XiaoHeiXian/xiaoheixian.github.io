@@ -58,7 +58,7 @@ Jupyter Notebook 是一个基于 Web 的交互式编程环境，广泛应用于�
 
 按 Shift+Enter 渲染后，会显示为格式化的标题和列表，如图所示：
 
-![Markdown](https://xiaoheixian.github.io/posts/assets/20260930183814_263_65.png)
+![Markdown](https://xiaoheixian.github.io/posts/assets/20260930203626_263_65.png)
 
 （3）最佳实践
 
