@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-01-rocketmq-deploy",
+    "title": "RocketMQ 部署",
+    "url": "posts/2026-10-01-rocketmq-deploy.html",
+    "publishedAt": "2026-10-01",
+    "category": "云商城",
+    "tags": [
+      "微服务",
+      "消息队列",
+      "RocketMQ",
+      "部署"
+    ],
+    "summary": "- \"创建集群局域网：docker network create --subnet=192.168.10.0/24 mq_net\"   - \"安装NameServer：创建挂载目录，Docker部署暴露9876端口\"   - \"安装Broker：创建目录，复制并修改broker.conf\"   - \"broker.conf核心配置：集群名、Broker名"
+  },
+  {
     "id": "2026-09-30-rocketmq",
     "title": "RocketMQ",
     "url": "posts/2026-09-30-rocketmq.html",
