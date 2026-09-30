@@ -13,6 +13,8 @@ permalink: /posts/2026-09-23-mysql-master-slave.html
 
 MySQL 的主从复制（replication）是一种数据库技术，允许一个（或多个）MySQL 服务器（从服务器）复制另一个 MySQL 服务器（主服务器）上的数据。这种机制主要用于提高数据读取的性能和可用性，通过将查询负载分散到多个服务器上。
 
+![主从复制示意图](https://xiaoheixian.github.io/posts/assets/285_65.png)
+
 **主从复制示意图说明：**
 - Master（主库）：数据发生变更（data change），写入二进制日志（binlog）。
 - Slave（从库）：
