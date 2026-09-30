@@ -13,6 +13,8 @@ permalink: /posts/2026-09-26-openfeign-remote-call.html
 
 1、OpenFeign 调用基本流程
 
+![调用流程图](https://xiaoheixian.github.io/posts/assets/280_65.png)
+
 （1）服务提供者注册：在提供者的 application.yml 中配置 Nacos 注册中心地址及服务名称。
 
 （2）接口暴露：提供者定义业务接口（如 HTTP API 或 Dubbo RPC 接口），确保接口路径和参数符合调用约定。
