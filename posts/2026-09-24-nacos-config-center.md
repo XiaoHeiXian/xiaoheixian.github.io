@@ -173,6 +173,8 @@ Add a spring.config.import=nacos: property to your configuration.
 
 在 SpringBoot 多环境管理中，有开发环境、测试环境、生产环境，不同的环境使用不同的配置文件，如 dev、test、prod 等。同时每个微服务也有 dev、test、prod 等配置文件，用于不同环境配置。如何实现微服务不环境间配置隔离呢？我们可以通过命名空间、组、数据集来进行数据分离。如下图所示，不同的环境对应不同的命名空间，如 dev、test、prod 等。同一个命名空间可以有多个分组，如用户组、商品组、订单组等。每个分组下面可以创建不同的数据集，如数据库配置、日志配置等。
 
+![数据隔离架构图](https://xiaoheixian.github.io/posts/assets/281_65.png)
+
 配置参数：
 
 - Namespace（命名空间）：实现多租户粒度的配置隔离，常用于区分不同环境（如开发、测试、生产环境）或不同业务线，确保各环境/业务配置独立且互不干扰。默认值：public，未指定时所有配置默认归属此命名空间。
