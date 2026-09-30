@@ -56,9 +56,9 @@ Jupyter Notebook 是一个基于 Web 的交互式编程环境，广泛应用于�
     - 删除缺失值超过 30%的列
     - 对异常值进行截尾处理
 
-按 Shift+Enter 渲染后，会显示为格式化的标题和列表，如图 1.2-1 所示：
+按 Shift+Enter 渲染后，会显示为格式化的标题和列表，如图所示：
 
-图 1.2-1：Markdown 文本
+![Markdown](https://xiaoheixian.github.io/posts/assets/20260930183814_263_65.png)
 
 （3）最佳实践
 
