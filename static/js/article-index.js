@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-30-seata-at-transaction-impl",
+    "title": "分布式事务实现（Seata）总结",
+    "url": "posts/2026-09-30-seata-at-transaction-impl.html",
+    "publishedAt": "2026-09-30",
+    "category": "云商城",
+    "tags": [
+      "微服务",
+      "分布式事务",
+      "Seata"
+    ],
+    "summary": "- \"核心角色：TM(事务管理器,发起方)、RM(资源管理器,执行方)、TC(事务协调者,服务端)\"   - \"第一阶段：本地事务执行（获取XID、生成前后镜像、写UNDO_LOG、提交本地事务）\"   - \"第二阶段-全局提交：TC通知RM，异步删除UNDO_LOG，释放全局锁\"   - \"第二阶段-全局回滚：TC通知RM，根据UNDO_LOG反向补偿"
+  },
+  {
     "id": "2026-09-30-ai-coding-demos",
     "title": "AI 编程入门案例",
     "url": "posts/2026-09-30-ai-coding-demos.html",
