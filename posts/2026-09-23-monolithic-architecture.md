@@ -11,6 +11,8 @@ permalink: /posts/2026-09-23-monolithic-architecture.html
 
 在初始阶段，网站只需要一个服务器即可满足需求。在这个阶段，系统简单，部署容易，但无法应对高并发和高负载的情况。
 
+![架构示意图](https://xiaoheixian.github.io/posts/assets/292_65.png)
+
 **阶段架构示意图：**
 - 客户端发起 http 请求，访问 Tomcat。
 - Tomcat 部署后端代码。
