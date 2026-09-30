@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-01-rocketmq-core-tech",
+    "title": "RocketMQ 核心技术",
+    "url": "posts/2026-10-01-rocketmq-core-tech.html",
+    "publishedAt": "2026-10-01",
+    "category": "云商城",
+    "tags": [
+      "微服务",
+      "消息队列",
+      "RocketMQ"
+    ],
+    "summary": "- \"Spring Cloud Stream：整合各类消息队列，核心概念Binder(外部集成)、Binding(队列配置)、Input/Output\"   - \"RocketMQ 整合：引入 spring-cloud-starter-stream-rocketmq 依赖\"   - \"使用案例：配置 binder、bindings、输入输出通道命名规范\""
+  },
+  {
     "id": "2026-10-01-rocketmq-deploy",
     "title": "RocketMQ 部署",
     "url": "posts/2026-10-01-rocketmq-deploy.html",
