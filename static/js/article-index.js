@@ -1,5 +1,17 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-30-message-queue",
+    "title": "消息队列",
+    "url": "posts/2026-09-30-message-queue.html",
+    "publishedAt": "2026-09-30",
+    "category": "云商城",
+    "tags": [
+      "微服务",
+      "消息队列"
+    ],
+    "summary": "- \"同步调用：系统A直接调用系统B，互相依赖，一个故障全链路报错\"   - \"异步调用：系统A发消息给MQ后直接返回，系统B自行拉取处理，实现解耦\"   - \"三大核心作用：异步化提升性能、降低耦合度、流量削峰\"   - \"异步化性能对比：无MQ 220ms，有MQ 25ms\"   - \"流量削峰：A集群抗1万QPS，B集群控制在6000QPS读取DB"
+  },
+  {
     "id": "2026-09-30-seata-at-transaction-impl",
     "title": "分布式事务实现（Seata）总结",
     "url": "posts/2026-09-30-seata-at-transaction-impl.html",
