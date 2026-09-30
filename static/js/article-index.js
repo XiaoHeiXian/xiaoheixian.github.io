@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-09-30-ai-coding-demos",
+    "title": "AI 编程入门案例",
+    "url": "posts/2026-09-30-ai-coding-demos.html",
+    "publishedAt": "2026-09-30",
+    "category": "AI",
+    "tags": [
+      "AI",
+      "编程",
+      "Copilot"
+    ],
+    "summary": "- \"案例1：AI辅助前端开发——本地记账小工具（纯HTML，本地存储）\"   - \"案例1步骤：建文件夹 -> VS Code打开 -> 发送Prompt -> 审核代码 -> 生成index.html\"   - \"案例2：数据可视化实践——农作物数据分析（CSV，数据清洗+图表+报告）\"   - \"案例2准备：复制CSV文件，安装pandas（con"
+  },
+  {
     "id": "2026-09-29-jupyter-notebook",
     "title": "Jupyter Notebook 交互式编程环境",
     "url": "posts/2026-09-29-jupyter-notebook.html",
