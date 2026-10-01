@@ -1,5 +1,20 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-02-redis-core-tech",
+    "title": "Redis 数据库核心技术与实战",
+    "url": "posts/2026-10-02-redis-core-tech.html",
+    "publishedAt": "2026-10-02",
+    "category": "云商城",
+    "tags": [
+      "微服务",
+      "Redis",
+      "缓存",
+      "持久化",
+      "数据类型"
+    ],
+    "summary": "- \"概述：基于内存的数据结构存储系统，读写性能可达 10 万/秒。\"   - \"特性：速度快、数据类型丰富、支持持久化、高可用与分布式。\"   - \"工具：Redis Stack 扩展了 JSON、搜索、时序等模块。\"   - \"持久化：提供 RDB 和 AOF 两种方式，需按业务场景选择。\"   - \"类型：涵盖 String、Hash、List、S"
+  },
+  {
     "id": "2026-10-01-rocketmq-message-deduplication-reason",
     "title": "RocketMQ 消息去重的原因",
     "url": "posts/2026-10-01-rocketmq-message-deduplication-reason.html",
