@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-03-redis-template-core",
+    "title": "RedisTemplate 核心原理与实战",
+    "url": "posts/2026-10-03-redis-template-core.html",
+    "publishedAt": "2026-10-03",
+    "category": "云商城",
+    "tags": [
+      "微服务",
+      "Redis",
+      "RedisTemplate",
+      "序列化"
+    ],
+    "summary": "- \"定义：Spring Data Redis 的核心操作类，封装底层交互细节。\"   - \"依赖：在 mall-common 模块引入 spring-boot-starter-data-redis。\"   - \"连接管理：通过 RedisConnectionFactory 获取连接，需配置连接池。\"   - \"序列化：默认 JDK 序列化会导致乱码，推"
+  },
+  {
     "id": "2026-10-02-redis-core-tech",
     "title": "Redis 数据库核心技术与实战",
     "url": "posts/2026-10-02-redis-core-tech.html",
