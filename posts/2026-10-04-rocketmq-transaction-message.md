@@ -46,7 +46,12 @@ RocketMQ 中的事务 ID（Transaction ID）和消息的 key 都是用来识别�
 
 阶段二（事务状态确认）：生产者执行本地事务后，向消息队列提交 Commit 或 Rollback 指令，决定消息是否投递。
 
-事务的执行流程如下图所示：（根据时序图整理步骤）
+事务的执行流程如下图所示：
+
+![架构示意图](https://xiaoheixian.github.io/posts/assets/302_65.png)
+![架构示意图](https://xiaoheixian.github.io/posts/assets/300_65.png)
+
+（根据时序图整理步骤）
 
 ① 应用模块遇到要发送事务消息的场景时，先发送 prepare（预备）消息给 MQ。
 
