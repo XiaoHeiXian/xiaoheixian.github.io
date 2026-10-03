@@ -1,5 +1,20 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-04-alipay-online-payment",
+    "title": "支付宝在线支付实战",
+    "url": "posts/2026-10-04-alipay-online-payment.html",
+    "publishedAt": "2026-10-04",
+    "category": "云商城",
+    "tags": [
+      "微服务",
+      "支付",
+      "支付宝",
+      "在线支付",
+      "SpringBoot"
+    ],
+    "summary": "- \"支付流程：下单、发送支付请求、生成二维码、用户扫码、异步回调修改订单状态。\"   - \"数据库设计：只需一张支付存根表（pay_log），记录流水号、订单号、金额和时间。\"   - \"创建服务：新增 mall-pay-service 模块，引入支付宝 SDK 与公共模块依赖。\"   - \"配置中心：新增 alipay.yml、mq_producer"
+  },
+  {
     "id": "2026-10-04-alipay-sandbox-setup",
     "title": "支付宝沙箱配置与内网穿透",
     "url": "posts/2026-10-04-alipay-sandbox-setup.html",
