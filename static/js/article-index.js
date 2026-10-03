@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-04-rocketmq-transaction-message",
+    "title": "RocketMQ 事务消息",
+    "url": "posts/2026-10-04-rocketmq-transaction-message.html",
+    "publishedAt": "2026-10-04",
+    "category": "云商城",
+    "tags": [
+      "微服务",
+      "RocketMQ",
+      "事务消息",
+      "分布式事务"
+    ],
+    "summary": "- \"定义：RocketMQ 提供的实现分布式事务的重要特性。\"   - \"核心概念：半消息（Prepare Message）、消息状态回查、事务 ID。\"   - \"事务流程：基于两阶段提交（2PC）模型，分为发送预备消息与事务状态确认。\"   - \"事务回查：解决超时状态不确定性，保障系统可用性与最终一致性。\"   - \"触发条件：生产者未在指定时间"
+  },
+  {
     "id": "2026-10-04-redis-classic-cases",
     "title": "Redis 经典案例实战",
     "url": "posts/2026-10-04-redis-classic-cases.html",
