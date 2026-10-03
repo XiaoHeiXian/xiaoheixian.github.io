@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-04-alipay-payment-callback-verify",
+    "title": "支付宝支付回查机制",
+    "url": "posts/2026-10-04-alipay-payment-callback-verify.html",
+    "publishedAt": "2026-10-04",
+    "category": "云商城",
+    "tags": [
+      "微服务",
+      "支付",
+      "支付宝",
+      "支付回查"
+    ],
+    "summary": "- \"作用：确认支付结果，防止错误支付，确保订单状态准确，处理延时订单。\"   - \"原理：订单生成后延时发送回查消息，依次查询订单状态、支付存根、支付宝，决定修改或删除。\"   - \"接口设计：订单服务提供查询状态与删除接口，支付服务提供回查接口。\"   - \"执行流程：生产端发送延时消息，消费端幂等校验后发起回查并更新或删除订单。\"   - \"测试场"
+  },
+  {
     "id": "2026-10-04-alipay-online-payment",
     "title": "支付宝在线支付实战",
     "url": "posts/2026-10-04-alipay-online-payment.html",
