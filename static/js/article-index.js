@@ -1,5 +1,20 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-04-rocketmq-async-delete-cart",
+    "title": "RocketMQ 异步删除购物车实战",
+    "url": "posts/2026-10-04-rocketmq-async-delete-cart.html",
+    "publishedAt": "2026-10-04",
+    "category": "云商城",
+    "tags": [
+      "微服务",
+      "RocketMQ",
+      "SpringCloudStream",
+      "异步",
+      "分布式事务"
+    ],
+    "summary": "- \"背景问题：同步调用接口响应拉长，失败导致全局回滚，无重试兜底机制。\"   - \"解决方案：将删除购物车异步化，交给 MQ 后台异步执行，人工处理死信。\"   - \"请求头丢失：解决 Spring Cloud Stream 与 OpenFeign 之间的线程上下文丢失问题。\"   - \"代码实现：包括生产者配置、消息发送、消费者服务创建与消息消费逻辑"
+  },
+  {
     "id": "2026-10-04-rocketmq-transaction-message",
     "title": "RocketMQ 事务消息",
     "url": "posts/2026-10-04-rocketmq-transaction-message.html",
