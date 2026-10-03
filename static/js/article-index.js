@@ -1,5 +1,20 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-04-redis-classic-cases",
+    "title": "Redis 经典案例实战",
+    "url": "posts/2026-10-04-redis-classic-cases.html",
+    "publishedAt": "2026-10-04",
+    "category": "云商城",
+    "tags": [
+      "微服务",
+      "Redis",
+      "Token",
+      "幂等性",
+      "最佳实践"
+    ],
+    "summary": "- \"Token 管理：从无状态变为可管理、可控制，解决安全与运维痛点。\"   - \"安全性：支持强制下线、多设备登录管理、防止 Token 被盗用。\"   - \"可用性：支持滑动续期，可针对不同场景精细化设置过期策略。\"   - \"幂等去重：通过业务唯一 Key 与 Redis 原子操作，实现消费端幂等。\""
+  },
+  {
     "id": "2026-10-03-redis-template-core",
     "title": "RedisTemplate 核心原理与实战",
     "url": "posts/2026-10-03-redis-template-core.html",
