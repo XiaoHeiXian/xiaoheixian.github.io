@@ -1,5 +1,20 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-04-alipay-sandbox-setup",
+    "title": "支付宝沙箱配置与内网穿透",
+    "url": "posts/2026-10-04-alipay-sandbox-setup.html",
+    "publishedAt": "2026-10-04",
+    "category": "云商城",
+    "tags": [
+      "微服务",
+      "支付",
+      "支付宝沙箱",
+      "内网穿透",
+      "NATAPP"
+    ],
+    "summary": "- \"背景：解决个人开发者无企业资质无法对接真实支付的痛点。\"   - \"定义：支付宝为开发者提供的模拟真实环境的测试平台。\"   - \"配置：获取 APPID、绑定商家账号 PID、配置公钥模式。\"   - \"接口：沙箱支持统一收单下单并支付（alipay.trade.page.pay）等接口。\"   - \"穿透：使用 NATAPP 工具将本地服务暴露"
+  },
+  {
     "id": "2026-10-04-rocketmq-async-delete-cart",
     "title": "RocketMQ 异步删除购物车实战",
     "url": "posts/2026-10-04-rocketmq-async-delete-cart.html",
