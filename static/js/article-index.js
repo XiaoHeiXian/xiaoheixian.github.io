@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-04-langchain-quick-start",
+    "title": "LangChain 快速实战案例",
+    "url": "posts/2026-10-04-langchain-quick-start.html",
+    "publishedAt": "2026-10-04",
+    "category": "AI",
+    "tags": [
+      "微服务",
+      "AI大模型",
+      "LangChain",
+      "智能体"
+    ],
+    "summary": "- \"环境规范：统一使用 Conda 虚拟环境与清华镜像源安装依赖。\"   - \"安全规范：使用 .env 文件全局配置密钥，禁止代码硬编码。\"   - \"模型标准：默认使用 Qwen3-8B，通过 temperature 控制输出精准度。\"   - \"案例一：通过系统提示词约束模型角色，验证消息层级与指令优先级。\"   - \"案例二：串联天气工具与 A"
+  },
+  {
     "id": "2026-10-04-langchain-core-framework",
     "title": "LangChain 大模型应用开发框架",
     "url": "posts/2026-10-04-langchain-core-framework.html",
