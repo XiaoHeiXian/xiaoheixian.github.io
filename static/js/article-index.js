@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-04-langchain-core-framework",
+    "title": "LangChain 大模型应用开发框架",
+    "url": "posts/2026-10-04-langchain-core-framework.html",
+    "publishedAt": "2026-10-04",
+    "category": "AI",
+    "tags": [
+      "微服务",
+      "AI大模型",
+      "LangChain"
+    ],
+    "summary": "- \"定义：基于 Python 的开源大模型应用工程化编排框架。\"   - \"定位：连接大模型、私有数据、外部工具、记忆能力的桥梁。\"   - \"核心价值：统一调用接口，避免重复造轮子，模块化可扩展。\"   - \"六大组件：Models、Prompts、Indexes、Memory、Chains、Agents。\"   - \"分层生态：Core、Commu"
+  },
+  {
     "id": "2026-10-04-alipay-payment-callback-verify",
     "title": "支付宝支付回查机制",
     "url": "posts/2026-10-04-alipay-payment-callback-verify.html",
