@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-04-llm-core-concepts",
+    "title": "大模型核心概念与智能体架构",
+    "url": "posts/2026-10-04-llm-core-concepts.html",
+    "publishedAt": "2026-10-04",
+    "category": "AI",
+    "tags": [
+      "微服务",
+      "AI大模型",
+      "LangChain",
+      "智能体"
+    ],
+    "summary": "- \"LLM：大语言模型，基于Transformer架构的概率预测机器。\"   - \"Token：文本处理的最小单元，模型真正运算的是数字化的tokenId。\"   - \"Context：上下文窗口，模型生成下一个Token时能参考的最大序列长度。\"   - \"Prompt：分为设定全局人设的System Prompt与当前轮次任务的User Promp"
+  },
+  {
     "id": "2026-10-04-langchain-quick-start",
     "title": "LangChain 快速实战案例",
     "url": "posts/2026-10-04-langchain-quick-start.html",
