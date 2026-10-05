@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-06-message-and-prompt",
+    "title": "消息与提示词核心机制",
+    "url": "posts/2026-10-06-message-and-prompt.html",
+    "publishedAt": "2026-10-06",
+    "category": "AI",
+    "tags": [
+      "微服务",
+      "AI大模型",
+      "LangChain",
+      "提示词"
+    ],
+    "summary": "- \"提示词：连接开发者与模型的核心媒介，具备角色定义、任务指令、格式约束与逻辑引导四大价值。\"   - \"消息：LangChain 交互的最小标准化单元，承载提示词并区分对话角色。\"   - \"四大消息：SystemMessage、HumanMessage、AIMessage、ToolMessage，优先级与生命周期各不相同。\"   - \"消息创建：支"
+  },
+  {
     "id": "2026-10-05-agent-triangle-architecture",
     "title": "基础智能体三角架构",
     "url": "posts/2026-10-05-agent-triangle-architecture.html",
