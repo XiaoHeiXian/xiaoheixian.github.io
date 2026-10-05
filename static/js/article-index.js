@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-05-agent-triangle-architecture",
+    "title": "基础智能体三角架构",
+    "url": "posts/2026-10-05-agent-triangle-architecture.html",
+    "publishedAt": "2026-10-05",
+    "category": "AI",
+    "tags": [
+      "微服务",
+      "AI大模型",
+      "LangChain",
+      "智能体"
+    ],
+    "summary": "- \"定义：最简无工具智能体统一由 Prompt、Model、Result 三大模块构成循环闭环。\"   - \"Prompt：承载角色定义与任务指令，是控制模型行为的唯一人工入口。\"   - \"Model：接收消息完成推理并生成原始输出文本，是整个三角架构的运算核心。\"   - \"Result：模型生成的原始应答，可反向作为历史消息存入记忆，形成循环优化"
+  },
+  {
     "id": "2026-10-04-llm-core-concepts",
     "title": "大模型核心概念与智能体架构",
     "url": "posts/2026-10-04-llm-core-concepts.html",
