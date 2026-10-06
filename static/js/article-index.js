@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-07-langchain-tools-mechanism",
+    "title": "LangChain Tools 工具机制与实战",
+    "url": "posts/2026-10-07-langchain-tools-mechanism.html",
+    "publishedAt": "2026-10-07",
+    "category": "AI",
+    "tags": [
+      "AI大模型",
+      "LangChain",
+      "工具调用"
+    ],
+    "summary": "- \"定义：大语言模型通过 Tools 机制突破自身能力局限，获取实时外部数据。\"   - \"核心逻辑：由大模型自主判断需求，主动调用外部 API、本地函数或第三方服务。\"   - \"工具作用：连接外部资源、执行实体操作任务、消除 AI 幻觉并提升决策准确度。\"   - \"闭环流程：模型决策 -> 工具调用 -> 数据回传 -> 结果整合，依赖四大组件协"
+  },
+  {
     "id": "2026-10-07-agent-execution-flow",
     "title": "典型智能体完整运行流程",
     "url": "posts/2026-10-07-agent-execution-flow.html",
