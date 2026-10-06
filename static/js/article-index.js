@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-06-smart-agriculture-agent-case",
+    "title": "智慧农业助手 Agent 实战案例",
+    "url": "posts/2026-10-06-smart-agriculture-agent-case.html",
+    "publishedAt": "2026-10-06",
+    "category": "AI",
+    "tags": [
+      "AI大模型",
+      "LangChain",
+      "智能体",
+      "Agent 案例"
+    ],
+    "summary": "- \"场景：通过 API 开发智慧农业助手，解答玉米虫害问题。\"   - \"约束：设置植保专家角色，限定语气朴实、引用规程、不推荐品牌。\"   - \"流程：拼接 Prompt、分词、Agent 规划、调用搜索工具、生成回答。\"   - \"校验：逐项检查最终回答是否完全遵守 System Prompt 的要求。\""
+  },
+  {
     "id": "2026-10-07-langchain-tools-mechanism",
     "title": "LangChain Tools 工具机制与实战",
     "url": "posts/2026-10-07-langchain-tools-mechanism.html",
