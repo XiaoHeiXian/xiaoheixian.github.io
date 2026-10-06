@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-06-ai-agent-core-architecture",
+    "title": "智能体核心认知与体系架构",
+    "url": "posts/2026-10-06-ai-agent-core-architecture.html",
+    "publishedAt": "2026-10-06",
+    "category": "AI",
+    "tags": [
+      "AI大模型",
+      "LangChain",
+      "Agent",
+      "智能体"
+    ],
+    "summary": "- \"定义：智能体是能够感知环境、自主决策、执行动作的自主系统。\"   - \"价值：突破LLM只说不做的局限，实现从文本生成到任务执行的升级。\"   - \"特征：自主性、交互性、目标导向性、适应性。\"   - \"分类：反应式、基于模型、目标导向、效用函数、学习型、多智能体。\"   - \"架构：感知、记忆、推理、规划、执行五层闭环架构。\"   - \"组件："
+  },
+  {
     "id": "2026-10-06-smart-agriculture-agent-case",
     "title": "智慧农业助手 Agent 实战案例",
     "url": "posts/2026-10-06-smart-agriculture-agent-case.html",
