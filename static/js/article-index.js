@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-07-agent-execution-flow",
+    "title": "典型智能体完整运行流程",
+    "url": "posts/2026-10-07-agent-execution-flow.html",
+    "publishedAt": "2026-10-07",
+    "category": "AI",
+    "tags": [
+      "AI大模型",
+      "LangChain",
+      "智能体"
+    ],
+    "summary": "- \"定义：典型智能体将大语言模型与工具结合，创建能够对任务进行推理、决定使用哪些工具并迭代地解决问题的系统。\"   - \"核心架构：基于“感知-决策-执行”逻辑，由 request、model、memory、tools、result 五大模块构成。\"   - \"流程拆解：用户请求封装为 HumanMessage，模型结合记忆与提示词决策，调用工具获取数"
+  },
+  {
     "id": "2026-10-06-llm-core-initialization",
     "title": "大语言模型核心原理与初始化实战",
     "url": "posts/2026-10-06-llm-core-initialization.html",
