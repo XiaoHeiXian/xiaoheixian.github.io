@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-06-llm-core-initialization",
+    "title": "大语言模型核心原理与初始化实战",
+    "url": "posts/2026-10-06-llm-core-initialization.html",
+    "publishedAt": "2026-10-06",
+    "category": "AI",
+    "tags": [
+      "微服务",
+      "AI大模型",
+      "LangChain",
+      "LLM"
+    ],
+    "summary": "- \"定义：LLM 是智能体的推理引擎，驱动决策并确定工具调用与最终答案。\"   - \"扩展能力：支持工具调用、结构化输出、多模态数据处理以及多步推理。\"   - \"专属初始化：ChatOpenAI 针对 OpenAI 接口设计，参数完整且可控性强。\"   - \"通用初始化：init_chat_model 支持一键切换多家大模型提供商。\"   - \"参数"
+  },
+  {
     "id": "2026-10-06-message-and-prompt",
     "title": "消息与提示词核心机制",
     "url": "posts/2026-10-06-message-and-prompt.html",
