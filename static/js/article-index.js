@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-08-es-overview-and-inverted-index",
+    "title": "Elasticsearch 概述与倒排索引原理",
+    "url": "posts/2026-10-08-es-overview-and-inverted-index.html",
+    "publishedAt": "2026-10-08",
+    "category": "云商城",
+    "tags": [
+      "Elasticsearch",
+      "搜索引擎",
+      "倒排索引"
+    ],
+    "summary": "- \"定义：开源的分布式搜索引擎，用于搜索、日志统计、分析与系统监控。\"   - \"优势：支持分布式水平扩展，基于倒排索引实现高性能，提供 Restful 接口。\"   - \"正向索引：根据 id 索引，非索引字段或模糊查询时会导致全表扫描，效率极低。\"   - \"倒排索引：基于文档（Document）与词条（Term）构建，根据词条找文档，避免全表扫描"
+  },
+  {
     "id": "2026-10-06-ai-agent-core-architecture",
     "title": "智能体核心认知与体系架构",
     "url": "posts/2026-10-06-ai-agent-core-architecture.html",
