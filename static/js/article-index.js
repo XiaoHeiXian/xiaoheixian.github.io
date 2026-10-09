@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-09-es-database-core-concepts",
+    "title": "ES 数据库基本概念",
+    "url": "posts/2026-10-09-es-database-core-concepts.html",
+    "publishedAt": "2026-10-09",
+    "category": "云商城",
+    "tags": [
+      "Elasticsearch",
+      "数据库",
+      "概念"
+    ],
+    "summary": "- \"文档和字段：文档是ES中的一条数据，字段是JSON文档中的属性。\"   - \"索引和映射：索引是相同类型文档的集合，映射是索引中文档的字段约束。\"   - \"MySQL 对比：Table 对应 Index，Row 对应 Document，Column 对应 Field。\"   - \"分工：MySQL 擅长事务操作保障安全，ES 擅长海量数据的搜索与"
+  },
+  {
     "id": "2026-10-08-es-overview-and-inverted-index",
     "title": "Elasticsearch 概述与倒排索引原理",
     "url": "posts/2026-10-08-es-overview-and-inverted-index.html",
