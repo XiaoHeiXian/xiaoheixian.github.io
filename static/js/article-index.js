@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-09-es-deployment",
+    "title": "ES 部署",
+    "url": "posts/2026-10-09-es-deployment.html",
+    "publishedAt": "2026-10-09",
+    "category": "云商城",
+    "tags": [
+      "Elasticsearch",
+      "部署",
+      "Kibana"
+    ],
+    "summary": "- \"部署方式：使用 docker-compose 组合安装 Elasticsearch 和 Kibana。\"   - \"目录准备：创建映射目录并赋权，创建 docker-compose 存放目录。\"   - \"容器配置：配置 ES 与 Kibana 的镜像、端口、环境变量及网络。\"   - \"安装验证：通过浏览器访问 9200 和 5601 端口验证安"
+  },
+  {
     "id": "2026-10-09-es-database-core-concepts",
     "title": "ES 数据库基本概念",
     "url": "posts/2026-10-09-es-database-core-concepts.html",
