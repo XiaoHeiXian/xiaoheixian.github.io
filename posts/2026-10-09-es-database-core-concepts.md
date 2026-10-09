@@ -19,7 +19,7 @@ elasticsearch 中有很多独有的概念，与 mysql 中略有差别，但也�
 
 elasticsearch 是面向文档（Document）存储的，可以是数据库中的一条商品数据，一条订单信息。文档数据会被序列化为 json 格式后存储在 elasticsearch 中：
 
-![架构示意图](https://xiaoheixian.github.io/posts/assets/331_65.png)
+![架构示意图](https://xiaoheixian.github.io/posts/assets/330_65.png)
 
 MySQL 表结构：
 
