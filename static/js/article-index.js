@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-10-es-dsl-language",
+    "title": "ES 的 DSL 语言",
+    "url": "posts/2026-10-10-es-dsl-language.html",
+    "publishedAt": "2026-10-10",
+    "category": "云商城",
+    "tags": [
+      "Elasticsearch",
+      "DSL",
+      "搜索"
+    ],
+    "summary": "- \"概念类比：Index 对应 Database，Document 对应 Row，Field 对应 Column。\"   - \"索引库操作：必须创建 Mapping 映射，定义字段的 type、index 和 analyzer。\"   - \"Mapping 属性：text 支持分词，keyword 精确匹配，支持数值、布尔、日期、对象类型。\"   -"
+  },
+  {
     "id": "2026-10-09-es-deployment",
     "title": "ES 部署",
     "url": "posts/2026-10-09-es-deployment.html",
