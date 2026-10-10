@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-11-es-data-sync",
+    "title": "ES 数据同步",
+    "url": "posts/2026-10-11-es-data-sync.html",
+    "publishedAt": "2026-10-11",
+    "category": "云商城",
+    "tags": [
+      "Elasticsearch",
+      "数据同步",
+      "Canal"
+    ],
+    "summary": "- \"创建索引：使用 @Document 注解定义实体类，自动创建索引。\"   - \"数据同步：包含全量导入与增量导入两种策略，全量用于初始化。\"   - \"增量同步：基于 Canal 监听 MySQL binlog，通过 RocketMQ 异步同步。\"   - \"Repository：继承 ElasticsearchRepository，实现 CRUD"
+  },
+  {
     "id": "2026-10-10-build-es-search-environment",
     "title": "搭建 ES 搜索环境",
     "url": "posts/2026-10-10-build-es-search-environment.html",
