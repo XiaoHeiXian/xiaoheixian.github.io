@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-10-mysql-deep-dive-qa",
+    "title": "MySQL 底层专项技术问答",
+    "url": "posts/2026-10-10-mysql-deep-dive-qa.html",
+    "publishedAt": "2026-10-10",
+    "category": "问答",
+    "tags": [
+      "MySQL",
+      "数据库",
+      "索引",
+      "分库分表"
+    ],
+    "summary": "- \"表设计：商品拆分为 SPU 与 SKU，统一建表规范，禁用物理外键。\"   - \"索引设计：高频筛选字段建联合索引，遵循最左前缀原则，定期清理无效索引。\"   - \"分页优化：禁止大偏移量分页，采用主键游标分页。\"   - \"事务隔离：InnoDB 默认 RR，秒杀场景下通过加锁避免幻读与超卖。\"   - \"分库分表：按 user_id 哈希分片，"
+  },
+  {
     "id": "2026-10-10-es-dsl-language",
     "title": "ES 的 DSL 语言",
     "url": "posts/2026-10-10-es-dsl-language.html",
