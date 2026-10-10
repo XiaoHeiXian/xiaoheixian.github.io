@@ -1,5 +1,17 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-10-build-es-search-environment",
+    "title": "搭建 ES 搜索环境",
+    "url": "posts/2026-10-10-build-es-search-environment.html",
+    "publishedAt": "2026-10-10",
+    "category": "云商城",
+    "tags": [
+      "Elasticsearch",
+      "环境搭建"
+    ],
+    "summary": "- \"创建模块：在 mall-service 下新建 mall-es-service 模块。\"   - \"依赖引入：引入 spring-boot-starter-data-elasticsearch 依赖。\"   - \"配置管理：配置 Nacos 注册中心与 ES 连接信息。\"   - \"启动类：排除 DataSourceAutoConfiguratio"
+  },
+  {
     "id": "2026-10-10-mysql-deep-dive-qa",
     "title": "MySQL 底层专项技术问答",
     "url": "posts/2026-10-10-mysql-deep-dive-qa.html",
