@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-11-es-full-text-search",
+    "title": "ES 全文检索",
+    "url": "posts/2026-10-11-es-full-text-search.html",
+    "publishedAt": "2026-10-11",
+    "category": "云商城",
+    "tags": [
+      "Elasticsearch",
+      "全文检索",
+      "高亮"
+    ],
+    "summary": "- \"核心工具：NativeQueryBuilder 用于构建原生 DSL，Query 定义查询条件。\"   - \"ElasticsearchTemplate：封装底层 API，执行复杂查询与聚合。\"   - \"查询实现：基于 Query 构建多条件组合，通过 NativeQueryBuilder 组装。\"   - \"结果解析：SearchHits 包含"
+  },
+  {
     "id": "2026-10-11-es-data-sync",
     "title": "ES 数据同步",
     "url": "posts/2026-10-11-es-data-sync.html",
