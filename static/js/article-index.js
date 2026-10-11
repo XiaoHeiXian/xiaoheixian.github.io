@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-12-structured-output",
+    "title": "结构化输出",
+    "url": "posts/2026-10-12-structured-output.html",
+    "publishedAt": "2026-10-12",
+    "category": "AI",
+    "tags": [
+      "AI大模型",
+      "LangChain",
+      "结构化输出",
+      "Pydantic"
+    ],
+    "summary": "- \"背景：LLM 原生输出为非结构化自然语言，直接用于程序逻辑处理易出错。\"   - \"方案：LangChain 提供结构化输出方案，约束智能体返回标准化数据。\"   - \"Pydantic：强类型数据校验工具库，提供数据说明书、校验器和容器三层能力。\"   - \"response_format：智能体内置原生结构化输出配置，支持 Pydantic、R"
+  },
+  {
     "id": "2026-10-11-es-full-text-search",
     "title": "ES 全文检索",
     "url": "posts/2026-10-11-es-full-text-search.html",
