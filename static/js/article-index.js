@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-12-lcel-typical-use-cases",
+    "title": "LCEL 典型应用场景",
+    "url": "posts/2026-10-12-lcel-typical-use-cases.html",
+    "publishedAt": "2026-10-12",
+    "category": "AI",
+    "tags": [
+      "AI大模型",
+      "LangChain",
+      "LCEL"
+    ],
+    "summary": "- \"场景一：带自定义工具的线性链式调用，通过 RunnableLambda 封装工具函数。\"   - \"工具链构建：提示词模板 -> LLM -> 输出解析器 -> 工具函数 1 -> 工具函数 2。\"   - \"强类型模型：使用 Pydantic 定义图片输入输出模型，包含参数校验逻辑。\"   - \"场景二：并行多任务链路，使用 RunnablePa"
+  },
+  {
     "id": "2026-10-12-langchain-runnable-components",
     "title": "Runnable 组件",
     "url": "posts/2026-10-12-langchain-runnable-components.html",
