@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-12-llm-async-and-streaming",
+    "title": "大模型异步与流式处理体系",
+    "url": "posts/2026-10-12-llm-async-and-streaming.html",
+    "publishedAt": "2026-10-12",
+    "category": "AI",
+    "tags": [
+      "AI大模型",
+      "LangChain",
+      "异步",
+      "流式处理"
+    ],
+    "summary": "- \"核心能力：流式传输是构建高交互、低等待 AI 应用的关键，LangChain 统一提供 5 套调用接口。\"   - \"同步调用：invoke() 单次阻塞，batch() 批量并发，适合本地调试与离线任务。\"   - \"异步调用：ainvoke() 非阻塞高并发，astream() 流式打字机效果，abatch() 异步批量处理。\"   - \"流式"
+  },
+  {
     "id": "2026-10-12-structured-output",
     "title": "结构化输出",
     "url": "posts/2026-10-12-structured-output.html",
