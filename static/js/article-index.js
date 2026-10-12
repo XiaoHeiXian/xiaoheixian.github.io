@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-13-redis-stock-decrement",
+    "title": "Redis 实现库存递减",
+    "url": "posts/2026-10-13-redis-stock-decrement.html",
+    "publishedAt": "2026-10-13",
+    "category": "云商城",
+    "tags": [
+      "秒杀",
+      "Redis",
+      "库存扣减"
+    ],
+    "summary": "- \"秒杀挑战：瞬时高并发、超卖风险、数据库压力、用户体验下降。\"   - \"实现思路：预加载库存、Redis 原子减操作、异步持久化、库存恢复。\"   - \"库存预热：定时任务提前将当天活动商品库存加载至 Redis。\"   - \"库存扣减：通过 Redis DECR 原子操作扣减库存，小于 0 回滚，成功则异步下单。\""
+  },
+  {
     "id": "2026-10-13-distributed-scheduled-task-elasticjob",
     "title": "分布式定时任务 ElasticJob",
     "url": "posts/2026-10-13-distributed-scheduled-task-elasticjob.html",
