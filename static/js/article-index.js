@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-12-project-foundation-framework-qa",
+    "title": "项目基础框架专项技术问答",
+    "url": "posts/2026-10-12-project-foundation-framework-qa.html",
+    "publishedAt": "2026-10-12",
+    "category": "问答",
+    "tags": [
+      "项目架构",
+      "MyBatis",
+      "安全"
+    ],
+    "summary": "- \"分层架构：严格遵循 Controller、Service、Mapper 三层，禁止跨层访问。\"   - \"逻辑删除：通过 @TableLogic 注解实现，删除转 UPDATE，查询自动过滤。\"   - \"SQL 注入：使用 MyBatis-Plus 预编译 #{}，禁止 ${} 拼接，全局拦截特殊字符。\"   - \"页面静态化：将商品详情页渲染为"
+  },
+  {
     "id": "2026-10-12-microservices-system-qa",
     "title": "微服务体系专项技术问答",
     "url": "posts/2026-10-12-microservices-system-qa.html",
