@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-12-lock-mechanism",
+    "title": "锁机制",
+    "url": "posts/2026-10-12-lock-mechanism.html",
+    "publishedAt": "2026-10-12",
+    "category": "云商城",
+    "tags": [
+      "Java",
+      "并发",
+      "锁"
+    ],
+    "summary": "- \"定义：多线程环境下为保证共享资源健康、线程安全的一种手段。\"   - \"悲观锁：每次拿数据都认为别人会修改，所以每次拿数据都会上锁。\"   - \"乐观锁：假设不会冲突，更新时检查版本号或使用 CAS 算法。\"   - \"可重入锁：允许线程多次获取同一个锁，避免死锁。\"   - \"公平锁与非公平锁：按申请顺序获取锁 vs 允许插队，后者性能更高。\""
+  },
+  {
     "id": "2026-10-13-redis-stock-decrement",
     "title": "Redis 实现库存递减",
     "url": "posts/2026-10-13-redis-stock-decrement.html",
