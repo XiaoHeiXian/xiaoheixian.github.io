@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-12-microservices-system-qa",
+    "title": "微服务体系专项技术问答",
+    "url": "posts/2026-10-12-microservices-system-qa.html",
+    "publishedAt": "2026-10-12",
+    "category": "问答",
+    "tags": [
+      "SpringCloud",
+      "OpenFeign",
+      "Sentinel",
+      "Nacos"
+    ],
+    "summary": "- \"Maven 分层：父工程统一管控依赖版本，拆分 common、api 与业务微服务。\"   - \"循环依赖：通过 Git 分支 + CodeReview 规范，长链路同步调用全部改为 RocketMQ 异步化。\"   - \"OpenFeign：基于 JDK 动态代理封装 HTTP 请求，同步链式调用易引发服务雪崩。\"   - \"Sentinel：实"
+  },
+  {
     "id": "2026-10-12-distributed-high-concurrency-qa",
     "title": "分布式高并发核心技术问答",
     "url": "posts/2026-10-12-distributed-high-concurrency-qa.html",
