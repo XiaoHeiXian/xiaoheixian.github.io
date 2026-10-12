@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-13-seckill-system-design",
+    "title": "秒杀系统核心设计与实现",
+    "url": "posts/2026-10-13-seckill-system-design.html",
+    "publishedAt": "2026-10-13",
+    "category": "云商城",
+    "tags": [
+      "秒杀",
+      "Redis",
+      "缓存",
+      "数据库设计"
+    ],
+    "summary": "- \"数据库设计：秒杀活动与秒杀商品一对多，商品表含价格、库存、活动ID等字段。\"   - \"项目架构：独立 mall-seckill-service 模块，配置 Nacos 与数据库连接。\"   - \"核心特征：严格限时限量、瞬时高并发，需解决库存预扣与防超卖。\"   - \"活动展示：查询未结束活动，最多展示 5 条，倒计时与状态显示。\"   - \"R"
+  },
+  {
     "id": "2026-10-12-project-foundation-framework-qa",
     "title": "项目基础框架专项技术问答",
     "url": "posts/2026-10-12-project-foundation-framework-qa.html",
