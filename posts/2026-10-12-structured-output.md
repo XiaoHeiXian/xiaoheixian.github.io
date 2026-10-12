@@ -24,7 +24,7 @@ Pydantic 是 Python 生态中用于强类型数据校验、结构化数据定义
 
 对于编程初学者，可将 Pydantic 模型理解为三层能力载体：
 
-（1）标准化数据说明书：强制规定数据必须包含的全部字段、每个字段对应数据类型（数字 / 字符串 / 列表等）、字段约束条件（例如价格数值必须大于 0）；
+（1）标准化数据说明书：强制规定数据必须包含的全部字段、每个字段对应数据类型（数字/字符串/列表等）、字段约束条件（例如价格数值必须大于 0）；
 
 （2）全自动数据校验器：自动校验数据是否匹配预设规范，不合规数据直接抛出异常；同时支持自动类型转换，例如自动将字符串"9999"转换为数字 9999；
 
@@ -65,7 +65,7 @@ Pydantic 是 Python 生态中用于强类型数据校验、结构化数据定义
         print(user1.age) # 输出：25
         # 模型转为字典，适配数据库存储、接口传参等场景
         print(user1.model_dump())
-
+        
         print("="*50)
 
         # 场景 2：入参违反约束，自动抛出校验异常
@@ -89,7 +89,7 @@ create_agent 内置原生结构化输出能力，仅需配置 response_format �
 
 ## 3、轻量级 JSON 格式输出
 
-若业务无需复杂的数据类型、字段合法性校验，可采用轻量化 JSON 输出方案。该方案无需配置 response_format 参数，仅通过系统提示词严格约束输出规则，强制模型返回可直接解析的标准 JSON 字符串。
+若业务无需复杂的数据类型、字段合法性强制校验，可采用轻量化 JSON 输出方案。该方案无需配置 response_format 参数，仅通过系统提示词严格约束输出规则，强制模型返回可直接解析的标准 JSON 字符串。
 
 【例 2.3-7】轻量化 JSON 输出
 
@@ -101,10 +101,10 @@ create_agent 内置原生结构化输出能力，仅需配置 response_format �
     SYSTEM_PROMPT = """
     你是农业病虫害诊断助手，输出必须严格遵守以下规则：
     1. 返回 JSON 包含固定 4 个字段：
-        - crop: 作物名称（示例：小麦、水稻、苹果）
-        - disease: 病虫害名称（示例：小麦条锈病、水稻稻飞虱）
-        - risk_level: 风险等级，仅允许填写：低、中、高
-        - suggestion: 简易防治建议，文字不超过 50 字
+       - crop: 作物名称（示例：小麦、水稻、苹果）
+       - disease: 病虫害名称（示例：小麦条锈病、水稻稻飞虱）
+       - risk_level: 风险等级，仅允许填写：低、中、高
+       - suggestion: 简易防治建议，文字不超过 50 字
     2. 仅输出纯 JSON 文本，禁止额外解释、说明、标题、换行注释；
     3. 保证 JSON 语法标准、可被程序直接解析。
     """
@@ -124,10 +124,10 @@ create_agent 内置原生结构化输出能力，仅需配置 response_format �
         # 手动解析 JSON
         try:
             diagnosis = json.loads(raw_text)
-            print(f"作物: {diagnosis.get('crop')}")
-            print(f"病虫害: {diagnosis.get('disease')}")
-            print(f"风险等级: {diagnosis.get('risk_level')}")
-            print(f"防治建议: {diagnosis.get('suggestion')}")
+            print(f"作物：{diagnosis.get('crop')}")
+            print(f"病虫害：{diagnosis.get('disease')}")
+            print(f"风险等级：{diagnosis.get('risk_level')}")
+            print(f"防治建议：{diagnosis.get('suggestion')}")
         except Exception as e:
             print(f"JSON 文本解析失败: {str(e)}")
             print("模型原始输出内容: ", raw_text)
@@ -138,36 +138,79 @@ LangChain 结构化输出官方推荐使用 Pydantic 数据模型，该方案适
 
 【例 2.3-8】基于 Pydantic 的智能体结构化输出
 
-本案例采用 LangChain 官方推荐的 Pydantic 结构化输出方案，通过 response_format 参数进行配置。该方案配合 Pydantic 模型使用，框架会自动完成捕获、校验，最终存入智能体运行状态的 structured_response 字段中。
+本案例采用 LangChain 官方推荐的 Pydantic 结构化输出方案，通过 response_format 参数直接约束并获取结构化数据。
 
-（图片末尾内容截断，核心逻辑为：定义 Pydantic 模型 -> 创建 Agent 时传入 response_format 参数 -> 调用 Agent 获取 structured_response 结果）
+【程序代码】
 
-## 5、流程图文字推演
+    from pydantic import BaseModel, Field
 
-### 轻量级 JSON 输出流程
+    # 1. 定义 Pydantic 结构化输出模型
+    class Diagnosis(BaseModel):
+        crop: str = Field(description="作物名称（示例：小麦、水稻、苹果）")
+        disease: str = Field(description="病虫害名称（示例：小麦条锈病、水稻稻飞虱）")
+        risk_level: str = Field(description="风险等级，仅允许填写：低、中、高")
+        suggestion: str = Field(description="简易防治建议，文字不超过 50 字")
 
-定义 System Prompt（约束 JSON 字段与格式） --> 创建 Agent --> 用户输入提问 --> LLM 生成纯 JSON 字符串 --> 手动解析 JSON（json.loads） --> 异常兜底处理 --> 业务逻辑使用数据
+    # 2. 组装智能体，配置 response_format 参数
+    agent = create_agent(
+        model=llm,
+        system_prompt=SYSTEM_PROMPT,
+        response_format=Diagnosis
+    )
 
-### Pydantic 结构化输出流程
+    # 3. 调用智能体
+    if __name__ == "__main__":
+        user_input = ["分析当前麦田出现的黄叶、锈斑症状，给出病虫害诊断结果"]
+        result = agent.invoke({"messages": user_input})
+        
+        # 4. 直接获取结构化输出结果（框架自动校验并转换）
+        structured_response = result["structured_response"]
+        print(f"作物：{structured_response.crop}")
+        print(f"病虫害：{structured_response.disease}")
+        print(f"风险等级：{structured_response.risk_level}")
+        print(f"防治建议：{structured_response.suggestion}")
 
-定义 Pydantic 数据模型（字段、类型、约束） --> 创建 Agent 时配置 response_format 参数 --> 用户输入提问 --> LLM 生成结构化数据 --> 框架自动捕获与校验 --> 存入 structured_response 字段 --> 获取 Pydantic 实例对象 --> 业务逻辑直接使用属性
+## 5、核心业务价值
+
+- 降低文本解析开发成本，无需手动编写复杂文本提取逻辑
+- 统一输出格式，多轮对话、多次调用输出结果保持一致
+- 自带数据校验，提前拦截不合规数据，减少下游程序异常
+- 结构化数据可无缝对接数据库存储、后端 API、工具函数等下游业务系统
+
+## 6、流程图文字推演
+
+### 结构化输出工作流程
+
+用户提问 --> 智能体接收并拼接上下文 --> LLM 生成自由文本输出 --> 判断是否配置 response_format
+
+若配置了 Pydantic 模型 --> 框架自动捕获输出 --> 执行 Pydantic 数据校验 --> 校验通过则转换为模型实例对象 --> 存入 structured_response --> 业务代码直接通过属性访问数据
+
+若未配置 response_format（轻量级 JSON） --> 系统提示词约束模型输出纯 JSON 文本 --> 业务代码手动调用 json.loads 解析 --> 异常时捕获并处理原始文本
+
+若校验失败 --> 框架抛出校验异常 --> 触发重试或错误处理逻辑
 
 💡 **速记**
 
 【核心考点】
 
-LLM 原生输出为非结构化自然语言，直接用于程序处理会导致解析异常和数据错乱，LangChain 提供结构化输出方案解决此问题。
+结构化输出是为了解决 LLM 原生输出为非结构化自然语言、难以直接用于程序处理的问题。
 
-Pydantic 是实现结构化输出的底层核心依赖，具备三层能力：标准化数据说明书、全自动数据校验器、便捷结构化数据容器。
+Pydantic 模型是 LangChain 结构化输出的底层核心依赖，提供强类型校验、类型转换和属性访问能力。
+
+create_agent 的 response_format 参数支持 Pydantic 模型类、ResponseFormat 对象和 JSON Schema 字典，框架自动完成捕获、校验并存入 structured_response。
+
+轻量级 JSON 输出仅依靠系统提示词约束，无需配置 response_format，但需要业务代码手动解析 JSON。
 
 【高频逻辑链】
 
-轻量级方案：通过 System Prompt 约束 JSON 格式 --> 手动解析（json.loads） --> 需自行编写 try-except 兜底。
+Pydantic 模型定义：继承 BaseModel --> 使用 Field 定义字段类型与约束 --> 可选 field_validator 自定义校验逻辑。
 
-推荐方案：定义 Pydantic 模型 --> 创建 Agent 时配置 response_format 参数 --> 框架自动校验并存入 structured_response --> 直接获取实例对象。
+结构化输出实现：定义 Pydantic 模型 --> create_agent 传入 response_format --> 调用 agent.invoke --> 从 result["structured_response"] 获取结构化对象。
+
+轻量级实现：编写系统提示词约束 JSON 格式 --> 调用 agent --> 手动 json.loads 解析输出 --> 异常捕获。
 
 【关键避坑】
 
-轻量级 JSON 输出容易受模型幻觉影响，可能返回带有 Markdown 代码块标记（如 ```json）或多余解释的文本，导致 json.loads 解析失败，必须做好异常捕获和格式清洗。
+使用 Pydantic 结构化输出时，必须确保所选模型支持工具调用（Function Calling），否则 response_format 可能不生效。
 
-Pydantic 结构化输出方案需要模型支持工具调用（Function Calling）能力，如果模型能力不足，可能无法正确返回结构化数据。
+轻量级 JSON 输出完全依赖模型对系统提示词的遵循程度，若模型出现幻觉或输出格式偏差，必须做好异常捕获，并打印原始文本以便排查。
