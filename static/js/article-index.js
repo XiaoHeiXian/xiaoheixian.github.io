@@ -1,5 +1,16 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-13-seckill-frontend-backend-integration",
+    "title": "秒杀前后端联调与页面静态化",
+    "url": "posts/2026-10-13-seckill-frontend-backend-integration.html",
+    "publishedAt": "2026-10-13",
+    "category": "云商城",
+    "tags": [
+      "秒杀 前后端联调 Thymeleaf 页面静态化"
+    ],
+    "summary": "- \"网关路由：配置 mall-seckill-service 路由与 StripPrefix 过滤器。\"   - \"放行接口：将秒杀接口加入网关放行名单。\"   - \"页面静态化：使用 Thymeleaf 生成静态 HTML 详情页，减轻数据库压力。\"   - \"动态数据：获取活动商品数据，动态生成上下文并写入文件。\"   - \"前端测试：验证秒杀列表"
+  },
+  {
     "id": "2026-10-13-seckill-system-design",
     "title": "秒杀系统核心设计与实现",
     "url": "posts/2026-10-13-seckill-system-design.html",
