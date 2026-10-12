@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-12-distributed-high-concurrency-qa",
+    "title": "分布式高并发核心技术问答",
+    "url": "posts/2026-10-12-distributed-high-concurrency-qa.html",
+    "publishedAt": "2026-10-12",
+    "category": "问答",
+    "tags": [
+      "分布式",
+      "高并发",
+      "Redis",
+      "Elasticsearch"
+    ],
+    "summary": "- \"秒杀超卖：采用 Redis 预库存 + 分布式锁 + MQ 异步方案，结合 Elastic-Job 定时校对。\"   - \"分布式锁：原生 SETNX 有不可重入、无法自动续期、误删等问题，Redisson 通过 Hash 结构、看门狗、Lua 脚本解决。\"   - \"缓存三兄弟：穿透用布隆过滤器 + 缓存空值，击穿用热点永不过期 + 互斥锁，雪崩"
+  },
+  {
     "id": "2026-10-12-lcel-typical-use-cases",
     "title": "LCEL 典型应用场景",
     "url": "posts/2026-10-12-lcel-typical-use-cases.html",
