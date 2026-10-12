@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-12-langchain-expression-language-basics",
+    "title": "LangChain 表达式语言基础",
+    "url": "posts/2026-10-12-langchain-expression-language-basics.html",
+    "publishedAt": "2026-10-12",
+    "category": "AI",
+    "tags": [
+      "AI大模型",
+      "LangChain",
+      "LCEL",
+      "表达式语言"
+    ],
+    "summary": "- \"核心定义：LCEL 是一种声明式编排语言，通过管道符串联组件。\"   - \"基础单元：Prompt、LLM、Parser 都实现了 Runnable 接口。\"   - \"执行方式：支持同步调用（invoke）、流式输出（stream）、批量调用（batch）。\"   - \"解析器：分为 StringOutputParser、JsonOutputPa"
+  },
+  {
     "id": "2026-10-12-llm-async-and-streaming",
     "title": "大模型异步与流式处理体系",
     "url": "posts/2026-10-12-llm-async-and-streaming.html",
