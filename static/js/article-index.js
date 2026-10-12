@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-12-langchain-runnable-components",
+    "title": "Runnable 组件",
+    "url": "posts/2026-10-12-langchain-runnable-components.html",
+    "publishedAt": "2026-10-12",
+    "category": "AI",
+    "tags": [
+      "AI大模型",
+      "LangChain",
+      "Runnable",
+      "组件"
+    ],
+    "summary": "- \"核心抽象：所有能被管道串联的组件，本质上都是 Runnable。\"   - \"统一接口：实现 Runnable 接口即拥有 invoke、stream、batch 方法。\"   - \"管道兼容：只有 Runnable 组件才能用管道符语法串联。\"   - \"基础组件：内置提示词模板、聊天模型、解析器均为 Runnable。\"   - \"自定义组件："
+  },
+  {
     "id": "2026-10-12-langchain-expression-language-basics",
     "title": "LangChain 表达式语言基础",
     "url": "posts/2026-10-12-langchain-expression-language-basics.html",
