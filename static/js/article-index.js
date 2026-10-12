@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-13-distributed-scheduled-task-elasticjob",
+    "title": "分布式定时任务 ElasticJob",
+    "url": "posts/2026-10-13-distributed-scheduled-task-elasticjob.html",
+    "publishedAt": "2026-10-13",
+    "category": "云商城",
+    "tags": [
+      "分布式",
+      "定时任务",
+      "ElasticJob",
+      "ZooKeeper"
+    ],
+    "summary": "- \"定时任务：按时间计划执行任务，分为单机定时任务与分布式定时任务。\"   - \"区别：单机独立执行、数据容量低、无高可用；分布式集群执行、支持分片、高可用。\"   - \"选型：单机简单任务用 @Scheduled；集群、海量数据、关键业务用分布式定时任务。\"   - \"ElasticJob：面向互联网生态的分布式调度方案，依赖 ZooKeeper 实"
+  },
+  {
     "id": "2026-10-13-seckill-frontend-backend-integration",
     "title": "秒杀前后端联调与页面静态化",
     "url": "posts/2026-10-13-seckill-frontend-backend-integration.html",
