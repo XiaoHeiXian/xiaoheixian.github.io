@@ -235,108 +235,93 @@ permalink: /posts/2026-10-13-redis-stock-decrement.html
 
 ## 2、实现库存扣减
 
-### 1）创建秒杀接口
+（1）创建库存扣减 DTO
 
-在 ISeckillGoodsService 中添加秒杀方法：
+    @Data
+    public class StockDeductDTO {
+        private Integer activityId;
+        private Long skuId;
+        private Integer quantity = 1;
+    }
 
-    /**
-     * 秒杀下单
-     * @param activityId 活动 ID
-     * @param skuId 商品 ID
-     * @param userId 用户 ID
-     * @return 是否成功
-     */
-    Boolean seckill(Integer activityId, String skuId, Long userId);
+（2）在 IProductService 接口添加库存扣减的方法：
 
-### 2）接口实现
+    void decreaseStock(StockDeductDTO stockDeductDTO);
+
+（3）实现方法：
 
     @Override
-    public Boolean seckill(Integer activityId, String skuId, Long userId) {
-        // 1. 校验活动时间
-        SeckillActivityDTO activity = seckillActivityService.getById(activityId);
-        if (activity == null || LocalDateTime.now().isBefore(activity.getStartTime()) || LocalDateTime.now().isAfter(activity.getEndTime())) {
-            throw new BusinessException("秒杀活动未开始或已结束");
+    public void decreaseStock(StockDeductDTO stockDeductDTO) {
+        // 提取商品 ID
+        String key = "seckill-" + stockDeductDTO.getActivityId() + "-" + stockDeductDTO.getSkuId();
+        // 提取商品库存
+        int count = Integer.parseInt(redisTemplate.opsForValue().get(key).toString());
+        // 如果库存大于 0，则减 1
+        if(count > 0) {
+            redisTemplate.opsForValue().decrement(key);
+        } else {
+            throw new BusinessException(ResultCodeEnum.STOCK_SHORTAGE);
         }
-
-        // 2. 校验用户是否重复秒杀（幂等性防重）
-        String userKey = String.format("seckill-user-%s-%s", activityId, userId);
-        Boolean isAbsent = redisTemplate.opsForValue().setIfAbsent(userKey, "1", 1, TimeUnit.HOURS);
-        if (Boolean.FALSE.equals(isAbsent)) {
-            throw new BusinessException("您已参与过该秒杀活动");
-        }
-
-        // 3. 拼接 Redis Key
-        String stockKey = String.format("seckill-%s-%s", activityId, skuId);
-
-        // 4. 执行 Redis 原子减操作
-        Long stock = redisTemplate.opsForValue().decrement(stockKey);
-
-        // 5. 判断库存
-        if (stock == null || stock < 0) {
-            // 库存不足，回滚 Redis 扣减，删除用户秒杀标记
-            redisTemplate.opsForValue().increment(stockKey);
-            redisTemplate.delete(userKey);
-            throw new BusinessException("商品库存不足，秒杀失败");
-        }
-
-        // 6. 扣减成功，异步发送 MQ 消息（或直接调用订单服务）
-        // 模拟发送消息
-        // rocketMQTemplate.convertAndSend("seckill-order-topic", orderMessage);
-
-        // 7. 返回成功
-        return true;
     }
 
-### 3）控制器
+（4）控制器
 
-在 SeckillGoodsController 中添加接口：
-
-    @PostMapping("/seckill")
-    public Result<Boolean> seckill(@RequestParam Integer activityId, @RequestParam String skuId, @RequestParam Long userId) {
-        Boolean result = seckillGoodsService.seckill(activityId, skuId, userId);
-        return Result.success(result);
+    @PutMapping("/decreaseStock")
+    public Result decreaseStock(@RequestBody StockDeductDTO stockDeductDTO) {
+        productService.decreaseStock(stockDeductDTO);
+        return Result.success();
     }
 
-### 4）测试
+（5）测试（略）
 
-（1）启动项目，访问秒杀接口，观察 Redis 库存变化。
+测试之前先将加载库存到 Redis。
 
-（2）并发测试：使用 JMeter 模拟高并发请求，验证库存是否准确扣减、不会超卖。
+（6）压力测试（将压测计划命名为库存扣减，后续测试使用到该压测计划）
 
-（3）验证幂等性：同一个用户重复请求秒杀接口，验证是否只成功一次。
+参数设置：
+
+线程数：1000，持续时间：2 秒，循环次数：1
+
+HTTP 请求：添加 Body Data（消息体数据）：
+
+    {
+      "activityId": 1,
+      "skuId": 2,
+      "quantity": 0
+    }
+
+添加请求头管理：
+
+    Content-Type: application/json
+
+测试后查看 Redis 的 seckill-1-2 的值（原 100，测试后 -122）。原来库存 100 件商品卖出 222 件，这种情况就是超卖问题。
 
 ## 3、流程图文字推演
 
-### 秒杀库存扣减完整流程
-
-用户请求秒杀 --> 校验活动时间（是否开始/结束） --> 校验用户是否重复秒杀（setIfAbsent） --> 拼接 Redis 库存 Key --> 执行 Redis DECR 原子减操作 --> 判断返回值
-
-返回值 >= 0：扣减成功，发送 MQ 异步下单，返回秒杀成功
-
-返回值 < 0：库存不足，回滚 Redis INCR，删除用户秒杀标记，返回秒杀失败
-
 ### 库存预热流程
 
-定时任务触发（每天凌晨 2 点） --> 获取当天秒杀活动 --> 获取活动对应商品 --> 生成静态页面 --> 遍历商品，将库存写入 Redis（key = seckill-活动ID-商品ID） --> 设置过期时间为 1 天
+定时任务触发（每天凌晨 2 点） --> 调用商品服务获取今日秒杀商品 --> 生成商品详情静态页面 --> 遍历商品将库存写入 Redis（key 为 seckill-活动ID-商品ID，过期时间 1 天）
+
+### 库存扣减流程
+
+用户发起秒杀请求 --> 构建 Redis Key（seckill-活动ID-商品ID） --> 获取当前库存值 --> 判断库存是否大于 0 --> 大于 0 则执行递减操作，秒杀成功 --> 小于等于 0 则抛出库存不足异常，秒杀失败
 
 ## 💡 **速记**
 
 【核心考点】
 
-Redis 秒杀库存扣减的核心是：预加载库存到 Redis，利用 Redis 的 DECR 原子操作实现库存扣减，保证高并发下不会超卖。
+秒杀超卖成因：多个并发请求同时查询库存并扣减，扣减数超过实际库存量。
 
-秒杀流程需严格校验活动时间、用户重复秒杀（幂等），扣减成功后再异步下单，扣减失败需回滚 Redis 库存。
+Redis 解决方案思路：预加载库存到 Redis，利用原子减操作（DECR）处理高并发请求，返回结果大于等于 0 表示成功，小于 0 表示失败。
+
+库存预热：通过定时任务（ElasticJob）在秒杀开始前将商品库存写入 Redis，并设置过期时间。
 
 【高频逻辑链】
 
-校验活动时间 --> 校验用户重复秒杀 --> Redis DECR 扣减库存 --> 判断返回值是否 >= 0 --> 成功则发 MQ，失败则 INCR 回滚并删除用户标记。
+库存预热：定时任务 -> 获取今日活动 -> 获取活动商品 -> 生成静态页 -> 写入 Redis 缓存。
 
-库存预热：定时任务 --> 获取活动商品 --> 写入 Redis --> 设置过期时间。
+库存扣减：构建 Redis Key -> 获取库存 -> 判断库存 > 0 -> 递减库存 -> 成功；否则抛出异常。
 
 【关键避坑】
 
-DECR 返回小于 0 时必须回滚（INCR），否则会出现库存负数。
-
-用户重复秒杀校验必须使用 setIfAbsent（分布式锁）保证原子性，防止一个用户抢多单。
-
-高并发下建议使用 Lua 脚本将“校验库存 + 扣减 + 记录用户”组合为一个原子操作，避免分开执行产生并发漏洞。
+上述代码中的库存扣减逻辑存在并发安全问题：先 get 再判断再 decrement，这三步不是原子操作，高并发下会导致超卖（如压测结果库存变为 -122）。生产环境必须使用 Lua 脚本或 Redis 的原子命令（如 DECR 后判断返回值是否小于 0，若小于 0 则 INCR 回滚）来保证原子性。
