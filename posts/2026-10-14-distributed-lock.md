@@ -37,6 +37,9 @@ permalink: /posts/2026-10-14-distributed-lock.html
 
 - 单体应建议使用悲观锁来做并发控制，或者直接基于数据库做悲观锁控制。
 
+![架构示意图](https://xiaoheixian.github.io/posts/assets/355_65.png)
+![架构示意图](https://xiaoheixian.github.io/posts/assets/356_65.png)
+
 选择建议（决策树）：
 
     是否分布式环境？
@@ -47,17 +50,11 @@ permalink: /posts/2026-10-14-distributed-lock.html
             |--- 是 -> 使用乐观锁（版本号/CAS）
             |--- 否 -> 按需选择
 
-![架构示意图](https://xiaoheixian.github.io/posts/assets/355_65.png)
-![架构示意图](https://xiaoheixian.github.io/posts/assets/356_65.png)
-
 ## 3、Redis 分布式锁
 
 1）基于 SETNX 分布式锁实现
 
 redis 分布式锁的解决思路，就是利用 redis 的高性能来解决高并发，每次访问一个资源的时候，都会存储一个 key，然后通过 redisTemplate.opsForValue().setIfAbsent() 方法来进行向数据库进行插入，这个方法的作用和一般的插入不同，普通插入会将相同 key 的值进行覆盖，而 setIfAbsent 则不会，它会进行判断，如果 redis 中有这个 key，那么返回 false，如果没有则进行存储然后返回 true，而我们可以利用这个特性来进行持有锁和释放锁，但是需要注意的是必须要设置一个过期的时间，否则会造成死锁。
-
-![架构示意图](https://xiaoheixian.github.io/posts/assets/357_65.png)
-![架构示意图](https://xiaoheixian.github.io/posts/assets/358_65.png)
 
 【示例】在 mall-test-service 子项目创建控制器
 
@@ -101,6 +98,9 @@ redis 分布式锁的解决思路，就是利用 redis 的高性能来解决高�
 Redisson 提供的分布式锁是支持锁自动续期的，也就是说，如果线程仍旧没有执行完，那么 redisson 会自动给 redis 中的目标 key 延长超时时间，这在 Redisson 中称之为 Watch Dog 机制。默认情况下，看门狗的检查锁的超时时间是 30 秒钟，也可以通过修改 Config.lockWatchdogTimeout 来另行指定。
 
 watch dog 是指当你加锁时没有指定锁的自动释放时间时，则默认给你添加一个 30s 的自动释放时间，并且每隔 30s / 3 即 10s 去进行锁的续约，即每 10s 锁的自动释放时间重置为 30s，直至业务完成。
+
+![架构示意图](https://xiaoheixian.github.io/posts/assets/357_65.png)
+![架构示意图](https://xiaoheixian.github.io/posts/assets/358_65.png)
 
 （1）客户端配置
 
