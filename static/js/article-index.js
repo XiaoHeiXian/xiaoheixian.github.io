@@ -1,5 +1,20 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-14-rate-limiting-and-degradation",
+    "title": "限流与降级机制",
+    "url": "posts/2026-10-14-rate-limiting-and-degradation.html",
+    "publishedAt": "2026-10-14",
+    "category": "云商城",
+    "tags": [
+      "限流",
+      "降级",
+      "秒杀",
+      "Sentinel",
+      "Gateway"
+    ],
+    "summary": "- \"网关限流：Spring Cloud Gateway 采用令牌桶算法，基于 Redis 实现分布式限流。\"   - \"限流维度：支持按 IP、按用户、按活动、按 URI 等维度设置不同令牌桶。\"   - \"服务限流：使用 Sentinel 限制或调度请求流量，防止系统因突发流量过载。\"   - \"高并发案例：秒杀系统多层限流架构（流量漏斗模型），拦截"
+  },
+  {
     "id": "2026-10-14-distributed-lock",
     "title": "分布式锁",
     "url": "posts/2026-10-14-distributed-lock.html",
