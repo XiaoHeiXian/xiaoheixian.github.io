@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-10-14-distributed-lock",
+    "title": "分布式锁",
+    "url": "posts/2026-10-14-distributed-lock.html",
+    "publishedAt": "2026-10-14",
+    "category": "云商城",
+    "tags": [
+      "分布式",
+      "锁",
+      "Redis",
+      "Redisson"
+    ],
+    "summary": "- \"定义：分布式系统环境下，通过多个节点对共享资源进行访问控制的一种同步机制。\"   - \"区别：分布式锁控制跨进程访问，乐观锁通过版本号/CAS，悲观锁通过数据库行锁。\"   - \"选型：分布式环境用分布式锁（Redis/ZooKeeper），单体高并发写用悲观锁，读多写少用乐观锁。\"   - \"SETNX：利用 Redis 的 setIfAbsen"
+  },
+  {
     "id": "2026-10-12-lock-mechanism",
     "title": "锁机制",
     "url": "posts/2026-10-12-lock-mechanism.html",
