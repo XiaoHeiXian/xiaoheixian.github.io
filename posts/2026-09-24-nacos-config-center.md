@@ -198,6 +198,11 @@ Add a spring.config.import=nacos: property to your configuration.
 | prod | prod | 生产环境 |
 
 创建如图所示：
+
+![架构示意图](https://xiaoheixian.github.io/posts/assets/364_65.png)
+![架构示意图](https://xiaoheixian.github.io/posts/assets/365_65.png)
+![架构示意图](https://xiaoheixian.github.io/posts/assets/366_65.png)
+
 （2）创建 mall-product-service 的开发环境配置
 
 在配置列表中，选择命名空间 dev。
