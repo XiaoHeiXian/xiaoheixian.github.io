@@ -19,7 +19,9 @@ permalink: /posts/2026-09-24-gateway-authorization.html
 1）删除微服务 API 前缀
 
 （1）删除商品服务所控制器的路径前缀 /product
+
 （2）删除用户服务所控制器的路径前缀 /user
+
 （3）删除测试服务所控制器的路径前缀 /test
 
 2）禁用微服务的身份认证拦截器
@@ -56,6 +58,7 @@ permalink: /posts/2026-09-24-gateway-authorization.html
 （3）进入微服务层
 
 ① 进入授权拦截器（略）
+
 ② 进入控制器 Controller（业务处理）
 
 （4）进入过滤器 RtGlobalFilter
