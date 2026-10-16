@@ -55,7 +55,9 @@ RequestTemplate 是 OpenFeign 构建请求的核心模板类，封装了一次�
 
 功能说明：
 ①将当前线程的 HTTP 请求中的所有请求头复制到 Feign 远程调用请求中
+
 ②确保 Authorization、X-User-Id、X-User-Role 等认证信息在微服务间传递
+
 ③解决微服务间调用丢失用户认证信息的问题
 
 在 mall-api 的 api 包下创建 interceptor 包，并在该包下创建拦截器：
