@@ -177,6 +177,8 @@ QPS 阈值 = 100，预热时长 = 5 秒
 
 ② 从 Jmeter 查看结果树
 
+![架构示意图](https://xiaoheixian.github.io/posts/assets/386_65.png)
+
 部分请求失败，部分成功。
 
 ③ 从 Jmeter 查看聚合结果
