@@ -18,6 +18,7 @@ Apache JMeter 开源压力测试工具，图形化操作，专门用来验证 Se
 2、安装启动
 
 （1）官网 https://dlcdn.apache.org/jmeter/binaries/apache-jmeter-5.6.3.zip 下载二进制包，解压后无需安装
+
 （2）Windows 运行 bin/jmeter.bat；Linux/Mac 执行 bin/jmeter.sh；
 
 3、基础压测步骤
@@ -26,10 +27,14 @@ Apache JMeter 开源压力测试工具，图形化操作，专门用来验证 Se
 
 左侧右键「测试计划」→ 添加 → 线程（用户）→ 线程组
 
+![架构示意图](https://xiaoheixian.github.io/posts/assets/376_65.png)
+
 线程组核心参数：
 - 线程数：并发请求数（模拟同时多少用户访问），填写：1000
 - 调度器：可设置持续压测时长，适合长时间验证限流稳定性，填写 5
 - 循环次数：每个线程循环请求多少次，填写：1
+
+![架构示意图](https://xiaoheixian.github.io/posts/assets/377_65.png)
 
 一次压测模拟 1000 个用户，5 秒内启动，总请求数 =1000，平均每秒 200 个请求。
 
@@ -37,12 +42,16 @@ Apache JMeter 开源压力测试工具，图形化操作，专门用来验证 Se
 
 右键线程组 → 添加 → 取样器 → HTTP 请求
 
+![架构示意图](https://xiaoheixian.github.io/posts/assets/381_65.png)
+
 填写接口信息：
 - 协议：http /https
 - 服务器名称或 IP：服务 IP
 - 端口号：项目端口
 - 路径：测试接口路径，例 /order/query
 - 参数：有查询参数 parameters 和 JSON 参数 data
+
+![架构示意图](https://xiaoheixian.github.io/posts/assets/382_65.png)
 
 步骤 3（可选）携带鉴权头
 
