@@ -65,12 +65,16 @@ Apache JMeter 开源压力测试工具，图形化操作，专门用来验证 Se
 
 右键 HTTP 请求 → 添加 → 断言 → 响应断言
 
+![架构示意图](https://xiaoheixian.github.io/posts/assets/383_65.png)
+
 填写信息：
 - Apply to：保持 Main sample only（仅主请求，默认不用改）
 - Field to Test（测试字段）：勾选 Response Code
 - Pattern Matching Rules（匹配规则）：勾选 Equals（完全相等）
 - Patterns to Test 区域点击 Add，输入：200
 - Custom failure message（自定义失败提示）填写：测试成功
+
+![架构示意图](https://xiaoheixian.github.io/posts/assets/384_65.png)
 
 步骤 5：添加结果查看监听器（查看限流返回）
 
@@ -79,6 +83,8 @@ Apache JMeter 开源压力测试工具，图形化操作，专门用来验证 Se
 查看结果树：逐条看每个请求返回内容，限流会返回 Blocked by Sentinel 或自定义兜底提示。
 
 聚合报告：统计总请求、平均响应、错误率，限流请求会统计到 Error 中，直观验证阈值是否生效。
+
+![架构示意图](https://xiaoheixian.github.io/posts/assets/385_65.png)
 
 ---
 
