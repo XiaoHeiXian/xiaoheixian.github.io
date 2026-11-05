@@ -9,6 +9,148 @@
   <link rel="stylesheet" href="../static/css/mian.css">
   <link rel="stylesheet" href="../static/css/blog-v2.css?v=6a1d4d0">
 </head>
+<!-- 放到文章页模板的 </body> 前 -->
+<style>
+  .article-toc-side {
+    --toc-bg: #ffffff;
+    --toc-border: #e5e7eb;
+    --toc-text: #4b5563;
+    --toc-active: #2563eb;
+    --toc-hover: #f3f4f6;
+    position: fixed;
+    top: 100px;
+    right: 24px;
+    width: 224px;
+    max-height: calc(100vh - 140px);
+    overflow-y: auto;
+    padding: 14px 10px;
+    background: var(--toc-bg);
+    border: 1px solid var(--toc-border);
+    border-radius: 10px;
+    font-size: 13px;
+    line-height: 1.55;
+    z-index: 90;
+    box-shadow: 0 4px 24px rgba(0,0,0,.06);
+  }
+  .article-toc-side .toc-head {
+    font-weight: 700; font-size: 12px; letter-spacing: .08em;
+    color: #9ca3af; padding: 0 8px 8px; margin-bottom: 4px;
+    border-bottom: 1px solid var(--toc-border);
+  }
+  .article-toc-side ul { list-style: none; margin: 6px 0 0; padding: 0; }
+  .article-toc-side li { margin: 0; }
+  .article-toc-side li a {
+    display: block; padding: 4px 8px; border-radius: 5px;
+    color: var(--toc-text); text-decoration: none;
+    transition: background .15s, color .15s;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .article-toc-side li a:hover { background: var(--toc-hover); }
+  .article-toc-side li a.active { color: var(--toc-active); font-weight: 600; background: var(--toc-hover); }
+  .article-toc-side li.toc-l3 a { padding-left: 22px; font-size: 12.5px; color: #6b7280; }
+  .article-toc-side li.toc-l3 a.active { color: var(--toc-active); }
+
+  .article-toc-inline {
+    margin: 0 0 24px; padding: 12px 14px;
+    background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px;
+    font-size: 13.5px;
+  }
+  .article-toc-inline summary { cursor: pointer; font-weight: 600; color: #374151; }
+  .article-toc-inline ul { list-style: none; margin: 10px 0 0; padding: 0; }
+  .article-toc-inline li a { display: block; padding: 3px 0; color: #4b5563; text-decoration: none; }
+  .article-toc-inline li.toc-l3 a { padding-left: 16px; font-size: 12.5px; color: #6b7280; }
+
+  @media (max-width: 1100px) { .article-toc-side { display: none; } }
+  @media (min-width: 1101px) { .article-toc-inline { display: none; } }
+
+  @media (prefers-color-scheme: dark) {
+    .article-toc-side { --toc-bg:#111827; --toc-border:#1f2937; --toc-text:#9ca3af; --toc-active:#60a5fa; --toc-hover:#1f2937; }
+    .article-toc-inline { background:#111827; border-color:#1f2937; }
+    .article-toc-inline summary { color:#d1d5db; }
+    .article-toc-inline li a { color:#9ca3af; }
+  }
+</style>
+
+<script>
+  (function () {
+    const CFG = {
+      content: '.post-content, .article-content, .markdown-body, article',
+      headings: 'h2, h3',
+      title: '目录',
+      min: 3,
+      offset: 90
+    };
+
+    function esc(s) {
+      return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+
+    function build() {
+      const root = document.querySelector(CFG.content);
+      if (!root) return;
+      const hs = Array.from(root.querySelectorAll(CFG.headings));
+      if (hs.length < CFG.min) return;
+
+      const items = hs.map((h, i) => {
+        if (!h.id) h.id = 'toc-h-' + i;
+        return {
+          id: h.id,
+          text: h.textContent.replace(/\s+/g, ' ').trim(),
+          level: +h.tagName[1],
+          el: h
+        };
+      });
+
+      const list = items.map(it =>
+              `<li class="toc-l${it.level}"><a href="#${it.id}">${esc(it.text)}</a></li>`
+      ).join('');
+
+      const side = document.createElement('nav');
+      side.className = 'article-toc-side';
+      side.innerHTML = `<div class="toc-head">${CFG.title}</div><ul>${list}</ul>`;
+      document.body.appendChild(side);
+
+      const inline = document.createElement('details');
+      inline.className = 'article-toc-inline';
+      inline.innerHTML = `<summary>${CFG.title}（${items.length} 节）</summary><ul>${list}</ul>`;
+      root.insertBefore(inline, root.firstChild);
+
+      function go(e) {
+        const a = e.target.closest('a[href^="#"]');
+        if (!a) return;
+        e.preventDefault();
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (!el) return;
+        const y = el.getBoundingClientRect().top + window.scrollY - CFG.offset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+        history.replaceState(null, '', '#' + id);
+        const d = a.closest('details');
+        if (d) d.open = false;
+      }
+      side.addEventListener('click', go);
+      inline.addEventListener('click', go);
+
+      const map = new Map();
+      side.querySelectorAll('a').forEach(a => map.set(a.getAttribute('href').slice(1), a));
+
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(en => {
+          if (!en.isIntersecting) return;
+          const a = map.get(en.target.id);
+          if (!a) return;
+          side.querySelectorAll('a.active').forEach(x => x.classList.remove('active'));
+          a.classList.add('active');
+        });
+      }, { rootMargin: `-${CFG.offset + 10}px 0px -65% 0px`, threshold: 0 });
+
+      items.forEach(it => io.observe(it.el));
+    }
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', build);
+    else build();
+  })();
+</script>
 <body class="lay-blog blog-v2">
   <div class="header">
     <div class="header-wrap">
