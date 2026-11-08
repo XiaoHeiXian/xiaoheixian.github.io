@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-11-09-git-version-control",
+    "title": "Git 分布式版本控制工具",
+    "url": "posts/2026-11-09-git-version-control.html",
+    "publishedAt": "2026-11-09",
+    "category": "软件架构",
+    "tags": [
+      "开发工具",
+      "Git",
+      "版本控制"
+    ],
+    "summary": "概述：Git 是分布式版本控制系统，相比 SVN 具有无单点故障、容错性强的优势。 核心概念：分为工作区、暂存区和本地版本库，并最终推送到远程仓库。 环境配置：安装后需全局配置 user.name 与 user.email。 本地操作：涵盖 init、status、add、commit、reset、rm 及 .gitignore 忽略配置。 远程操作：支持 remote 管理、clone 克隆、fetch/pull 拉取与 push 推送。"
+  },
+  {
     "id": "2026-11-08-cache-problems-and-solutions",
     "title": "缓存问题及解决方案",
     "url": "posts/2026-11-08-cache-problems-and-solutions.html",

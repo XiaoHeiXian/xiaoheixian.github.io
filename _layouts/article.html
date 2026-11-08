@@ -59,9 +59,18 @@
   .article-toc-inline ul { list-style: none; margin: 10px 0 0; padding: 0; }
   .article-toc-inline li a { display: block; padding: 3px 0; color: #4b5563; text-decoration: none; }
   .article-toc-inline li.toc-l3 a { padding-left: 16px; font-size: 12.5px; color: #6b7280; }
+  .article-toc-inline li.toc-l4 a { padding-left: 32px; font-size: 12.5px; color: #6b7280; }
+  .article-toc-side li.toc-l4 a { padding-left: 36px; font-size: 12px; }
+  .article-content h2, .article-content h3, .article-content h4 { scroll-margin-top: 90px; }
+  .article-toc-toggle {
+    position: fixed; right: 16px; bottom: 24px; z-index: 91;
+    padding: 10px 15px; border: 1px solid #d1d5db; border-radius: 999px;
+    background: #fff; color: #24473d; font-size: 14px; cursor: pointer;
+    box-shadow: 0 4px 18px rgba(0,0,0,.15);
+  }
 
-  @media (max-width: 1100px) { .article-toc-side { display: none; } }
-  @media (min-width: 1101px) { .article-toc-inline { display: none; } }
+  @media (max-width: 1319px) { .article-toc-side { display: none; } }
+  @media (min-width: 1320px) { .article-toc-inline, .article-toc-toggle { display: none; } }
 
   @media (prefers-color-scheme: dark) {
     .article-toc-side { --toc-bg:#111827; --toc-border:#1f2937; --toc-text:#9ca3af; --toc-active:#60a5fa; --toc-hover:#1f2937; }
@@ -75,15 +84,11 @@
   (function () {
     const CFG = {
       content: '.post-content, .article-content, .markdown-body, article',
-      headings: 'h2, h3',
+      headings: 'h2, h3, h4',
       title: '目录',
-      min: 3,
+      min: 1,
       offset: 90
     };
-
-    function esc(s) {
-      return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-    }
 
     function build() {
       const root = document.querySelector(CFG.content);
@@ -92,7 +97,11 @@
       if (hs.length < CFG.min) return;
 
       const items = hs.map((h, i) => {
-        if (!h.id) h.id = 'toc-h-' + i;
+        if (!h.id || document.getElementById(h.id) !== h) {
+          let id = 'toc-h-' + i;
+          while (document.getElementById(id)) id += '-1';
+          h.id = id;
+        }
         return {
           id: h.id,
           text: h.textContent.replace(/\s+/g, ' ').trim(),
@@ -101,39 +110,65 @@
         };
       });
 
-      const list = items.map(it =>
-              `<li class="toc-l${it.level}"><a href="#${it.id}">${esc(it.text)}</a></li>`
-      ).join('');
+      function makeList() {
+        const list = document.createElement('ul');
+        items.forEach(it => {
+          const li = document.createElement('li');
+          const link = document.createElement('a');
+          li.className = 'toc-l' + it.level;
+          link.href = '#' + encodeURIComponent(it.id);
+          link.textContent = it.text;
+          li.appendChild(link);
+          list.appendChild(li);
+        });
+        return list;
+      }
 
       const side = document.createElement('nav');
       side.className = 'article-toc-side';
-      side.innerHTML = `<div class="toc-head">${CFG.title}</div><ul>${list}</ul>`;
+      side.setAttribute('aria-label', '文章目录');
+      side.innerHTML = `<div class="toc-head">${CFG.title}</div>`;
+      side.appendChild(makeList());
       document.body.appendChild(side);
 
       const inline = document.createElement('details');
       inline.className = 'article-toc-inline';
-      inline.innerHTML = `<summary>${CFG.title}（${items.length} 节）</summary><ul>${list}</ul>`;
+      inline.innerHTML = `<summary>${CFG.title}（${items.length} 节）</summary>`;
+      inline.appendChild(makeList());
       root.insertBefore(inline, root.firstChild);
+
+      const toggle = document.createElement('button');
+      toggle.type = 'button';
+      toggle.className = 'article-toc-toggle';
+      toggle.textContent = '目录';
+      toggle.setAttribute('aria-label', '打开文章目录');
+      document.body.appendChild(toggle);
+      toggle.addEventListener('click', () => {
+        inline.open = true;
+        inline.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        inline.querySelector('summary').focus({ preventScroll: true });
+      });
 
       function go(e) {
         const a = e.target.closest('a[href^="#"]');
         if (!a) return;
         e.preventDefault();
-        const id = a.getAttribute('href').slice(1);
+        const id = decodeURIComponent(a.getAttribute('href').slice(1));
         const el = document.getElementById(id);
         if (!el) return;
-        const y = el.getBoundingClientRect().top + window.scrollY - CFG.offset;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-        history.replaceState(null, '', '#' + id);
         const d = a.closest('details');
         if (d) d.open = false;
+        const y = el.getBoundingClientRect().top + window.scrollY - CFG.offset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+        history.replaceState(null, '', '#' + encodeURIComponent(id));
       }
       side.addEventListener('click', go);
       inline.addEventListener('click', go);
 
       const map = new Map();
-      side.querySelectorAll('a').forEach(a => map.set(a.getAttribute('href').slice(1), a));
+      side.querySelectorAll('a').forEach(a => map.set(decodeURIComponent(a.getAttribute('href').slice(1)), a));
 
+      if (!('IntersectionObserver' in window)) return;
       const io = new IntersectionObserver(entries => {
         entries.forEach(en => {
           if (!en.isIntersecting) return;
