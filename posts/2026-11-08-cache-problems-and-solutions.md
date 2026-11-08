@@ -106,7 +106,7 @@ Redis 中缓存的数据大面积同时失效，或者 Redis 宕机，从而会�
 
 简单来说就是将一个长度为 m 的位数组的所有元素初始化为 0，用 k 个散列函数对元素进行 k 次散列运算跟 len（m）取余得到 k 个位置并将 m 中对应位置设置为 1。
 
-https://xiaoheixian.github.io/posts/assets/951_15.png
+![架构示意图](https://xiaoheixian.github.io/posts/assets/951_15.png)
 
 如上图（示意图），位数组的长度是 8，散列函数个数是 3，两个元素 x，y。这两个元素都经过三次哈希函数生成三个哈希值，并映射到位数组的不同的位置，并置为 1。
 
@@ -128,7 +128,7 @@ https://xiaoheixian.github.io/posts/assets/951_15.png
 
 计数过滤器（Counting Bloom Filter）是布隆过滤器的扩展，标准 Bloom Filter 位数组的每一位扩展为一个小的计数器（Counter），在插入元素时给对应的 k（k 为哈希函数个数）个 Counter 的值分别加 1，删除元素时给对应的 k 个 Counter 的值分别减 1。
 
-https://xiaoheixian.github.io/posts/assets/952_15.png
+![架构示意图](https://xiaoheixian.github.io/posts/assets/952_15.png)
 
 显然，又引入了另一个问题：更多的资源占用，而且在很多时候会造成极大的空间浪费。
 
@@ -140,8 +140,8 @@ https://xiaoheixian.github.io/posts/assets/952_15.png
 
 因此，引入布隆过滤器，当用户请求时，判断过滤器中是否存在该元素，若不存在该元素，则直接返回不存在。若包含则从缓存中查询数据，若缓存中也没有，则查询数据库并回写到缓存里，最后给前端返回。
 
-https://xiaoheixian.github.io/posts/assets/953_15.png
-https://xiaoheixian.github.io/posts/assets/954_15.png
+![架构示意图](https://xiaoheixian.github.io/posts/assets/953_15.png)
+![架构示意图](https://xiaoheixian.github.io/posts/assets/954_15.png)
 
 尽管布隆过滤器有少量的误判，即可能不存在的数据会判定存在，从而继续查询缓存和数据库，但只要将 m 和 k 的值设置相对理想，少量的不存在查询也是可以接受的。
 
@@ -153,7 +153,7 @@ https://xiaoheixian.github.io/posts/assets/954_15.png
 
 第二种方案，则是通过定时重新构建布隆过滤器。
 
-https://xiaoheixian.github.io/posts/assets/955_15.png
+![架构示意图](https://xiaoheixian.github.io/posts/assets/955_15.png)
 
     定时任务触发全量商品查询，更新数据
     将商品添加到新的布隆过滤器
