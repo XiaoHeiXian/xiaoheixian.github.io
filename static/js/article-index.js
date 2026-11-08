@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-11-08-cache-problems-and-solutions",
+    "title": "缓存问题及解决方案",
+    "url": "posts/2026-11-08-cache-problems-and-solutions.html",
+    "publishedAt": "2026-11-08",
+    "category": "软件架构",
+    "tags": [
+      "微服务",
+      "缓存",
+      "Redis",
+      "布隆过滤器"
+    ],
+    "summary": "穿透：查不存在的数据，请求打满数据库。解法：参数校验、缓存空值、布隆过滤器。 击穿：热点 Key 失效，大量请求直达数据库。解法：永不过期、定时更新、互斥锁。 雪崩：大量 Key 同时失效或 Redis 宕机。解法：过期时间打散、数据预热、高可用。 布隆过滤器：概率型数据结构，用位数组和多哈希函数判断元素“一定不存在或可能存在”。 实现：利用 Redisson 提供的布隆过滤器 API，初始化、添加元素并拦截无效请求。"
+  },
+  {
     "id": "2026-10-14-rate-limiting-and-degradation",
     "title": "限流与降级机制",
     "url": "posts/2026-10-14-rate-limiting-and-degradation.html",
