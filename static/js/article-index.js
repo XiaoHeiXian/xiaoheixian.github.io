@@ -1,5 +1,20 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-11-09-git-advanced-branch-tag-tools",
+    "title": "Git 进阶：分支、标签、工具集成与 SSH",
+    "url": "posts/2026-11-09-git-advanced-branch-tag-tools.html",
+    "publishedAt": "2026-11-09",
+    "category": "软件架构",
+    "tags": [
+      "开发工具",
+      "Git",
+      "版本控制",
+      "IDEA",
+      "SSH"
+    ],
+    "summary": "分支管理：掌握查看、创建、切换、推送、合并与删除分支的操作。 标签管理：为特定提交打上版本标签，便于版本发布与回溯。 TortoiseGit：使用图形化界面工具简化 Git 日常操作。 IDEA 集成：在 IDEA 中直接完成提交、分支切换、合并与冲突解决。 SSH 协议：配置密钥对，实现免密安全的数据传输。"
+  },
+  {
     "id": "2026-11-09-git-version-control",
     "title": "Git 分布式版本控制工具",
     "url": "posts/2026-11-09-git-version-control.html",

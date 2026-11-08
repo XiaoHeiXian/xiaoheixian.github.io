@@ -11,8 +11,6 @@ tags:
 permalink: /posts/2026-11-09-git-version-control.html
 ---
 
-# Git 分布式版本控制工具
-
 ## 1. Git概述
 
 ### 1.1 Git历史
