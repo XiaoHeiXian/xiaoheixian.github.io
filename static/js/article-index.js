@@ -1,5 +1,33 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-11-11-code-review-and-cicd",
+    "title": "代码评审与 CI/CD 流水线实战",
+    "url": "posts/2026-11-11-code-review-and-cicd.html",
+    "publishedAt": "2026-11-11",
+    "category": "软件架构",
+    "tags": [
+      "开发工具",
+      "Git",
+      "CodeReview",
+      "CICD"
+    ],
+    "summary": "代码评审：PR 是代码合入主分支前的最后一道关卡，需遵循规则与检查清单。 评论模板：使用【必须修改】、【建议优化】、【仅供参考】前缀明确问题级别。 通过标准：修复所有必改项、CI 流水线全绿、至少一人 Approve。 CI/CD：遵循开发->测试->预发布->生产的阶梯式递进原则。 平台方案：GitHub Actions（零运维）、Gitee Go（国内快）、Jenkins（企业自建）。"
+  },
+  {
+    "id": "2026-11-11-team-dev-management-and-git",
+    "title": "团队开发管理与 Git 规范实战",
+    "url": "posts/2026-11-11-team-dev-management-and-git.html",
+    "publishedAt": "2026-11-11",
+    "category": "软件架构",
+    "tags": [
+      "开发工具",
+      "Git",
+      "代码质量",
+      "团队协作"
+    ],
+    "summary": "工具组合：涵盖代码规范、Bug 检测、AI 辅助、单元/集成测试及 CI/CD。 环境配置：统一 JDK、Maven、Docker 版本，并配置 IDEA 自动格式化。 测试分层：80% 单元测试（Mockito）、15% 集成测试（Testcontainers）、5% E2E。 代码质量：结合 AI 审查、SonarQube 静态扫描与 Snyk 依赖漏洞扫描。 分支模型：采用简化版 Git Flow，严格区分 main、develop、feature、hotfix。 提交规范：遵循 Conventional Commits，规范 Commit Message 与 PR 模板。"
+  },
+  {
     "id": "2026-11-10-ecommerce-microservices-architecture",
     "title": "基于微服务架构的电商商城系统重构",
     "url": "posts/2026-11-10-ecommerce-microservices-architecture.html",
