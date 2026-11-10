@@ -1,5 +1,20 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-11-10-ecommerce-microservices-architecture",
+    "title": "基于微服务架构的电商商城系统重构",
+    "url": "posts/2026-11-10-ecommerce-microservices-architecture.html",
+    "publishedAt": "2026-11-10",
+    "category": "软件架构",
+    "tags": [
+      "微服务",
+      "架构设计",
+      "4+1视图",
+      "领域驱动设计",
+      "高并发"
+    ],
+    "summary": "背景：传统单体架构存在并发弱、扩展差、迭代慢等痛点，无法支撑高并发场景。 设计：基于 4+1 视图模型，从逻辑、开发、进程、物理、场景五个维度完成架构设计。 难点：解决服务粒度划分、跨服务通信一致性、分布式配置统一管理等核心问题。 方案：引入领域驱动设计（DDD）、Seata 分布式事务、RocketMQ、Nacos 等组件。 成效：系统可用性提升至 99.9%，支撑万级 QPS，迭代周期由 30 天缩短至 7 天。"
+  },
+  {
     "id": "2026-11-09-git-advanced-branch-tag-tools",
     "title": "Git 进阶：分支、标签、工具集成与 SSH",
     "url": "posts/2026-11-09-git-advanced-branch-tag-tools.html",
