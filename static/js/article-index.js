@@ -1,5 +1,20 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-11-11-agriculture-knowledge-base-rag",
+    "title": "综合案例：农业知识库智能问答",
+    "url": "posts/2026-11-11-agriculture-knowledge-base-rag.html",
+    "publishedAt": "2026-11-11",
+    "category": "AI",
+    "tags": [
+      "AI大模型",
+      "LangChain",
+      "FastAPI",
+      "SSE",
+      "RAG"
+    ],
+    "summary": "概述：面向农业领域的智能问答系统，支持多轮对话、私有库优先、通用库兜底。 架构：基于 LangChain 搭建智能体，FastAPI 提供 SSE 流式接口，原生 JS 渲染打字机效果。 流程：输入问题 -> 检索私有知识库 -> 无匹配调用通用工具 -> 大模型流式输出。 优势：全异步架构响应快，工具调度策略灵活，基于 session_id 实现会话隔离。 优化：引入 RAG 检索增强替代硬编码字典，使用 Redis 持久化记忆，改用 POST 发起流式请求。"
+  },
+  {
     "id": "2026-11-11-code-review-and-cicd",
     "title": "代码评审与 CI/CD 流水线实战",
     "url": "posts/2026-11-11-code-review-and-cicd.html",
