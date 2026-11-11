@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-11-11-rag-retrieval-augmented-generation",
+    "title": "第 5 章 检索增强生成（RAG）",
+    "url": "posts/2026-11-11-rag-retrieval-augmented-generation.html",
+    "publishedAt": "2026-11-11",
+    "category": "AI",
+    "tags": [
+      "AI大模型",
+      "RAG",
+      "LangChain",
+      "向量数据库"
+    ],
+    "summary": "四大痛点：知识截止、知识幻觉、无法访问私有知识、上下文窗口限制。 RAG 定义：检索组件与大模型结合，先检索外部知识，再让大模型基于检索结果生成回答。 RAG 与微调：RAG 适合动态知识、私有知识接入；微调适合固定知识、风格定制。 文本向量化：将文本转换为多维数值向量，通过计算向量距离衡量语义相似度。 向量数据库：解决海量非结构化数据的语义快速匹配问题，如 Redis Stack。 向量检索器：封装向量库检索能力，支持相似度检索、MMR 多样性检索等策略。"
+  },
+  {
     "id": "2026-11-11-agriculture-knowledge-base-rag",
     "title": "综合案例：农业知识库智能问答",
     "url": "posts/2026-11-11-agriculture-knowledge-base-rag.html",
