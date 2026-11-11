@@ -9,9 +9,10 @@ window.BLOG_ARTICLES = [
       "AI大模型",
       "LangChain",
       "RAG",
-      "文本分割"
+      "文本分割",
+      "文档加载"
     ],
-    "summary": "必要性：解决模型上下文限制，提升检索精准度，降低计算成本。 核心接口：TextSplitter 统一标准，常用参数包括 chunk_size、chunk_overlap 等。 递归分割：RecursiveCharacterTextSplitter 是首选，按分隔符优先级递归切分，保留语义。 基础字符分割：CharacterTextSplitter 逻辑简单，适合轻量无复杂语义场景。 结构/代码分割：根据 Markdown、HTML、代码语法等天然结构进行无损分割。"
+    "summary": "必要性：解决模型上下文限制，提升检索精准度，降低计算成本。 核心接口：TextSplitter 统一标准，常用参数包括 chunk_size、chunk_overlap 等。 递归分割：RecursiveCharacterTextSplitter 是首选，按分隔符优先级递归切分，保留语义。 基础字符分割：CharacterTextSplitter 逻辑简单，适合轻量无复杂语义场景。 结构/代码分割：根据 Markdown、HTML、代码语法等天然结构进行无损分割。 文档加载器：将各类多源异构数据统一转换为标准的 Document 对象。 加载方法：提供同步（load）、懒加载（lazy_load）、异步（aload）及一站式分割（load_and_split）。 综合实战：结合 SQLDatabaseLoader 读取结构化数据，经过文本分割后存入向量数据库，实现完整 RAG 链路。"
   },
   {
     "id": "2026-11-11-rag-retrieval-augmented-generation",
