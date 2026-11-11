@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-11-11-rag-document-retrieval-splitters",
+    "title": "RAG 文档检索与文本分割器",
+    "url": "posts/2026-11-11-rag-document-retrieval-splitters.html",
+    "publishedAt": "2026-11-11",
+    "category": "AI",
+    "tags": [
+      "AI大模型",
+      "LangChain",
+      "RAG",
+      "文本分割"
+    ],
+    "summary": "必要性：解决模型上下文限制，提升检索精准度，降低计算成本。 核心接口：TextSplitter 统一标准，常用参数包括 chunk_size、chunk_overlap 等。 递归分割：RecursiveCharacterTextSplitter 是首选，按分隔符优先级递归切分，保留语义。 基础字符分割：CharacterTextSplitter 逻辑简单，适合轻量无复杂语义场景。 结构/代码分割：根据 Markdown、HTML、代码语法等天然结构进行无损分割。"
+  },
+  {
     "id": "2026-11-11-rag-retrieval-augmented-generation",
     "title": "第 5 章 检索增强生成（RAG）",
     "url": "posts/2026-11-11-rag-retrieval-augmented-generation.html",
