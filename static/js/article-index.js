@@ -1,5 +1,20 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-11-13-mall-intelligent-search-project",
+    "title": "云商城智能搜索的设计与实现",
+    "url": "posts/2026-11-13-mall-intelligent-search-project.html",
+    "publishedAt": "2026-11-13",
+    "category": "AI",
+    "tags": [
+      "微服务",
+      "AI大模型",
+      "RAG",
+      "智能搜索",
+      "LangChain"
+    ],
+    "summary": "概述：面向电商业务的 AI 商品智能搜索微服务，基于大模型 + 向量检索实现自然语言查询。 功能：商品向量同步、查询条件结构化提取、Agent 智能推荐与会话记忆。 架构：FastAPI 提供 RESTful 接口，LangChain Agent 编排检索工具，Redis 存储向量与记忆。 工程化：基于 Pydantic 管理配置与数据模型，封装 Tools 工具类，统一异常响应格式。 数据同步：懒加载 MySQL 数据，自定义 Mapper 拼接文本，生成 MD5 保证幂等，分批写入向量库。"
+  },
+  {
     "id": "2026-11-11-rag-document-retrieval-splitters",
     "title": "RAG 文档检索与文本分割器",
     "url": "posts/2026-11-11-rag-document-retrieval-splitters.html",
