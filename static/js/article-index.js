@@ -1,5 +1,18 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-11-13-interview-skills-and-mindset",
+    "title": "面试技巧与心态调整指南",
+    "url": "posts/2026-11-13-interview-skills-and-mindset.html",
+    "publishedAt": "2026-11-13",
+    "category": "软件架构",
+    "tags": [
+      "面试技巧",
+      "职业发展",
+      "软技能"
+    ],
+    "summary": "核心认知：面试是真实展现自己，懂就讲细节，不懂就坦诚说明，避免盲目背诵和过度自大。 心态建设：不自信会放大劣势，需区分「紧张」与「能力不行」，接纳紧张并客观看待自身优缺点。 答题逻辑：采用“观点+项目实例+补充局限”的结构，遇到盲区切忌瞎编乱凑，用真诚化解尴尬。 充分准备：提前打磨简历与项目细节，熟练背诵开场白、离职原因、优缺点及职业规划等高频话术。 避雷指南：未拿 Offer 前不要逼问薪资福利，表达强烈的求职意向，避免引发 HR 的风险担忧。"
+  },
+  {
     "id": "2026-11-13-langchain-langgraph-langsmith",
     "title": "LangChain、LangGraph 与 LangSmith 核心解析",
     "url": "posts/2026-11-13-langchain-langgraph-langsmith.html",
