@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-11-13-springcloud-ai-search-integration",
+    "title": "整合 SpringCloud 搭建智能搜索系统",
+    "url": "posts/2026-11-13-springcloud-ai-search-integration.html",
+    "publishedAt": "2026-11-13",
+    "category": "软件架构",
+    "tags": [
+      "微服务",
+      "SpringCloud",
+      "OpenFeign",
+      "AI大模型"
+    ],
+    "summary": "方案设计：SpringCloud 体系内新建微服务，通过 OpenFeign 远程调用 Python AI 服务。 架构链路：前端 -> Gateway -> Java 微服务 -> OpenFeign -> Python AI 服务。 前端改造：增加搜索模式切换（传统/智能），新增“为你推荐”栏目。 配置管理：Nacos 集中配置，针对大模型推理慢的特点，调整 Feign 的超时时间。 代码实现：定义 DTO 结构，Service 层解析 AI 返回的 JSON 并转换为 Java 对象。"
+  },
+  {
     "id": "2026-11-13-mall-intelligent-search-project",
     "title": "云商城智能搜索的设计与实现",
     "url": "posts/2026-11-13-mall-intelligent-search-project.html",
