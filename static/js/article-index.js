@@ -1,5 +1,76 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-11-13-langchain-langgraph-langsmith",
+    "title": "LangChain、LangGraph 与 LangSmith 核心解析",
+    "url": "posts/2026-11-13-langchain-langgraph-langsmith.html",
+    "publishedAt": "2026-11-13",
+    "category": "软件架构",
+    "tags": [
+      "AI大模型",
+      "LangChain",
+      "LangGraph",
+      "LangSmith",
+      "Agent"
+    ],
+    "summary": "大模型局限：存在知识时效受限、无工具调用、缺乏记忆、幻觉严重及无法适配私有数据五大痛点。 三大范式：提示工程适用于轻量场景，RAG 解决知识滞后，Agent 编排应对复杂多步任务。 LangChain v1：重构标准化智能体 API，引入中间件机制，并深度绑定 LangGraph 底座。 LangGraph：状态化图编排框架，弥补线性流水线短板，支持状态持久化、循环与断点续跑。 LangSmith：提供全链路可视化追踪、自动化评估与生产监控，是生产级 AI 应用的必备工具。"
+  },
+  {
+    "id": "2026-11-19-deepseek-harness-custom-plugin",
+    "title": "DeepSeek Harness 自定义插件开发",
+    "url": "posts/2026-11-19-deepseek-harness-custom-plugin.html",
+    "publishedAt": "2026-11-19",
+    "category": "软件架构",
+    "tags": [
+      "AI大模型",
+      "DeepSeek",
+      "Agent",
+      "插件开发"
+    ],
+    "summary": "插件机制：插件是一个导出 apply 函数的 TypeScript 模块，通过 ctx 上下文注册能力。 工具定义：工具即为插件，使用 defineTool 定义名称、描述、参数和执行逻辑。 目录结构：在 deepseek-harness 目录下建立独立的 scratch-plugin/src 目录进行开发。 代码实现：通过导出的 apply 函数，将自定义的工具实例注册到 DSH 框架中。"
+  },
+  {
+    "id": "2026-11-19-deepseek-harness-plugins2",
+    "title": "DeepSeek Harness 插件体系与实战2",
+    "url": "posts/2026-11-19-deepseek-harness-plugins2.html",
+    "publishedAt": "2026-11-19",
+    "category": "软件架构",
+    "tags": [
+      "AI大模型",
+      "DeepSeek",
+      "Agent",
+      "插件化"
+    ],
+    "summary": "核心优势：一切皆插件 (Cordis 内核)，不改源码即可插拔替换；完整可追溯执行日志；原生编码 Agent 循环；安全沙箱机制。 内置插件：提供开箱即用的基础工具，涵盖文件读写、Shell 执行、Git 操作、技能加载与模型对接。 社区生态：拥有丰富的第三方插件，如 UI 增强、视觉读图、上下文调试增强、自动化调度等。 实战案例：通过配置工作区和提示词，一句话让 Agent 生成定制风格的个人简历微信小程序、数据分析报告以及完整的营销系统代码。"
+  },
+  {
+    "id": "2026-11-19-deepseek-harness-plugins",
+    "title": "DeepSeek Harness 插件体系与实战",
+    "url": "posts/2026-11-19-deepseek-harness-plugins.html",
+    "publishedAt": "2026-11-19",
+    "category": "软件架构",
+    "tags": [
+      "AI大模型",
+      "DeepSeek",
+      "Agent",
+      "插件化"
+    ],
+    "summary": "核心优势：一切皆插件 (Cordis 内核)，不改源码即可插拔替换；完整可追溯执行日志；原生编码 Agent 循环；安全沙箱机制。 内置插件：提供开箱即用的基础工具，涵盖文件读写、Shell 执行、Git 操作、技能加载与模型对接。 社区生态：拥有丰富的第三方插件，如 UI 增强、视觉读图、上下文调试增强、自动化调度等。 实战案例：通过配置工作区和提示词，一句话让 Agent 生成定制风格的个人简历微信小程序。"
+  },
+  {
+    "id": "2026-11-19-ai-agent-tools-ollama-harness",
+    "title": "AI 智能体开发工具链：Ollama 与 DeepSeek Harness",
+    "url": "posts/2026-11-19-ai-agent-tools-ollama-harness.html",
+    "publishedAt": "2026-11-19",
+    "category": "软件架构",
+    "tags": [
+      "AI大模型",
+      "LangChain",
+      "Ollama",
+      "DeepSeek"
+    ],
+    "summary": "Harness 理念：模型 (Model) + Harness = 智能体 (Agent)，主张一切皆插件。 Ollama：本地运行 LLM 的开源工具，具备隐私安全、完全免费、离线可用等优势。 Ollama 部署：支持原生安装与 Docker 部署，通过标准 API 接入 LangChain。 DeepSeek Harness：基于 Node.js 的开源 Agent 框架，支持源码编译与 Web UI 运行。 模型接入：支持配置第三方 OpenAI 协议 API，如硅基流动大模型平台。"
+  },
+  {
     "id": "2026-11-13-springcloud-ai-search-integration",
     "title": "整合 SpringCloud 搭建智能搜索系统",
     "url": "posts/2026-11-13-springcloud-ai-search-integration.html",
