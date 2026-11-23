@@ -1,5 +1,19 @@
 window.BLOG_ARTICLES = [
   {
+    "id": "2026-11-23-mall-ai-search-qa",
+    "title": "商城 AI 智能搜索专项技术问答",
+    "url": "posts/2026-11-23-mall-ai-search-qa.html",
+    "publishedAt": "2026-11-23",
+    "category": "问答",
+    "tags": [
+      "AI",
+      "RAG",
+      "智能搜索",
+      "SpringCloud"
+    ],
+    "summary": "结合智汇云商城，整理 RAG 商品智能搜索、文本分块、ES 双路径、幻觉控制和 SpringCloud 集成的核心面试问答。"
+  },
+  {
     "id": "2026-11-13-interview-skills-and-mindset",
     "title": "面试技巧与心态调整指南",
     "url": "posts/2026-11-13-interview-skills-and-mindset.html",
